@@ -1,0 +1,145 @@
+ .u-section-1 {
+  background-image: linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url("/images/dark.jpg");
+  background-position: 71.16% 50%;
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 812px;
+}
+body *{
+  font-family:'Lucida Console';
+}
+.u-section-1 .u-layout-wrap-1 {
+  width: 510px;
+  margin: 370px auto 60px 188px;
+}
+
+.u-section-1 .u-layout-cell-1 {
+  min-height: 282px;
+}
+
+.u-section-1 .u-container-layout-1 {
+  padding: 0;
+}
+
+.u-section-1 .u-text-1 {
+  line-height: 1.1;
+  letter-spacing: 1px;
+  margin: 0 22px;
+}
+
+.u-section-1 .u-btn-1 {
+  border-style: none none solid;
+  background-image: none;
+  padding: 0;
+}
+
+.u-section-1 .u-btn-2 {
+  padding: 0;
+}
+
+.u-section-1 .u-btn-3 {
+  padding: 0;
+}
+
+.u-section-1 .u-btn-4 {
+  padding: 0;
+}
+
+.u-section-1 .u-btn-5 {
+  padding: 0;
+}
+
+.u-section-1 .u-form-1 {
+  height: 154px;
+  margin: 20px 30px 0 22px;
+}
+
+.u-section-1 .u-input-1 {
+  height: 100px;
+}
+
+.u-section-1 .u-btn-6 {
+  background-image: none;
+  text-transform: uppercase;
+}
+
+.u-section-1 .u-text-2 {
+  margin: -36px 153px 0 auto;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 670px;
+  }
+
+  .u-section-1 .u-btn-6 {
+    border-style: solid;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 331px;
+  }
+
+  .u-section-1 .u-layout-cell-1 {
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-layout-wrap-1 {
+    margin-left: 30px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-layout-wrap-1 {
+    width: 340px;
+    margin-left: 0;
+  }
+
+  .u-section-1 .u-text-1 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .u-section-1 .u-form-1 {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .u-section-1 .u-text-2 {
+    margin-right: 102px;
+  }
+}
+#fsc{
+  position: relative;
+  top: -80px;
+  
+  -webkit-transform:scale(0.9);
+  -moz-transform:scale(0.9);
+  -ms-transform:scale(0.9);
+  transform:scale(0.9);
+}
+h3{
+  position: relative;
+  top: +45px;
+}
+#fsc-btn{
+  position: absolute;
+  left: -6%;
+  top: 100%;
+  -webkit-transform:scale(0.9);
+  -moz-transform:scale(0.9);
+  -ms-transform:scale(0.9);
+  transform:scale(0.9);
+}
+
+#fsc-p{
+  position: relative;
+  left: 5px;
+}
+
+

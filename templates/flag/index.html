@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="​Join Accenture’s virtual program for new perspectives, ​Technology Of The Future, 01, 02, 03, 04, ​AI &amp;amp; Digital Platform, ​Essential 8 Emerging Technologies, ​Technology Of The Future, Join our newsletter">
+    <meta name="description" content="">
+    <title>Flag</title>
+    <link rel="stylesheet" href="/css/flag/flag-style.css" media="screen">
+<link rel="stylesheet" href="/css/flag/flag.css" media="screen">
+    <script class="u-script" type="text/javascript" src="/js/flag/jquery.js"  defer=""></script>
+    <script class="u-script" type="text/javascript" src="/js/flag/fsc.js"  defer=""></script>
+    
+
+    
+
+    
+  </head>
+  <body class="u-body u-xl-mode" data-lang="en"> 
+    <section class="u-align-center u-clearfix u-image u-shading u-section-1" id="carousel_5ad0" src="" data-image-width="1920" data-image-height="1080">
+      <div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+        <div class="u-clearfix u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-col">
+              <div  class="u-container-style u-layout-cell u-shape-rectangle u-size-60 u-layout-cell-1">
+                <div id="fsc" class="u-container-layout u-container-layout-1">
+                  <p id="fsc-p" class="u-large-text u-text u-text-font u-text-palette-1-light-2 u-text-variant u-text-1">
+                    <a href="/challenge/1" class="u-border-none u-btn u-button-link u-button-style u-none u-text-custom-color-1 u-btn-1">
+                      <br>Level-1
+                    </a> | <a href="/challenge/2" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-custom-color-1 u-btn-2">Level-2</a> | <a href="/challenge/3" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-custom-color-1 u-btn-3">Level-3</a> | <a href="/challenge/4" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-custom-color-1 u-btn-4">Level-4</a> | <a href="/challenge/5" class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-custom-color-1 u-btn-5">Level-5</a>
+                  </p>
+                  <div class="u-form u-form-1">
+                    <form onsubmit="return false" method="POST" class="u-clearfix u-form-spacing-7 u-form-vertical u-inner-form" style="padding: 0px;" source="email" name="form">
+                      <div class="u-form-email u-form-group">
+                        <label for="email-cd2c" class="u-form-control-hidden u-label"></label>
+                        <input id='flag-3301' type="text" placeholder="Flag{Example_Flag}" id="email-cd2c" name="email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-10 u-white u-input-1" required="">
+                      </div>
+                      <div id="fsc-btn" class="u-align-left u-form-group u-form-submit">
+                        
+                        <input onclick='javascript:post("/flag/", {"flag":document.getElementById("flag-3301").value,"token":"{{ token }}"});' type="submit" value="Submit" class="u-active-grey-40 u-border-active-palette-1-light-1 u-border-hover-palette-1-light-1 u-border-none u-btn u-btn-round u-btn-submit u-button-style u-grey-15 u-hover-grey-25 u-radius-10 u-btn-6">
+                      </div>
+                      
+                      
+                    </form>
+                  </div>
+                  <h3 class="u-text u-text-default u-text-2">Score:{{ score }}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      function post(path, params, method='post') {
+
+          
+          const form = document.createElement('form');
+          form.method = method;
+          form.action = path;
+          
+          for (const key in params) {
+            if (params.hasOwnProperty(key)) {
+              const hiddenField = document.createElement('input');
+              hiddenField.type = 'hidden';
+              hiddenField.name = key;
+              hiddenField.value = params[key];
+
+              form.appendChild(hiddenField);
+            }
+          }
+
+          document.body.appendChild(form);
+          form.submit();
+          
+          
+          }
+    </script>
+    
+  
+</body></html>

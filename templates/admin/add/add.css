@@ -1,0 +1,83 @@
+
+
+.u-section-1 {
+  background-image: url("/images/admin-back.jpg");
+  
+ 
+  
+  
+  
+}
+*{
+  font-family:'Lucida Console';
+}
+.u-section-1 .u-sheet-1 {
+  min-height: 100vh;
+}
+
+.u-section-1 .u-form-1 {
+  height: 263px;
+  width: 570px;
+  margin: 278px auto 60px;
+}
+
+.u-section-1 .u-form-group-1 {
+  width: 100%;
+}
+
+.u-section-1 .u-input-1 {
+  background-image: none;
+}
+
+.u-section-1 .u-form-group-2 {
+  width: 100%;
+}
+
+.u-section-1 .u-input-2 {
+  background-image: none;
+}
+
+.u-section-1 .u-form-group-3 {
+  width: 100%;
+}
+
+.u-section-1 .u-input-3 {
+  background-image: none;
+}
+
+.u-section-1 .u-form-group-4 {
+  width: 100%;
+}
+
+.u-section-1 .u-btn-1 {
+  background-image: none;
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-form-1 {
+    width: 540px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-form-1 {
+    width: 340px;
+  }
+}
+#x{ 
+ 
+  -webkit-transform:scale(0.8);
+  -moz-transform:scale(0.8);
+  -ms-transform:scale(0.8);
+  transform:scale(0.8);
+
+}
+#x1{
+  position: relative;
+  top: -20px;
+}
+#x2{
+  position: relative;
+  top: -20px;
+  left: 30px;
+}

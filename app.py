@@ -1,0 +1,279 @@
+
+
+
+
+from email import message
+from flask import Flask,render_template,send_file,request
+import json
+from  urllib.parse import unquote
+import requests
+import db
+
+app=Flask(__name__)
+@app.route('/')
+def index():
+    return render_template('./index.html')
+
+
+@app.route('/css/<path:path>')
+def css(path):
+    
+    return send_file(f'templates/{path}')
+
+@app.route('/images/<path:path>')
+def image(path):
+    
+    return send_file(f'templates/images/{path}')
+
+
+
+def ban_ch(user):
+    if db.st(user)=='free':
+        return True
+    else:
+        return False
+
+admins=[['FSC','UNKN0WN'],['fsc3301@1033','unkn0wn.404.us3r']]
+@app.route('/login/',methods=['GET','POST'])
+def login():
+    
+        
+        Username=request.form['User'].upper()
+        Password=request.form['Pass']
+        
+        f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':Username,'Pass':Password}).json()
+        print(f)
+
+        
+        if f['message']=='NF' :
+            response=json.dumps({
+                        "message":"Login Failed , Account Not Found",
+                        "Username:":Username,
+                        "Password:":Password})
+            return response
+    
+
+        else :
+             
+                if f['message']=='ban':
+                        return render_template('./ban/ban.html')
+                elif f['message']=='admin':
+                            
+                        
+                        
+                            return render_template('./admin/index.html',token=f['token'])
+
+                elif  f['message']=='flag' :
+                            
+                            
+                                
+                            return render_template('./flag/index.html',token=f['token'],score=f['score'])  
+                            
+                            
+                            
+                else:
+                    return render_template("./login/login.html",data=f['token'])
+        
+        
+@app.route('/video',methods=['GET','POST'])
+def video():
+    return send_file("templates/login/video/one-eye.mp4")                    
+
+@app.route('/email/',methods=['GET','POST'])
+def email():
+    
+    email=unquote(request.form['email'])
+    token=unquote(request.form['token'])
+    print(email,token)
+    full_resalt=requests.post('https://fsc3301.pythonanywhere.com/email/',data={'email':email,'token':token}).json()['message']
+   
+    return render_template('./index.html')
+
+upd={
+    True:False,
+    False:True
+}
+
+up=True
+
+
+@app.route('/admin/',methods=['GET','POST'])
+def admin():
+    
+    work=request.form['w']
+    token=unquote(request.form['token'])
+    
+    tokens=requests.post('https://fsc3301.pythonanywhere.com/admin/',data={'w':'token','token':token}).json()['message']
+
+    if tokens==True:
+        if work=='up':
+            global up,upd
+            up=upd[up]
+
+
+        if work =='add':
+            print('asdawdadsadasdsad')
+            
+            return render_template('admin/add/index.html',token=token)
+        elif work=='ban':
+            return render_template('admin/ban/index.html',token=token)
+        elif work=='add_user':
+            
+            
+            User=request.form['user']
+            
+            Pass=request.form['pass']
+            u_token=request.form['maintoken']
+            level=request.form['level']
+            print(User,Pass,u_token,level)
+            if len(User)<3 or len(Pass)<3:
+                return {'message':'Failed'}
+            else:
+                
+                    x= requests.post('https://fsc3301.pythonanywhere.com/admin/',data={'w':'add_user','token':token,'User':User,'Pass':Pass,'email':'NULL','u_token':u_token,'level':str(level) }).json()['message']
+                    if x=='DONE':
+                                return {'message':'DONE'}
+                    elif x=='AE' :
+                                return {'message':'This Account Already Exists'}
+                    else:
+                        return {'message':'Failed'}
+                
+
+        elif work=='ban_user':
+            
+            try:
+                    User=request.form['user']
+
+                    print({'w':'ban_user','token':token,'User':User})
+                    if User.upper()=='FSC':
+                        return {'message':'Access Denied'}
+                    else:
+                        x=requests.post('https://fsc3301.pythonanywhere.com/admin/',data={'w':'ban_user','token':token,'User':User}).json()['message']
+                        print(x)
+                        if x=='DONE':
+
+                            return {'message':'DONE'}
+                        else:
+                            return {'message':'Failed'}
+            except:
+                    return {'message':'Failed'}
+
+        elif work=='free_user':
+            try:
+                    User=request.form['user']
+                    if User.upper()=='FSC':
+                        return {'message':"Access Denied"}
+                    else:
+                        x=requests.post('https://fsc3301.pythonanywhere.com/admin/',data={'w':'free_user','token':token,'User':User}).json()['message']
+                        print(x)
+                        if x == 'DONE':
+
+                            return {'message':'DONE'}
+                        else:
+                            raise TypeError
+            except:
+                    return {'message':'Failed'}
+        else:
+            if work=='log' and ([token=='=fsc@*#Y*EHI3301' or token=='(unkn0wn)*@#(UJE.404))']):
+                try:
+                    log=requests.post('https://fsc3301.pythonanywhere.com/admin/',data={'w':'log','token':token}).json()
+                    return log
+                except:
+                    return {'message':'Failed'}
+            elif work=='del' and token=='=fsc@*#Y*EHI3301':
+                User=request.form['user']
+
+                x=requests.post('https://fsc3301.pythonanywhere.com/admin/',data={'w':'del','token':token,'user':User}).json()
+                
+                if x['message']==True:
+                    return {'message':'Done'}
+                elif x['message']=='AF':
+                    return {'message':'Account Not Found'}
+                else:
+                    return {'message':'Failed'}
+            else:return {'message':'Access Denied'}
+
+
+
+
+
+@app.route('/flag/',methods=['GET','POST'])
+def flag():
+    fg=unquote(request.form['flag'])
+    token=request.form['token']
+    tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()['message']
+    
+    if tokens != 'AF' and tokens!='AL':
+        try:
+            levels=str(tokens)
+            levels= levels if levels!=None else ''
+            
+            if fg=='FSC{Thus_The_World_Was_Created}':
+                if '1' not in levels:
+                    if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'1'}).json()['message']:
+                        return {'message':'Done','Level':1}
+                else:
+                    raise TypeError
+                
+            elif fg=='FSC{Every_Death_Is_Just_A_New_Beginning}':
+                if '2' not in levels:
+                    if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'2'}).json()['message']:
+                        return {'message':'Done','Level':2}
+                else:
+                    raise TypeError
+            elif fg=='FSC{GODHASNOPLANFORUS}' or fg=='FSC{GOD_HAS_NO_PLAN_FOR_US}':
+                if '3' not in levels:
+                    if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'3'}).json()['message']:
+                        return {'message':'Done','Level':3}
+                else:
+                    raise TypeError
+            elif fg=='FSC{WR_FSC}' or fg=='FSC{wr_fsc}':
+                if '4' not in levels:
+                    if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'4'}).json()['message']:
+                        return {'message':'Done','Level':4}
+                else:
+                    raise TypeError
+            else:
+                return {'message':'Wrong Flag'}
+
+        except:
+            return {'message':'This Level Has Already Been Solved'}
+    else:
+        return {'message':'Account Not Found'}
+
+        
+@app.route('/challenge/<path:path>',methods=['GET','POST'])
+def challenge(path):
+    level=path
+    if level=='1':
+        
+        
+        return send_file('templates/flags/level1/level1.txt', as_attachment=True)
+    if level=='2':
+       
+        
+        return send_file('templates/flags/level2/level2.rar', as_attachment=True) 
+    if level=='3':
+        return send_file('templates/flags/level3/Mos.txt', as_attachment=True) 
+    if level=='4':
+        return send_file('templates/flags/level4/erdos.txt', as_attachment=True,) 
+    else:
+        return {'message':"Challenge Not Found"}
+    
+@app.route('/js/<path:path>',methods=['GET','POST'])
+def js(path):
+   
+    
+    return render_template(f'{path}')
+
+
+        
+
+
+
+
+if __name__ == '__main__':
+    app.run(threaded=True)
+
+
+

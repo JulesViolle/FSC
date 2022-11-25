@@ -1,0 +1,166 @@
+
+*{
+  font-family:'Lucida Console';
+}
+
+.u-section-1 .u-text-1{
+  position: relative;
+  left: 30px;
+}
+
+
+#fsc{
+  color: aliceblue;
+}
+#continue{
+  position: relative;
+  top:-30px
+}
+
+.u-section-1 .u-text-1 {
+  align-items: center;
+  color: gray;
+  
+}
+body{
+ 
+  background-color:  black;
+  
+
+}
+
+.u-section-1 {
+  background-image: none;
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 580px;
+}
+
+.u-section-1 .u-video-1 {
+  width: 361px;
+  height: 273px;
+  margin: -15px auto 0;
+}
+
+.u-section-1 .u-text-1 {
+  font-size: 1.875rem;
+  width: 450px;
+  margin: -33px auto 70px;
+}
+
+.u-section-1 .u-btn-1 {
+  border-style: none;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  background-image: none;
+  margin: 57px auto 60px;
+  padding: 8px 33px;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-text-1 {
+    width: 380px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 564px;
+  }
+
+  .u-section-1 .u-video-1 {
+    width: 340px;
+    height: 257px;
+  }
+
+  .u-section-1 .u-text-1 {
+    width: 340px;
+    margin-top: -17px;
+    font-size: 1.5rem;
+  }
+}
+
+
+
+.u-section-1 .u-sheet-1 {
+  min-height: 914px;
+}
+
+.u-section-1 .u-form-1 {
+  height: 201px;
+  width: 540px;
+  margin: 328px auto 60px;
+}
+
+.u-section-1 .u-form-group-1 {
+  width: 100%;
+}
+
+.u-section-1 .u-input-1 {
+  background-image: none;
+}
+
+
+
+
+.u-section-1 .u-form-group-3 {
+  width: 100%;
+}
+
+.u-section-1 .u-btn-1 {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 754px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 578px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 434px;
+  }
+
+  .u-section-1 .u-form-1 {
+    width: 540px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 273px;
+  }
+
+  .u-section-1 .u-form-1 {
+    width: 340px;
+  }
+}
+
+#form{ 
+ 
+  -webkit-transform:scale(0.8);
+  -moz-transform:scale(0.8);
+  -ms-transform:scale(0.8);
+  transform:scale(0.8);
+
+}
+
+#form{
+  position: relative;
+  top: -340px;
+  left: 10px;
+  
+}
+
+
+
+

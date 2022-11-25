@@ -1,0 +1,62 @@
+ .u-section-1 {
+  background-image: url("/images/ban.jpeg");
+  background-position: 50% 50%;
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 100vh;
+}
+*{
+  font-family:'Lucida Console';
+}
+.u-section-1 .u-form-1 {
+  height: 139px;
+  width: 570px;
+  margin: 296px auto 60px;
+}
+
+.u-section-1 .u-form-group-1 {
+  width: 100%;
+}
+
+.u-section-1 .u-input-1 {
+  background-image: none;
+}
+
+.u-section-1 .u-form-group-2 {
+  width: 100%;
+}
+
+.u-section-1 .u-btn-1 {
+  background-image: none;
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-form-1 {
+    width: 540px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-form-1 {
+    width: 340px;
+  }
+}
+
+#x{ 
+ 
+  -webkit-transform:scale(0.8);
+  -moz-transform:scale(0.8);
+  -ms-transform:scale(0.8);
+  transform:scale(0.8);
+
+}
+#free{
+  position: relative;
+  left: 30px;
+}
+
+#del{
+  position: relative;
+  left: 60px;
+}

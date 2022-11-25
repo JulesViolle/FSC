@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="​Don&amp;apos;t Worry, This Is Just A Test">
+    <meta name="description" content="">
+    <title>Admin-Panel</title>
+    <link rel="stylesheet" href="/css/admin/nicepage.css" media="screen">
+  <link rel="stylesheet" href="/css/admin/Home.css" media="screen">
+      
+    
+
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Home">
+    <meta property="og:type" content="website">
+  </head>
+  <body id="body" data-home-page="Home.html" data-home-page-title="Home" class="u-body u-overlap u-xl-mode" data-lang="en">
+    <section class="u-black u-clearfix u-section-1" id="sec-1168">
+      <div class="u-align-left u-clearfix u-sheet u-sheet-1">
+        <div class="u-uploaded-video u-video u-video-contain u-video-1">
+          <div class="embed-responsive">
+            <video class="embed-responsive-item" data-autoplay="1" loop="" muted="1" autoplay="autoplay" playsinline="">
+              <source src="/video" type="video/mp4">
+              
+            </video>
+          </div>
+        </div>
+        <div id="x" class="u-align-center u-clearfix u-group-elements u-group-elements-1">
+          <input id="fsc-input" type="submit" onclick='javascript:post("/admin/", {w: "add","token":"{{ token }}"});' class="u-border-none u-btn u-btn-round u-button-style u-grey-15 u-radius-10 u-btn-1" value="Add-User"></input>
+          <input id="fsc-input" type="submit" onclick='javascript:post("/admin/", {w: "log","token":"{{ token }}"});' class="u-border-none u-btn u-btn-round u-button-style u-grey-15 u-radius-10 u-btn-2" value="Log"></input>
+          <input id="fsc-input" type="submit" onclick='javascript:post("/admin/", {w: "ban","token":"{{ token }}"});' class="u-border-none u-btn u-btn-round u-button-style u-grey-15 u-radius-10 u-btn-3" value="Ban-User"></input>
+          <input id="fsc-input" type="submit" onclick='javascript:post("/admin/", {w: "up","token":"{{ token }}"});' class="u-border-none u-btn u-btn-round u-button-style u-grey-15 u-radius-10 u-btn-4" value="Update"></input>
+       
+        </div>
+      </div>
+    </section>
+    
+    <script>
+      function post(path='/admin/', params, method='post') {
+
+          
+          const form = document.createElement('form');
+          form.method = method;
+          form.action = path;
+          
+          for (const key in params) {
+            if (params.hasOwnProperty(key)) {
+              const hiddenField = document.createElement('input');
+              hiddenField.type = 'hidden';
+              hiddenField.name = key;
+              hiddenField.value = params[key];
+
+              form.appendChild(hiddenField);
+            }
+          }
+
+          document.body.appendChild(form);
+          form.submit();
+          
+          
+          }
+    </script>
+    
+    
+  
+</body></html>

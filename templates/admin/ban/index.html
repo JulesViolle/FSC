@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="​Don&amp;apos;t Worry, This Is Just A Test">
+    <meta name="description" content="">
+    <title>Ban</title>
+    
+    <link rel="stylesheet" href="/css/admin/ban/nicepage.css" media="screen">
+    <link rel="stylesheet" href="/css/admin/ban/ban.css" media="screen">
+ 
+    
+
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Home">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body u-overlap u-xl-mode" data-lang="en">
+    <section class="u-clearfix u-image u-section-1" id="sec-1168" data-image-width="3456" data-image-height="2304">
+      <div class="u-align-left u-clearfix u-sheet u-sheet-1">
+        <div class="u-form u-form-1">
+          
+            <div id="x" class="u-form-email u-form-group u-label-none u-form-group-1">
+              <label for="email-6797" class="u-label">User</label>
+              <input id="user" type="email" id="email-6797" name="user" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-10 u-white u-input-1" required="" placeholder="Username:">
+            </div>
+            <div id="x" class="u-align-left u-form-group u-form-submit u-label-none u-form-group-2">
+             
+              <input type="submit" id='ban' onclick="javascript:post('/admin/',{w: 'ban_user','token':'{{ token }}','user':document.getElementById('user').value})" value="Ban"class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-grey-75 u-radius-10 u-btn-1">
+              <input type="submit" id='free' onclick="javascript:post('/admin/',{w: 'free_user','token':'{{ token }}','user':document.getElementById('user').value});" value="Free"class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-grey-75 u-radius-10 u-btn-1">  
+              <input type="submit" id='del' onclick="javascript:post('/admin/',{w: 'del','token':'{{ token }}','user':document.getElementById('user').value});" value="Delete"class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-grey-75 u-radius-10 u-btn-1">  
+            </div>
+            
+          
+        </div>
+      </div>
+    </section>
+    
+    <script>
+        function post(path='/admin/', params, method='post') {
+  
+            
+            const form = document.createElement('form');
+            form.method = method;
+            form.action = path;
+            
+            for (const key in params) {
+              if (params.hasOwnProperty(key)) {
+                const hiddenField = document.createElement('input');
+                hiddenField.type = 'hidden';
+                hiddenField.name = key;
+                hiddenField.value = params[key];
+  
+                form.appendChild(hiddenField);
+              }
+            }
+  
+            document.body.appendChild(form);
+            x=form.submit();
+            console.log(x)
+            if(x){
+              alert('Done')
+            }
+            }
+      </script>
+  
+</body></html>

@@ -1,0 +1,44 @@
+ .u-section-1 {
+  background-image: url("https://fsc3301.pythonanywhere.com/images/up.jpg");
+  background-position: 50% 3.08%;
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 600px;
+}
+
+.u-section-1 .u-text-1 {
+  margin: 86px auto 60px;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 495px;
+  }
+
+  .u-section-1 .u-text-1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 379px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 284px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 179px;
+  }
+
+  .u-section-1 .u-text-1 {
+    font-size: 1.875rem;
+  }
+}
