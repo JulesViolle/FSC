@@ -10,11 +10,9 @@ import requests
 import db
 
 app=Flask(__name__)
-
 @app.route('/')
 def index():
     return render_template('./index.html')
-
 
 
 @app.route('/css/<path:path>')
@@ -193,6 +191,8 @@ def admin():
                     return {'message':'Done'}
                 elif x['message']=='AF':
                     return {'message':'Account Not Found'}
+                elif x['message']=='AD':
+                    return {'message':'Access Denied'}
                 else:
                     return {'message':'Failed'}
             else:return {'message':'Access Denied'}
