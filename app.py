@@ -251,8 +251,10 @@ def flag():
     3:'templates/flags/level3/Mos.txt',
     4:'templates/flags/level4/erdos.txt',
 }
-@app.route('/challenge/<path:path>/<t:t>',methods=['GET','POST'])
-def challenge(path,token):
+    
+    
+@app.route('/challenge/<path:path>/<string:t>',methods=['GET','POST'])
+def challenge(path,t):
     global chall
     path=unquote(path)
     token=unquote(t)
