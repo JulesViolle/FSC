@@ -201,23 +201,25 @@ def admin():
 
 
 
+
 @app.route('/flag/',methods=['GET','POST'])
 def flag():
     fg=unquote(request.form['flag'])
     token=request.form['token']
     tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()['message']
     
-    if tokens == 'None':
+    if tokens == 'None' or tokens not in ['AF','AL']:
         print('sssss')
         try:
             levels=str(tokens)
             levels= levels if levels!=None else ''
-            
+            print(levels)
             if fg=='FSC{Thus_The_World_Was_Created}':
                 if '1' not in levels:
                     if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'1'}).json()['message']:
                         return {'message':'Done','Level':1}
                 else:
+                    print('ssssssssssss')
                     raise TypeError
                 
             elif fg=='FSC{Every_Death_Is_Just_A_New_Beginning}':
@@ -245,9 +247,6 @@ def flag():
             return {'message':'This Level Has Already Been Solved'}
     else:
         return {'message':'Account Not Found'}
-
-
-   
 chall={
     '1':'templates/flags/level1/level1.txt',
     '2':'templates/flags/level2/level2.rar',
@@ -265,7 +264,7 @@ def challenge(path,t):
     tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()['message']
     print(tokens)
     level=str(path)
-    if tokens=='None':
+    if tokens=='None' or tokens == 'None' or tokens not in ['AF','AL']:
         print(chall[level])
         try:
             return send_file(chall[level], as_attachment=True)
