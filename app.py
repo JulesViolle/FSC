@@ -245,11 +245,14 @@ def flag():
             return {'message':'This Level Has Already Been Solved'}
     else:
         return {'message':'Account Not Found'}
+
+
+   
 chall={
-    1:'templates/flags/level1/level1.txt',
-    2:'templates/flags/level2/level2.rar',
-    3:'templates/flags/level3/Mos.txt',
-    4:'templates/flags/level4/erdos.txt',
+    '1':'templates/flags/level1/level1.txt',
+    '2':'templates/flags/level2/level2.rar',
+    '3':'templates/flags/level3/Mos.txt',
+    '4':'templates/flags/level4/erdos.txt',
 }
   
    
@@ -261,9 +264,9 @@ def challenge(path,t):
     print(path,token)
     tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()['message']
     print(tokens)
-    level=path
+    level=str(path)
     if tokens=='None':
-    
+        print(chall[level])
         try:
             return send_file(chall[level], as_attachment=True)
         except KeyError:
@@ -271,7 +274,7 @@ def challenge(path,t):
     else:
         return {'message':'Account Not Found'}
 
-@app.route('/js/<path:path>',methods=['GET','POST'])
+
 @app.route('/js/<path:path>',methods=['GET','POST'])
 def js(path):
 
