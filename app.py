@@ -206,19 +206,20 @@ def flag():
     fg=unquote(request.form['flag'])
     token=request.form['token']
     tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()['message']
-
-    if tokens != 'AF' and tokens!='AL':
+    
+    if tokens == 'None':
+        print('sssss')
         try:
             levels=str(tokens)
             levels= levels if levels!=None else ''
-
+            
             if fg=='FSC{Thus_The_World_Was_Created}':
                 if '1' not in levels:
                     if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'1'}).json()['message']:
                         return {'message':'Done','Level':1}
                 else:
                     raise TypeError
-
+                
             elif fg=='FSC{Every_Death_Is_Just_A_New_Beginning}':
                 if '2' not in levels:
                     if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'2'}).json()['message']:
@@ -244,24 +245,24 @@ def flag():
             return {'message':'This Level Has Already Been Solved'}
     else:
         return {'message':'Account Not Found'}
-
-    chall={
+chall={
     1:'templates/flags/level1/level1.txt',
     2:'templates/flags/level2/level2.rar',
     3:'templates/flags/level3/Mos.txt',
     4:'templates/flags/level4/erdos.txt',
 }
-    
-    
+  
+   
 @app.route('/challenge/<path:path>/<string:t>',methods=['GET','POST'])
 def challenge(path,t):
     global chall
     path=unquote(path)
     token=unquote(t)
-    
+    print(path,token)
     tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()['message']
+    print(tokens)
     level=path
-    if tokens != 'AF' and tokens!='AL':
+    if tokens=='None':
     
         try:
             return send_file(chall[level], as_attachment=True)
@@ -270,6 +271,7 @@ def challenge(path,t):
     else:
         return {'message':'Account Not Found'}
 
+@app.route('/js/<path:path>',methods=['GET','POST'])
 @app.route('/js/<path:path>',methods=['GET','POST'])
 def js(path):
 
