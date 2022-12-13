@@ -245,24 +245,29 @@ def flag():
     else:
         return {'message':'Account Not Found'}
 
-
-@app.route('/challenge/<path:path>',methods=['GET','POST'])
-def challenge(path):
+    chall={
+    1:'templates/flags/level1/level1.txt',
+    2:'templates/flags/level2/level2.rar',
+    3:'templates/flags/level3/Mos.txt',
+    4:'templates/flags/level4/erdos.txt',
+}
+  
+@app.route('/challenge',methods=['GET','POST'])
+def challenge():
+    global chall
+    path=unquote(request.form['path'])
+    token=unquote(request.form['token'])
+    
+    tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()['message']
     level=path
-    if level=='1':
-
-
-        return send_file('templates/flags/level1/level1.txt', as_attachment=True)
-    if level=='2':
-
-
-        return send_file('templates/flags/level2/level2.rar', as_attachment=True)
-    if level=='3':
-        return send_file('templates/flags/Level3/Mos.png', as_attachment=True)
-    if level=='4':
-        return send_file('templates/flags/level4/erdos.txt', as_attachment=True,)
+    if tokens != 'AF' and tokens!='AL':
+    
+        try:
+            return send_file(chall[level], as_attachment=True)
+        except KeyError:
+            return {'message':"Challenge Not Found"}
     else:
-        return {'message':"Challenge Not Found"}
+        return {'message':'Account Not Found'}
 
 @app.route('/js/<path:path>',methods=['GET','POST'])
 def js(path):
