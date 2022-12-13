@@ -251,12 +251,11 @@ def flag():
     3:'templates/flags/level3/Mos.txt',
     4:'templates/flags/level4/erdos.txt',
 }
-  
-@app.route('/challenge',methods=['GET','POST'])
-def challenge():
+@app.route('/challenge/<path:path>/<t:t>',methods=['GET','POST'])
+def challenge(path,token):
     global chall
-    path=unquote(request.form['path'])
-    token=unquote(request.form['token'])
+    path=unquote(path)
+    token=unquote(t)
     
     tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()['message']
     level=path
