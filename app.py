@@ -212,7 +212,8 @@ def flag():
        
             levels=str(tokens)
             levels= levels if levels!=None else ''
-            
+            if sorted(levels)==['1','2','3','4','5']:
+                return send_file('./Done/finish.html')
             if fg=='FSC{Thus_The_World_Was_Created}':
                 if '1' not in levels:
                     if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'1'}).json()['message']:
