@@ -7,7 +7,7 @@ from flask import Flask,render_template,send_file,request,redirect,url_for
 import json
 from  urllib.parse import unquote
 import requests
-import db
+
 
 app=Flask(__name__)
 @app.route('/')
@@ -27,11 +27,7 @@ def image(path):
 
 
 
-def ban_ch(user):
-    if db.st(user)=='free':
-        return True
-    else:
-        return False
+
 
 admins=[['FSC','UNKN0WN'],['fsc3301@1033','unkn0wn.404.us3r']]
 @app.route('/login/',methods=['GET','POST'])
