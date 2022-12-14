@@ -13,7 +13,7 @@ app=Flask(__name__)
 def index():
     return render_template('./index.html')
 @app.route('/536')
-def index():
+def P_536():
     return render_template('./536.html')
 
 @app.route('/css/<path:path>')
