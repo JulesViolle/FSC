@@ -88,7 +88,7 @@ def email():
         token=unquote(request.form['token'])
         print(email,token)
         full_resalt=requests.post('https://fsc3301.pythonanywhere.com/email/',data={'email':email,'token':token}).json()['message']
-    
+        return full_resalt
         return render_template('./index.html')
     except:
         return E_404(404)
