@@ -2,11 +2,7 @@
 *{
   overflow: hidden;
 }
-h1{
-  background-color: transparent;
-  background: none;
-  background: transparent;
-}
+
 
 :root {
   box-sizing: border-box;
@@ -87,7 +83,7 @@ html, body {
   margin: 0;
   -webkit-animation: shake 600ms ease-in-out infinite alternate;
           animation: shake 600ms ease-in-out infinite alternate;
-  text-shadow: 0 0 0.07em #afd33d, -0.2em 0 2em rgba(175, 211, 61, 0.3), 0.2em 0 2em rgba(175, 211, 61, 0.3);
+  
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
