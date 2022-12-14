@@ -248,7 +248,7 @@ def flag():
         
 
     else:
-        return {'message':'Account Not Found'}
+        return E_404(404)
 chall={
     '1':'./flags/level1/level1.txt',
     '2':'./flags/level2/level2.rar',
