@@ -49,8 +49,8 @@ def login():
             token=request.args.get('T')
             
             f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
-        print(f)
-
+        else:
+            return  redirect('/')
         
         if f['message']=='NF' :
            
