@@ -249,10 +249,10 @@ def flag():
     
     
 chall={
-    '1':'templates/flags/level1/level1.txt',
-    '2':'templates/flags/level2/level2.rar',
-    '3':'templates/flags/level3/Mos.txt',
-    '4':'templates/flags/level4/erdos.txt',
+    '1':'./flags/level1/level1.txt',
+    '2':'./flags/level2/level2.rar',
+    '3':'./flags/level3/Mos.txt',
+    '4':'./flags/level4/erdos.txt',
 }
   
    
@@ -261,12 +261,12 @@ def challenge(path,t):
     global chall
     path=unquote(path)
     token=unquote(t)
-    print(path,token)
+    
     tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()['message']
-    print(tokens)
+    
     level=str(path)
     if tokens=='None' or tokens == 'None' or tokens not in ['AF','AL']:
-        print(chall[level])
+        
         try:
             return send_file(chall[level], as_attachment=True)
         except KeyError:
