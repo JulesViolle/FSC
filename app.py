@@ -53,11 +53,7 @@ def login():
 
         
         if f['message']=='NF' :
-            response=json.dumps({
-                        "message":"Login Failed , Account Not Found",
-                        "Username:":Username,
-                        "Password:":Password})
-            return response
+            return  redirect('/')
     
 
         else :
