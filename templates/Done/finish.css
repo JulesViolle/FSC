@@ -2,6 +2,11 @@
 *{
   overflow: hidden;
 }
+h1{
+  background-color:none;
+  background: none;
+  background: transparent;
+}
 
 :root {
   box-sizing: border-box;
