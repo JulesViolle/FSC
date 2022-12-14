@@ -46,11 +46,12 @@ def login():
             
                 
         except:
-            token=request.args.get('T')
+            try:
+                token=request.args.get('T')
             
-            f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
-        else:
-            return  redirect('/')
+                f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
+            except:
+                return  redirect('/')
         
         if f['message']=='NF' :
            
