@@ -2,6 +2,7 @@
 *{
   overflow: hidden;
 }
+
 :root {
   box-sizing: border-box;
   cursor: default;
@@ -95,22 +96,22 @@ html, body {
   height: 0.1em;
   line-height: 0.5em;
   width: 100%;
-  -webkit-animation: scan 500ms ease-in-out infinite alternate 576ms, glitch-anim 300ms ease-in-out infinite alternate;
-          animation: scan 500ms ease-in-out infinite alternate 576ms, glitch-anim 300ms ease-in-out infinite alternate;
+  -webkit-animation: scan 500ms ease-in-out infinite alternate 114ms, glitch-anim 300ms ease-in-out infinite alternate;
+          animation: scan 500ms ease-in-out infinite alternate 114ms, glitch-anim 300ms ease-in-out infinite alternate;
   overflow: hidden;
   opacity: 0.7;
 }
 .error-body .message h1:after {
   content: attr(t);
   position: absolute;
-  top: -6px;
+  top: -5px;
   left: 50%;
   transform: translate(-50%, 0.34em);
   height: 0.5em;
   line-height: 0.1em;
   width: 100%;
-  -webkit-animation: scan 665ms ease-in-out infinite alternate 85ms, glitch-anim 300ms ease-in-out infinite alternate;
-          animation: scan 665ms ease-in-out infinite alternate 85ms, glitch-anim 300ms ease-in-out infinite alternate;
+  -webkit-animation: scan 665ms ease-in-out infinite alternate 497ms, glitch-anim 300ms ease-in-out infinite alternate;
+          animation: scan 665ms ease-in-out infinite alternate 497ms, glitch-anim 300ms ease-in-out infinite alternate;
   overflow: hidden;
   opacity: 0.8;
 }
@@ -181,7 +182,7 @@ html, body {
   10%, 15% {
     height: 1em;
     line-height: 0.2em;
-    transform: translate(-55%, 0.07em);
+    transform: translate(-55%, 0.16em);
   }
 }
 
@@ -193,7 +194,7 @@ html, body {
   10%, 15% {
     height: 1em;
     line-height: 0.2em;
-    transform: translate(-55%, 0.07em);
+    transform: translate(-55%, 0.16em);
   }
 }
 @keyframe pulse {
@@ -267,71 +268,71 @@ html, body {
 }
 @-webkit-keyframes glitch-anim {
   0% {
-    clip: rect(32px, 9999px, 83px, 0);
+    clip: rect(28px, 9999px, 31px, 0);
   }
   10% {
-    clip: rect(57px, 9999px, 36px, 0);
+    clip: rect(24px, 9999px, 88px, 0);
   }
   20% {
-    clip: rect(55px, 9999px, 52px, 0);
+    clip: rect(94px, 9999px, 4px, 0);
   }
   30% {
-    clip: rect(34px, 9999px, 58px, 0);
+    clip: rect(26px, 9999px, 12px, 0);
   }
   40% {
-    clip: rect(94px, 9999px, 55px, 0);
+    clip: rect(99px, 9999px, 24px, 0);
   }
   50% {
-    clip: rect(70px, 9999px, 47px, 0);
+    clip: rect(68px, 9999px, 62px, 0);
   }
   60% {
-    clip: rect(58px, 9999px, 38px, 0);
+    clip: rect(52px, 9999px, 72px, 0);
   }
   70% {
-    clip: rect(85px, 9999px, 21px, 0);
+    clip: rect(84px, 9999px, 11px, 0);
   }
   80% {
-    clip: rect(32px, 9999px, 75px, 0);
+    clip: rect(2px, 9999px, 23px, 0);
   }
   90% {
-    clip: rect(68px, 9999px, 57px, 0);
+    clip: rect(77px, 9999px, 86px, 0);
   }
   100% {
-    clip: rect(53px, 9999px, 20px, 0);
+    clip: rect(1px, 9999px, 24px, 0);
   }
 }
 @keyframes glitch-anim {
   0% {
-    clip: rect(32px, 9999px, 83px, 0);
+    clip: rect(28px, 9999px, 31px, 0);
   }
   10% {
-    clip: rect(57px, 9999px, 36px, 0);
+    clip: rect(24px, 9999px, 88px, 0);
   }
   20% {
-    clip: rect(55px, 9999px, 52px, 0);
+    clip: rect(94px, 9999px, 4px, 0);
   }
   30% {
-    clip: rect(34px, 9999px, 58px, 0);
+    clip: rect(26px, 9999px, 12px, 0);
   }
   40% {
-    clip: rect(94px, 9999px, 55px, 0);
+    clip: rect(99px, 9999px, 24px, 0);
   }
   50% {
-    clip: rect(70px, 9999px, 47px, 0);
+    clip: rect(68px, 9999px, 62px, 0);
   }
   60% {
-    clip: rect(58px, 9999px, 38px, 0);
+    clip: rect(52px, 9999px, 72px, 0);
   }
   70% {
-    clip: rect(85px, 9999px, 21px, 0);
+    clip: rect(84px, 9999px, 11px, 0);
   }
   80% {
-    clip: rect(32px, 9999px, 75px, 0);
+    clip: rect(2px, 9999px, 23px, 0);
   }
   90% {
-    clip: rect(68px, 9999px, 57px, 0);
+    clip: rect(77px, 9999px, 86px, 0);
   }
   100% {
-    clip: rect(53px, 9999px, 20px, 0);
+    clip: rect(1px, 9999px, 24px, 0);
   }
 }
