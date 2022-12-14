@@ -2,6 +2,7 @@
 
 
 
+
 from flask import Flask,render_template,send_file,request,redirect,url_for
 import json
 from  urllib.parse import unquote
@@ -241,7 +242,7 @@ def flag():
                     raise TypeError
             else:
                 return {'message':'Wrong Flag'}
-        except:
+        except TypeError:
             return  red(token)
         
         
