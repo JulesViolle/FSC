@@ -197,7 +197,6 @@ def admin():
 
 
 
-
 @app.route('/flag/',methods=['GET','POST'])
 def flag():
     fg=unquote(request.form['flag'])
@@ -245,6 +244,7 @@ def flag():
 
     else:
         return {'message':'Account Not Found'}
+    
     
     
     
