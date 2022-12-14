@@ -28,7 +28,7 @@
             </video>
           </div>
         </div>
-        <h2 class="u-text u-text-grey-25 u-text-1" id="FSC"> Don't Worry, This Is Just A Test</h2>
+        
         <div  hidden id="continue">
           <!-- <a  href={{ data }} class="u-border-none u-btn u-btn-round u-button-style u-grey-75 u-hover-grey-60 u-radius-6 u-btn-1">Continue</a> -->
           <div class="u-align-left u-clearfix u-sheet u-sheet-1">
@@ -63,24 +63,7 @@
           return false;
         }
       }
-      var sleep = (milliseconds) => {
-        return new Promise(resolve => setTimeout(resolve, milliseconds))
-        }
-      let  line=["We Are Interesting To Know How Smart You Are"];
-      for(let i = 0; i < line.length; i++) {
-        
-          
-            
-          
-          sleep(15000).then(() => {
-            
-            document.getElementById("FSC").innerText =line[i]
-          })
-        }
-      sleep(25000).then(() => {
-            
-            document.getElementById("continue").hidden = false;     
-      })
+      
       
         
       
