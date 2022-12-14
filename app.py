@@ -64,8 +64,8 @@ def login():
                             return render_template('./admin/index.html',token=f['token'])
 
                 elif  f['message']=='flag' :
-                           return {'message':f}
-                           if sorted(f['score'])==['1','2','3','4']:
+                           
+                           if sorted(str(f['level']))==['1','2','3','4']:
                                 return render_template('./Done/finish.html')
                             
                            else:  
