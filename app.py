@@ -202,49 +202,53 @@ def admin():
 
 
 
+
+
 @app.route('/flag/',methods=['GET','POST'])
 def flag():
     fg=unquote(request.form['flag'])
     token=request.form['token']
     tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()['message']
-    
+    def red(token):
+        return redirect(url_for('login', T=token),code=307)
     if tokens == 'None' or tokens not in ['AF','AL']:
-        print('sssss')
-        try:
+           
+       
             levels=str(tokens)
             levels= levels if levels!=None else ''
-            print(levels)
+            
             if fg=='FSC{Thus_The_World_Was_Created}':
                 if '1' not in levels:
                     if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'1'}).json()['message']:
-                        return {'message':'Done','Level':1}
+                        red(token)
                 else:
-                    print('ssssssssssss')
+                    
                     raise TypeError
                 
             elif fg=='FSC{Every_Death_Is_Just_A_New_Beginning}':
                 if '2' not in levels:
                     if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'2'}).json()['message']:
-                        return {'message':'Done','Level':2}
+                        red(token)
                 else:
                     raise TypeError
             elif fg=='FSC{GODHASNOPLANFORUS}' or fg=='FSC{GOD_HAS_NO_PLAN_FOR_US}':
                 if '3' not in levels:
                     if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'3'}).json()['message']:
-                        return {'message':'Done','Level':3}
+                        red(token)
                 else:
                     raise TypeError
             elif fg=='FSC{WR_FSC}' or fg=='FSC{wr_fsc}':
                 if '4' not in levels:
                     if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'4'}).json()['message']:
-                        return {'message':'Done','Level':4}
+                        red(token)
                 else:
                     raise TypeError
             else:
                 return {'message':'Wrong Flag'}
 
-        except:
-            return {'message':'This Level Has Already Been Solved'}
+        
+        
+
     else:
         return {'message':'Account Not Found'}
 chall={
@@ -272,6 +276,13 @@ def challenge(path,t):
             return {'message':"Challenge Not Found"}
     else:
         return {'message':'Account Not Found'}
+
+@app.route('/js/<path:path>',methods=['GET','POST'])
+def js(path):
+   
+    print(path)
+    return render_template(f'{path}')
+
 
 
 @app.route('/js/<path:path>',methods=['GET','POST'])
