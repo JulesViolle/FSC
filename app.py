@@ -8,7 +8,6 @@ import json
 from  urllib.parse import unquote
 import requests
 
-
 app=Flask(__name__)
 @app.route('/')
 def index():
@@ -241,7 +240,7 @@ def flag():
                 else:
                     raise TypeError
             else:
-                return {'message':'Wrong Flag'}
+                return  red(token)
         except TypeError:
             return  red(token)
         
