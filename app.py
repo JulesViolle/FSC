@@ -2,7 +2,7 @@
 
 
 
-from email import message
+
 from flask import Flask,render_template,send_file,request,redirect,url_for
 import json
 from  urllib.parse import unquote
@@ -27,7 +27,11 @@ def image(path):
 
 
 
-
+def ban_ch(user):
+    if db.st(user)=='free':
+        return True
+    else:
+        return False
 
 admins=[['FSC','UNKN0WN'],['fsc3301@1033','unkn0wn.404.us3r']]
 @app.route('/login/',methods=['GET','POST'])
@@ -49,6 +53,7 @@ def login():
 
         
         if f['message']=='NF' :
+           
             return  redirect('/')
     
 
@@ -196,7 +201,6 @@ def admin():
 
 
 
-
 @app.route('/flag/',methods=['GET','POST'])
 def flag():
     fg=unquote(request.form['flag'])
@@ -244,10 +248,6 @@ def flag():
 
     else:
         return {'message':'Account Not Found'}
-    
-    
-    
-    
 chall={
     '1':'./flags/level1/level1.txt',
     '2':'./flags/level2/level2.rar',
@@ -280,11 +280,11 @@ def js(path):
     print(path)
     return render_template(f'{path}')
 
-
 @app.errorhandler(404)
 def E_404(x):
     return render_template('404/404.html')
 
+        
 
 
 
