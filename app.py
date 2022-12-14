@@ -2,7 +2,6 @@
 
 
 
-
 from flask import Flask,render_template,send_file,request,redirect,url_for
 import json
 from  urllib.parse import unquote
@@ -209,7 +208,7 @@ def flag():
     def red(token):
         return redirect(url_for('login', T=token),code=307)
     if tokens == 'None' or tokens not in ['AF','AL']:
-           
+        try:  
        
             levels=str(tokens)
             levels= levels if levels!=None else ''
@@ -242,7 +241,8 @@ def flag():
                     raise TypeError
             else:
                 return {'message':'Wrong Flag'}
-
+        except:
+            return  red(token)
         
         
 
