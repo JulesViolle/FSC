@@ -204,6 +204,8 @@ def admin():
 
 
 
+
+
 @app.route('/flag/',methods=['GET','POST'])
 def flag():
     fg=unquote(request.form['flag'])
@@ -220,7 +222,7 @@ def flag():
             if fg=='FSC{Thus_The_World_Was_Created}':
                 if '1' not in levels:
                     if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'1'}).json()['message']:
-                        red(token)
+                        return red(token)
                 else:
                     
                     raise TypeError
@@ -228,19 +230,19 @@ def flag():
             elif fg=='FSC{Every_Death_Is_Just_A_New_Beginning}':
                 if '2' not in levels:
                     if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'2'}).json()['message']:
-                        red(token)
+                        return red(token)
                 else:
                     raise TypeError
             elif fg=='FSC{GODHASNOPLANFORUS}' or fg=='FSC{GOD_HAS_NO_PLAN_FOR_US}':
                 if '3' not in levels:
                     if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'3'}).json()['message']:
-                        red(token)
+                        return red(token)
                 else:
                     raise TypeError
             elif fg=='FSC{WR_FSC}' or fg=='FSC{wr_fsc}':
                 if '4' not in levels:
                     if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'4'}).json()['message']:
-                        red(token)
+                        return red(token)
                 else:
                     raise TypeError
             else:
@@ -251,6 +253,9 @@ def flag():
 
     else:
         return {'message':'Account Not Found'}
+    
+    
+    
 chall={
     '1':'templates/flags/level1/level1.txt',
     '2':'templates/flags/level2/level2.rar',
