@@ -273,7 +273,7 @@ def challenge(path,t):
         except KeyError:
             return {'message':"Challenge Not Found"}
     else:
-        return {'message':'Account Not Found'}
+        return E_404(404)
 
 @app.route('/js/<path:path>',methods=['GET','POST'])
 def js(path):
