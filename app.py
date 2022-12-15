@@ -36,8 +36,8 @@ def login():
     
         
         try:
-            Username=request.form['User'].upper()
-            Password=request.form['Pass']
+            Username=''.join(request.form['User'].split()).upper()
+            Password=''.join(request.form['Pass'].split())
             if Username!='' and Password!='':
                 f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':Username,'Pass':Password}).json()
             
