@@ -71,7 +71,8 @@ def login():
                                 return render_template('./Done/finish.html')
                             
                            else:  
-                                return render_template('./flag/index.html',token=f['token'],score=f['score'])  
+                                return render_template('./Done/finish.html')
+                                #return render_template('./flag/index.html',token=f['token'],score=f['score'])  
                             
                             
                             
