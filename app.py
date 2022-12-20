@@ -7,7 +7,7 @@ from flask import Flask,render_template,send_file,request,redirect,url_for,make_
 import json
 from  urllib.parse import unquote
 import requests
-import base64
+import pybase64
 
 app=Flask(__name__)
 users_id=[]
@@ -19,7 +19,7 @@ def index():
             
             return render_template('./index.html')
     else:
-        userid=json.dumps(base64.b64decode(request.cookies.get("userID").encode()))
+        userid=json.dumps(pybase64.b64decode(request.cookies.get("userID").encode()))
         login(userid['User'],userid['Pass'])
         
 @app.route('/536')
@@ -94,7 +94,7 @@ def login(User='',Pass=''):
                 else:
                     response=make_response(render_template("./login/login.html",data=f['token']))
                 if True:
-                    id=base64.b64encode(b'{"User":f"{User}","Pass":f"{Pass}"}')
+                    id=pybase64.b64encode(b'{"User":f"{User}","Pass":f"{Pass}"}')
 
                     response.set_cookie("userID",id)
 
