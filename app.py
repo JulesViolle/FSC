@@ -19,7 +19,7 @@ def index():
             
             return render_template('./index.html')
     else:
-        userid=json.dumps(pybase64.b64decode(request.cookies.get("userID").encode()))
+        userid=json.dumps(str(pybase64.b64decode(request.cookies.get("userID").encode())))
         login(userid['User'],userid['Pass'])
         
 @app.route('/536')
