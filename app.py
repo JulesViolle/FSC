@@ -16,7 +16,7 @@ def index():
     global users_id
     userid=request.cookies.get("userID") 
     if any([userid==None,userid not in users_id]):
-            
+            return {"message":"1"}
             return render_template('./index.html')
     else:
         userid=json.loads(str(pybase64.b64decode(request.cookies.get("userID").encode())))
