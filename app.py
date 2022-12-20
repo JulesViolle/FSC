@@ -3,15 +3,24 @@
 
 
 
-from flask import Flask,render_template,send_file,request,redirect,url_for
+from flask import Flask,render_template,send_file,request,redirect,url_for,make_response
 import json
 from  urllib.parse import unquote
 import requests
+import base64
 
 app=Flask(__name__)
+users_id=[]
 @app.route('/')
 def index():
-    return render_template('./index.html')
+    userid=request.cookies.get("userID") 
+    if any([userid==None,userid not in users_id]):
+            
+            return render_template('./index.html')
+    else:
+        userid=json.dumps(base64.b64decode(request.cookies.get("userID").encode()))
+        login(userid['User'],userid['Pass'])
+        
 @app.route('/536')
 def P_536():
     return render_template('./536.html')
@@ -32,15 +41,17 @@ def image(path):
 
 admins=[['FSC','UNKN0WN'],['fsc3301@1033','unkn0wn.404.us3r']]
 @app.route('/login/',methods=['GET','POST'])
-def login():
+def login(User='',Pass=''):
     
         
         try:
-            Username=''.join(request.form['User'].split()).upper()
-            Password=''.join(request.form['Pass'].split())
-            if Username!='' and Password!='':
-                f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':Username,'Pass':Password}).json()
-            
+            if any([User=='',Pass==''])
+                Username=''.join(request.form['User'].split()).upper()
+                Password=''.join(request.form['Pass'].split())
+                if Username!='' and Password!='':
+                    f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':Username,'Pass':Password}).json()
+            else:
+                f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':User,'Pass':Pass}).json()
                 
         except:
             try:
@@ -48,11 +59,11 @@ def login():
             
                 f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
             except:
-                return  redirect('/')
+                response=make_response(redirect('/'))
         
         if f['message']=='NF' :
            
-            return  redirect('/')
+            response=make_response(redirect('/'))
     
 
         else :
@@ -62,23 +73,32 @@ def login():
                 elif f['message']=='admin':
                             
                         
+                        response=make_response(render_template('./admin/index.html',token=f['token']))
                         
-                            return render_template('./admin/index.html',token=f['token'])
+                            
 
                 elif  f['message']=='flag' :
                            
                            if sorted(str(f['level']))==['1','2','3','4']:
-                                return render_template('./Done/finish.html')
-                            
+                                
+                                response=make_response(render_template('./Done/finish.html'))
+                        
                            else:  
-                                return render_template('./Done/finish.html')
+                                response=make_response(render_template('./Done/finish.html'))
                                 #return render_template('./flag/index.html',token=f['token'],score=f['score'])  
                             
                             
                             
                 else:
-                    return render_template("./login/login.html",data=f['token'])
-        
+                    response=make_response(render_template("./login/login.html",data=f['token']))
+                if True:
+                    id=base64.b64encode(b'{"User":f"{User}","Pass":f"{Pass}"}')
+
+                    response.set_cookie("userID",id)
+
+                    users_id.append(id)
+                    return response
+                    
         
 @app.route('/video',methods=['GET','POST'])
 def video():
