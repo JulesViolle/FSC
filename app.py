@@ -13,6 +13,7 @@ app=Flask(__name__)
 users_id=[]
 @app.route('/')
 def index():
+    global users_id
     userid=request.cookies.get("userID") 
     if any([userid==None,userid not in users_id]):
             
@@ -42,6 +43,7 @@ def image(path):
 admins=[['FSC','UNKN0WN'],['fsc3301@1033','unkn0wn.404.us3r']]
 @app.route('/login/',methods=['GET','POST'])
 def login(User='',Pass=''):
+        global users_id
     
         
         try:
