@@ -19,7 +19,7 @@ def clear_cookie():
         time.sleep(300)
         users_id.clear()
 
-threading.Thread(target=clear_cookie).join()
+threading.Thread(target=clear_cookie).join
 
 
 @app.route('/')
