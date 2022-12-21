@@ -103,7 +103,7 @@ def login(Username='',Password=''):
                 if True:
                     id=pybase64.b64encode(('{'+f'"user":"{Username}","pass":"{Password}"'+'}').encode())
 
-                    response.set_cookie("userID",id)
+                    response.set_cookie("userID",id.decode())
 
                     users_id.append(id.decode())
                     return response
