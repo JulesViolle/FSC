@@ -13,13 +13,7 @@ app=Flask(__name__)
 users_id=[]
 
 
-def clear_cookie():
-    global users_id
-    while True:
-        time.sleep(300)
-        users_id.clear()
 
-threading.Thread(target=clear_cookie).join
 
 
 @app.route('/')
