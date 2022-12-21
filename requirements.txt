@@ -3,5 +3,3 @@ requests
 urllib3
 jsons
 pybase64
-time
-threading
