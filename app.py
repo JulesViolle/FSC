@@ -7,21 +7,33 @@ from flask import Flask,render_template,send_file,request,redirect,url_for,make_
 import json
 from  urllib.parse import unquote
 import requests
-import pybase64
+import pybase64,time,threading
 
 app=Flask(__name__)
 users_id=[]
+
+
+def clear_cookie():
+    global users_id
+    while True:
+        time.sleep(300)
+        users_id.clear()
+
+threading.Thread(target=clear_cookie).join()
+
+
 @app.route('/')
 def index():
     global users_id
     userid=request.cookies.get("userID") 
+    
     if any([userid==None,userid not in users_id]):
-            return {"message":"1"}
+            
             return render_template('./index.html')
     else:
-        userid=json.loads(str(pybase64.b64decode(request.cookies.get("userID").encode())))
-        return userid
-        login(userid['User'],userid['Pass'])
+        userid=json.loads(str(pybase64.b64decode(request.cookies.get("userID")).decode()))
+        
+        return login(userid['user'],userid['pass'])
         
 @app.route('/536')
 def P_536():
@@ -43,18 +55,18 @@ def image(path):
 
 admins=[['FSC','UNKN0WN'],['fsc3301@1033','unkn0wn.404.us3r']]
 @app.route('/login/',methods=['GET','POST'])
-def login(User='',Pass=''):
+def login(Username='',Password=''):
         global users_id
     
         
         try:
-            if any([User=='',Pass==''])
+            if any([Username=='',Password=='']):
                 Username=''.join(request.form['User'].split()).upper()
                 Password=''.join(request.form['Pass'].split())
                 if Username!='' and Password!='':
                     f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':Username,'Pass':Password}).json()
             else:
-                f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':User,'Pass':Pass}).json()
+                f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':Username,'Pass':Password}).json()
                 
         except:
             try:
@@ -95,11 +107,11 @@ def login(User='',Pass=''):
                 else:
                     response=make_response(render_template("./login/login.html",data=f['token']))
                 if True:
-                    id=pybase64.b64encode(b'{"User":f"{User}","Pass":f"{Pass}"}')
+                    id=pybase64.b64encode(('{'+f'"user":"{Username}","pass":"{Password}"'+'}').encode())
 
                     response.set_cookie("userID",id)
 
-                    users_id.append(id)
+                    users_id.append(id.decode())
                     return response
                     
         
@@ -319,7 +331,7 @@ def E_404(x):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=5000,threaded=True)
+    app.run(host='0.0.0.0',port=80,threaded=True)
 
 
 
