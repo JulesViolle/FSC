@@ -71,15 +71,16 @@ def login(Username='None',Password='None'):
                     f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':Username,'Pass':Password}).json()
                     
             except:
-                print('except')
+                
                 try:
                     token=request.args.get('T')
                 
                     f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
                 except:
-                    print('except under token')
+                    
                     response=make_response(render_template('./index.html'))
-        
+                    return response
+           
             if f['message']=='NF' :
             
                 response=make_response(redirect('/'))
