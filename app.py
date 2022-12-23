@@ -16,7 +16,7 @@ users_id=[]
 def clear_cookie():
     global users_id
     while True:
-        time.sleep(10)
+        time.sleep(300)
         users_id.clear()
 
 threading.Thread(target=clear_cookie).join
