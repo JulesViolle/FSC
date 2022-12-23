@@ -16,7 +16,7 @@ users_id=[]
 def clear_cookie():
     global users_id
     while True:
-        time.sleep(300)
+        time.sleep(10)
         users_id.clear()
 
 threading.Thread(target=clear_cookie).join
@@ -78,7 +78,7 @@ def login(Username='None',Password='None'):
                     f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
                 except:
                     print('except under token')
-                    response=make_response(redirect('/'))
+                    response=make_response(render_template('./index.html'))
         
             if f['message']=='NF' :
             
