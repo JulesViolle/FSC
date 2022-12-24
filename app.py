@@ -28,7 +28,7 @@ def index():
     print(users_id)
     userid=request.cookies.get("userID") 
     print(type(userid))
-    if any([userid==None,userid not in users_id]):
+    if userid==None or userid not in users_id:
             
             return render_template('./index.html')
     else:
