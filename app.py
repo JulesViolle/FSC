@@ -134,7 +134,7 @@ def email():
         
         return render_template('./index.html')
     except:
-        return E_404(404)
+        return error_handler()
 
 upd={
     True:False,
@@ -235,12 +235,12 @@ def admin():
                     if x['message']==True:
                         return {'message':'Done'}
                     elif x['message']=='AF':
-                        return {'message':'Account Not Found'}
+                        return error_handler()
                     else:
                         return {'message':'Failed'}
                 else:return {'message':'Access Denied'}
     except:
-        return E_404(404)
+        return error_handler()
 
 
 
@@ -293,7 +293,7 @@ def flag():
         
 
     else:
-        return E_404(404)
+        return error_handler()
 chall={
     '1':'./flags/level1/level1.txt',
     '2':'./flags/level2/level2.rar',
@@ -318,18 +318,22 @@ def challenge(path,t):
         except KeyError:
             return {'message':"Challenge Not Found"}
     else:
-        return render_template('404/404.html')
+        return error_handler()
 
 @app.route('/js/<path:path>',methods=['GET','POST'])
 def js(path):
    
     print(path)
-    return render_template(f'{path}')
-
+    try:
+        return render_template(f'{path}')
+    except:
+        return error_handler()
 @app.errorhandler(404)
 def E_404(x):
     return render_template('404/404.html')
-
+@application.errorhandler(Exception)
+def error_handler():
+    return render_template('./ban/ban.html')
         
 
 
