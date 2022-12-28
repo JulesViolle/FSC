@@ -331,7 +331,7 @@ def js(path):
 @app.errorhandler(404)
 def E_404(x):
     return render_template('404/404.html')
-@application.errorhandler(Exception)
+@app.errorhandler(Exception)
 def error_handler():
     return render_template('./ban/ban.html')
         
