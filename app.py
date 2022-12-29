@@ -471,6 +471,7 @@ u={
 @app.route("/fsc/update/OS)Dw9qedpqujdad5s74das8dsa5d4a5584sad345a")
 def upd():
     update=u[update]
+    return {"Message":"Done"}
     
     
     
