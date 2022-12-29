@@ -147,7 +147,7 @@ def index():
     
     userid=request.cookies.get("userID") 
    
-    if userid==None or userid not in users_id:
+    if userid==None or userid=='':
             
             return render_template('./index.html')
     else:
