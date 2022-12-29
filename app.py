@@ -1,9 +1,4 @@
-
-
-
-
-
-from flask import Flask,render_template,send_file,request,redirect,url_for,make_response
+from flask import Flask,render_template,send_file,request,redirect,url_for,make_response,abort
 import json
 from  urllib.parse import unquote
 import requests
@@ -17,18 +12,15 @@ g=""" <!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         
-
         html, body {
           width: 100%;
           height: 100%;
           margin: 0;
         }
-
         * {
           font-family: "Press Start 2P", cursive;
           box-sizing: border-box;
         }
-
         #app {
           padding: 1rem;
           background: black;
@@ -44,7 +36,6 @@ g=""" <!DOCTYPE html>
         #app .txt {
           font-size: 1.8rem;
         }
-
         @keyframes blink {
           0% {
             opacity: 0;
@@ -456,9 +447,9 @@ def js(path):
 @app.errorhandler(404)
 def E_404(x):
     return render_template('404/404.html')
-@app.errorhandler(Exception)
-def error_handler(error):
-    return render_template('./ban/ban.html')
+# @app.errorhandler(Exception)
+# def error_handler(error):
+#     return render_template('./ban/ban.html')
         
     
     
@@ -468,8 +459,9 @@ u={
     True:False,
     False:True
 }
-@app.route("/fsc/update/OS)Dw9qedpqujdad5s74das8dsa5d4a5584sad345a")
+@app.route("/fsc/update/OSDw9qedpqujdad5s74das8dsa5d4a5584sad345a")
 def upd():
+    global update,u
     update=u[update]
     return {"Message":"Done"}
     
@@ -477,13 +469,7 @@ def upd():
     
 @app.before_request
 def before_request_func():
-    if update==True:    
+    if update==True and request.path !='/fsc/update/OSDw9qedpqujdad5s74das8dsa5d4a5584sad345a':    
         response=make_response(g)
         return response
-    else:
-        return True
-
-
-
-
-
+    
