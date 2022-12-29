@@ -343,8 +343,7 @@ def error_handler(error):
         
 @app.before_request
 def before_request_func():
-    response=make_response("""
-    <!DOCTYPE html>
+    g=""" <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -454,10 +453,8 @@ def before_request_func():
 <body>
     
 </body>
-</html>
-
-    
-    """)
+</html>"""
+    response=make_response(g)
     return response
 
 
