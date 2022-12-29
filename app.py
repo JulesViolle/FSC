@@ -156,20 +156,8 @@ def login(User='None',Pass='None'):
                 
                     f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
                 except:
-                    global users_id
-    
-                    userid=request.cookies.get("userID") 
-   
-   
-    
-                    req=requests.post("https://fsc3302.pythonanywhere.com/sadkaidaojd536/token",data={'Token':userid,"Data":"chk"}).json()['message']
-                    print(req)
-                    if req==True:
-                        userid=json.loads(str(pybase64.b64decode(request.cookies.get("userID")).decode()))
-
-                        return login(userid['user'],userid['pass'])
-                    else:
-                        return render_template('./index.html')
+                    
+                       return render_template('./index.html')
                     
            
             if f['message']=='NF' :
