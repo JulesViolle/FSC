@@ -121,7 +121,7 @@ def login(User='None',Pass='None'):
 
                         response.set_cookie("userID",id)
                         
-                        req=requests.post("https://fsc3302.pythonanywhere.com/sadkaidaojd536/token",data={'Token':id.decode(),"Data":"add"})['message']
+                        req=requests.post("https://fsc3302.pythonanywhere.com/sadkaidaojd536/token",data={'Token':id.decode(),"Data":"add"})
                         return response
                     else:
                         return response
