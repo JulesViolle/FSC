@@ -443,7 +443,7 @@ def before_request_func():
     <div id="app">
         <div></div>
         <div class="txt">
-           Site Will Be Update!<span class="blink">_</span>
+           Site Is Being Updated!<span class="blink">_</span>
         </div>
      </div>
         
