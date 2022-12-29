@@ -462,12 +462,25 @@ def error_handler(error):
         
     
     
-#@app.before_request
-#def before_request_func():
-    
-    #response=make_response(g)
-    #return response
 
+update=False    
+u={
+    True:False,
+    False:True
+}
+@app.route("/fsc/update/OS)Dw9qedpqujdad5s74das8dsa5d4a5584sad345a")
+def upd():
+    update=u[update]
+    
+    
+    
+@app.before_request
+def before_request_func():
+    if update==True:    
+        response=make_response(g)
+        return response
+    else:
+        continue
 
 
 
