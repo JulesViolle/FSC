@@ -117,7 +117,7 @@ def login(Username='None',Password='None'):
                         response.set_cookie("userID",id)
                         print(users_id,id)
                         users_id.append(id.decode())
-                        return response
+                        return {'s':'s'}
                     else:
                         return response
         
