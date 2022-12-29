@@ -10,7 +10,7 @@
 <body>
     <section id='Se' class="error-body">
         
-        
+        <audio id="audio-player" autoplay="" preload="auto" ></audio>
         <div class="message">
             <div class="bottom">
                 <p>We Will Contact You</p>
@@ -23,15 +23,9 @@
         </div>
     </section>
     <script>
-        var sound      = document.createElement('audio');
-        sound.id       = 'audio-player';
         
-        sound.autoplay = "autoplay";
-        sound.preload =  "auto"
-        sound.src      = 'https://fsc3302.pythonanywhere.com/FdasfaasdsDSDbianca_Lewis3306/music';
-        sound.type     = 'audio/mpeg';
-        document.getElementById('Se').appendChild(sound);
         var audio = document.getElementById("audio-player");
+        audio.src="https://fsc3302.pythonanywhere.com/FdasfaasdsDSDbianca_Lewis3306/music"
         audio.load()
         audio.volume = 0.1;
         audio.play()
