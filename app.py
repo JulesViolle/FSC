@@ -111,14 +111,15 @@ def login(Username='None',Password='None'):
                                 
                     else:
                         response=make_response(render_template("./login/login.html",data=f['token']))
-                    if True:
+                    if all([Username=='None',Password=='None']):
                         id=pybase64.b64encode(('{'+f'"user":"{Username}","pass":"{Password}"'+'}').encode())
 
                         response.set_cookie("userID",id)
-
+                        print(users_id,id)
                         users_id.append(id.decode())
                         return response
-                        
+                    else:
+                        return response
         
 @app.route('/video',methods=['GET','POST'])
 def video():
