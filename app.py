@@ -25,9 +25,9 @@ threading.Thread(target=clear_cookie).join
 @app.route('/')
 def index():
     global users_id
-    print(users_id)
+    
     userid=request.cookies.get("userID") 
-    print(type(userid))
+   
     if userid==None or userid not in users_id:
             
             return render_template('./index.html')
@@ -56,19 +56,20 @@ def image(path):
 
 admins=[['FSC','UNKN0WN'],['fsc3301@1033','unkn0wn.404.us3r']]
 @app.route('/login/',methods=['GET','POST'])
-def login(Username='None',Password='None'):
+def login(User='None',Pass='None'):
             global users_id
         
             
             try:
-                if any([Username=='None',Password=='None']):
+                if any([User=='None',Pass=='None']):
                     Username=''.join(request.form['User'].split()).upper()
                     Password=''.join(request.form['Pass'].split())
                     
                     f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':Username,'Pass':Password}).json()
                     print(f)
                 else:
-                    f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':Username,'Pass':Password}).json()
+                    f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':User,'Pass':Pass}).json()
+                    
                     
             except:
                 
@@ -111,13 +112,13 @@ def login(Username='None',Password='None'):
                                 
                     else:
                         response=make_response(render_template("./login/login.html",data=f['token']))
-                    if all([Username=='None',Password=='None']):
+                    if all([User=='None',Pass=='None']):
                         id=pybase64.b64encode(('{'+f'"user":"{Username}","pass":"{Password}"'+'}').encode())
 
                         response.set_cookie("userID",id)
-                        print(users_id,id)
+                        
                         users_id.append(id.decode())
-                        return {'s':'s'}
+                        returnresponse
                     else:
                         return response
         
