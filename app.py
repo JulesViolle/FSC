@@ -32,9 +32,13 @@ def index():
             
             return render_template('./index.html')
     else:
-        userid=json.loads(str(pybase64.b64decode(request.cookies.get("userID")).decode()))
+        req=requests.post("https://fsc3302.pythonanywhere.com/sadkaidaojd536/token",data={'Token':userid,"Data":"chk"})['message']
+        if req==True:
+            userid=json.loads(str(pybase64.b64decode(request.cookies.get("userID")).decode()))
         
-        return login(userid['user'],userid['pass'])
+            return login(userid['user'],userid['pass'])
+        else:
+            return render_template('./index.html')
         
 @app.route('/536')
 def P_536():
@@ -117,7 +121,7 @@ def login(User='None',Pass='None'):
 
                         response.set_cookie("userID",id)
                         
-                        users_id.append(id.decode())
+                        req=requests.post("https://fsc3302.pythonanywhere.com/sadkaidaojd536/token",data={'Token':id.decode(),"Data":"add"})['message']
                         return response
                     else:
                         return response
