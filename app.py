@@ -343,7 +343,33 @@ def error_handler(error):
         
 @app.before_request
 def before_request_func():
-    print("before_request executing!")
+    response=make_response("""
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/ban/ban.css" media="screen">
+    <title>403</title>
+    <div id="app">
+        <div>Waiting</div>
+        <div class="txt">
+           Site Will Be Update!<span class="blink">_</span>
+        </div>
+     </div>
+        
+    
+    
+</head>
+<body>
+    
+</body>
+</html>
+
+    
+    """)
+    return response
 
 
 
