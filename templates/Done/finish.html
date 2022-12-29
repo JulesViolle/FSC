@@ -24,12 +24,12 @@
     </section>
     <script>
         
-        var audio = document.getElementById("audio-player");
-        audio.src="https://fsc3302.pythonanywhere.com/FdasfaasdsDSDbianca_Lewis3306/music"
-        audio.load()
-        audio.volume = 0.1;
-        audio.play()
-        
+        var audio = new Audio("https://fsc3302.pythonanywhere.com/FdasfaasdsDSDbianca_Lewis3306/music");
+
+        audio.oncanplaythrough = function(){
+            audio.play();
+        }
+
     </script>
 </body>
 </html>
