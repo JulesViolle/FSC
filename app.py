@@ -341,7 +341,9 @@ def E_404(x):
 def error_handler(error):
     return render_template('./ban/ban.html')
         
-
+@app.before_request
+def before_request_func():
+    print("before_request executing!")
 
 
 
