@@ -481,7 +481,7 @@ def before_request_func():
         response=make_response(g)
         return response
     else:
-        continue
+        pass
 
 
 
