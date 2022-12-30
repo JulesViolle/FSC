@@ -99,12 +99,12 @@ ch={
     True:False,
     False:True
 }
-@app.route("/fsc/update/challenge536")
-def ch_s():
+@app.route("/fsc/update/KDIjasdasoijdnfs3306")
+def chall():
     global challenge,ch
     challenge=ch[challenge]
     return {"Message":"Done"}
-    
+
     
     
     
