@@ -100,7 +100,7 @@ ch={
     False:True
 }
 @app.route("/fsc/update/challenge536(SDUjsaidkl")
-def upd():
+def ch_s():
     global challenge,ch
     challenge=ch[challenge]
     return {"Message":"Done"}
