@@ -99,7 +99,7 @@ ch={
     True:False,
     False:True
 }
-@app.route("/fsc/update/challenge536(SDUjsaidkl")
+@app.route("/fsc/update/challenge536")
 def ch_s():
     global challenge,ch
     challenge=ch[challenge]
