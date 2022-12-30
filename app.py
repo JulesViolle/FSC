@@ -198,7 +198,7 @@ def login(User='None',Pass='None'):
                                     response=make_response(render_template('./Done/finish.html'))
                             
                             else:  
-                                    if challenge==True:                                  
+                                    if ch_g==True:                                  
                                         return render_template('./flag/index.html',token=f['token'],score=f['score'])  
                                     else:
                                         response=make_response(render_template('./Done/finish.html'))
