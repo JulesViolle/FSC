@@ -94,17 +94,19 @@ def clear_cookie():
 
 #threading.Thread(target=clear_cookie).join
 
-challenge=False    
+ch_g=False    
 ch={
     True:False,
     False:True
 }
 @app.route("/fsc/update/KDIjasdasoijdnfs3306")
 def chall():
-    global challenge,ch
-    challenge=ch[challenge]
+    global ch_g,ch
+    ch_g=ch[ch_g]
     return {"Message":"Done"}
 
+    
+    
     
     
     
