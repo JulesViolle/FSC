@@ -94,7 +94,20 @@ def clear_cookie():
 
 #threading.Thread(target=clear_cookie).join
 
-
+challenge=False    
+ch={
+    True:False,
+    False:True
+}
+@app.route("/fsc/update/challenge536(SDUjsaidkl")
+def upd():
+    global challenge,ch
+    challenge=ch[challenge]
+    return {"Message":"Done"}
+    
+    
+    
+    
 @app.route('/')
 def index():
     global users_id
@@ -135,7 +148,7 @@ def image(path):
 admins=[['FSC','UNKN0WN'],['fsc3301@1033','unkn0wn.404.us3r']]
 @app.route('/login/',methods=['GET','POST'])
 def login(User='None',Pass='None'):
-            global users_id
+            global users_id,challenge
         
             
             try:
@@ -183,9 +196,10 @@ def login(User='None',Pass='None'):
                                     response=make_response(render_template('./Done/finish.html'))
                             
                             else:  
-                                    response=make_response(render_template('./Done/finish.html'))
-                                    #return render_template('./flag/index.html',token=f['token'],score=f['score'])  
-                                
+                                    if challenge==True:                                  
+                                        return render_template('./flag/index.html',token=f['token'],score=f['score'])  
+                                    else:
+                                        response=make_response(render_template('./Done/finish.html'))
                                 
                                 
                     else:
@@ -428,8 +442,9 @@ def upd():
     global update,u
     update=u[update]
     return {"Message":"Done"}
-    
-    
+
+
+
     
 @app.before_request
 def before_request_func():
