@@ -1,8 +1,9 @@
 
 
 
-body{
-  background-color:black
+.u-body {
+    
+    background-color: #111111;   
 }
 *{
   font-family:'Lucida Console';
