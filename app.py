@@ -12,7 +12,7 @@ def running():
         
     
     
-threading.Thread(target=running).join()
+threading.Thread(target=running).start()
 
 
 
