@@ -204,7 +204,7 @@ def login(User='None',Pass='None'):
                                 
 
                     elif  f['message']=='flag' :
-                            if f['status']=="True":
+                            if f['status']=="False":
                                 if sorted(str(f['level']))==['1','2','3','4','5']:
                                     
                                     response=make_response(render_template('./Done/finish.html'))
