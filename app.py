@@ -474,8 +474,12 @@ threading.Thread(target=running).start()
  
 @app.before_request
 def before_request_func():
-    if eval(update)==False and all([request.path !='/fsc/update/OSDw9qedpqujdad5s74das8dsa5d4a5584sad345a',request.path != "/fsc/update/KDIjasdasoijdnfs3306"]) :    
-        response=make_response(g)
-        return response
+    try:
+        if eval(update)==False and all([request.path !='/fsc/update/OSDw9qedpqujdad5s74das8dsa5d4a5584sad345a',request.path != "/fsc/update/KDIjasdasoijdnfs3306"]) :    
+            response=make_response(g)
+            return response
+    except:
+            response=make_response(g)
+            return response
     
     
