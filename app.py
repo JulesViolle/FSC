@@ -5,14 +5,7 @@ import requests
 import pybase64,time
 import threading,time
 
-def running():
-    while True:
-        time.sleep(350)
-        requests.get('https://fsc3302.pythonanywhere.com')
-        
-    
-    
-threading.Thread(target=running).start()
+
 
 
 
