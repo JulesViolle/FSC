@@ -414,19 +414,23 @@ chall={
 @app.route('/challenge/<path:path>/<string:t>',methods=['GET','POST'])
 def challenge(path,t):
     global chall
-    path=unquote(path)
-    token=unquote(t)
-    
-    tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()
-    
-    level=str(path)
-    if tokens['status']=="True" and tokens['message'] == '' and tokens['message'] not in ['AF','AL'] :
-        
-        try:
-            return send_file(chall[level], as_attachment=True)
-        except KeyError:
-            return {'message':"Challenge Not Found"}
-    else:
+    try:
+        path=unquote(path)
+        token=unquote(t)
+
+        tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()
+
+        level=str(path)
+
+        if tokens['status']=="True" and tokens['message'] == '' and tokens['message'] not in ['AF','AL'] :
+
+            try:
+                return send_file(chall[level], as_attachment=True)
+            except KeyError:
+                return {'message':"Challenge Not Found"}
+        else:
+            return redirect('/')
+     except:
         return redirect('/')
 
 @app.route('/js/<path:path>',methods=['GET','POST'])
