@@ -424,10 +424,10 @@ def challenge(path,t):
     path=unquote(path)
     token=unquote(t)
     
-    tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()['message']
+    tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()
     
     level=str(path)
-    if tokens=='None' or tokens == 'None' or tokens not in ['AF','AL']:
+    if tokens['message']=='None' or tokens['message'] == 'None' or tokens['message'] not in ['AF','AL'] tokens['status']!=False:
         
         try:
             return send_file(chall[level], as_attachment=True)
