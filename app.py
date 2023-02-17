@@ -427,14 +427,14 @@ def challenge(path,t):
     tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()
     
     level=str(path)
-    if tokens['message']=='None' or tokens['message'] == 'None' or tokens['message'] not in ['AF','AL'] and tokens['status']!=False:
+    if tokens['status']!=False tokens['message']=='None' or tokens['message'] == 'None' or tokens['message'] not in ['AF','AL'] :
         
         try:
             return send_file(chall[level], as_attachment=True)
         except KeyError:
             return {'message':"Challenge Not Found"}
     else:
-        return error_handler()
+        return redirect('/')
 
 @app.route('/js/<path:path>',methods=['GET','POST'])
 def js(path):
