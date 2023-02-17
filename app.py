@@ -480,7 +480,6 @@ def before_request_func():
             response=make_response(g)
             return response
     except:
-            response=make_response(g)
-            return response
+            update=requests.get('https://fsc3301.pythonanywhere.com/site/update/status/fsc330sad87').json()["Status"]
     
     
