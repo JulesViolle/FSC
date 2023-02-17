@@ -560,7 +560,7 @@ ban="""
 
 @app.errorhandler(Exception)
 def error_handler(error):
-    return render_template('./ban/ban.html')
+    return ban
         
     
     
