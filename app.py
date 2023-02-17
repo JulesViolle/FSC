@@ -413,8 +413,8 @@ chall={
    
 @app.route('/challenge/<path:path>/<string:t>',methods=['GET','POST'])
 def challenge(path,t):
-    global chall
-    try:
+        global chall
+    
         path=unquote(path)
         token=unquote(t)
 
@@ -430,8 +430,7 @@ def challenge(path,t):
                 return {'message':"Challenge Not Found"}
         else:
             return redirect('/')
-     except:
-        return redirect('/')
+     
 
 @app.route('/js/<path:path>',methods=['GET','POST'])
 def js(path):
