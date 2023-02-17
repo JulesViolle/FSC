@@ -427,7 +427,7 @@ def challenge(path,t):
     tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()
     
     level=str(path)
-    if tokens['message']=='None' or tokens['message'] == 'None' or tokens['message'] not in ['AF','AL'] tokens['status']!=False:
+    if tokens['message']=='None' or tokens['message'] == 'None' or tokens['message'] not in ['AF','AL'] and tokens['status']!=False:
         
         try:
             return send_file(chall[level], as_attachment=True)
