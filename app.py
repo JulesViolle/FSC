@@ -204,7 +204,7 @@ def login(User='None',Pass='None'):
                                 
 
                     elif  f['message']=='flag' :
-                            if f['status']==True:
+                            if f['status']=="True":
                                 if sorted(str(f['level']))==['1','2','3','4','5']:
                                     
                                     response=make_response(render_template('./Done/finish.html'))
@@ -420,7 +420,7 @@ def challenge(path,t):
     tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()
     
     level=str(path)
-    if tokens['status']==True and tokens['message'] == 'None' and tokens['message'] not in ['AF','AL'] :
+    if tokens['status']=="True" and tokens['message'] == 'None' and tokens['message'] not in ['AF','AL'] :
         
         try:
             return send_file(chall[level], as_attachment=True)
