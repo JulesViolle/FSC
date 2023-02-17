@@ -450,117 +450,117 @@ def E_404(x):
 def error_handler(error):
     return """
     <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-    /* cyrillic-ext */
-@font-face {
-    font-family: 'Press Start 2P';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/pressstart2p/v14/e3t4euO8T-267oIAQAu6jDQyK3nYivN04w.woff2) format('woff2');
-    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-  }
-  /* cyrillic */
-  @font-face {
-    font-family: 'Press Start 2P';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/pressstart2p/v14/e3t4euO8T-267oIAQAu6jDQyK3nRivN04w.woff2) format('woff2');
-    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-  }
-  /* greek */
-  @font-face {
-    font-family: 'Press Start 2P';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/pressstart2p/v14/e3t4euO8T-267oIAQAu6jDQyK3nWivN04w.woff2) format('woff2');
-    unicode-range: U+0370-03FF;
-  }
-  /* latin-ext */
-  @font-face {
-    font-family: 'Press Start 2P';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/pressstart2p/v14/e3t4euO8T-267oIAQAu6jDQyK3nbivN04w.woff2) format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Press Start 2P';
-    font-style: normal;
-    font-weight: 400;
-    src: url(https://fonts.gstatic.com/s/pressstart2p/v14/e3t4euO8T-267oIAQAu6jDQyK3nVivM.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-    
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <style>
+            /* cyrillic-ext */
+        @font-face {
+            font-family: 'Press Start 2P';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/pressstart2p/v14/e3t4euO8T-267oIAQAu6jDQyK3nYivN04w.woff2) format('woff2');
+            unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+          }
+          /* cyrillic */
+          @font-face {
+            font-family: 'Press Start 2P';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/pressstart2p/v14/e3t4euO8T-267oIAQAu6jDQyK3nRivN04w.woff2) format('woff2');
+            unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+          }
+          /* greek */
+          @font-face {
+            font-family: 'Press Start 2P';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/pressstart2p/v14/e3t4euO8T-267oIAQAu6jDQyK3nWivN04w.woff2) format('woff2');
+            unicode-range: U+0370-03FF;
+          }
+          /* latin-ext */
+          @font-face {
+            font-family: 'Press Start 2P';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/pressstart2p/v14/e3t4euO8T-267oIAQAu6jDQyK3nbivN04w.woff2) format('woff2');
+            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+          }
+          /* latin */
+          @font-face {
+            font-family: 'Press Start 2P';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/pressstart2p/v14/e3t4euO8T-267oIAQAu6jDQyK3nVivM.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+          }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-    }
 
-    * {
-      font-family: cursive;
-      box-sizing: border-box;
-    }
+            html, body {
+              width: 100%;
+              height: 100%;
+              margin: 0;
+            }
 
-    #app {
-      padding: 1rem;
-      background: black;
-      display: flex;
-      height: 100%;
-      justify-content: center;
-      align-items: center;
-      color: #54FE55;
-      text-shadow: 0px 0px 10px;
-      font-size: 6rem;
-      flex-direction: column;
-    }
-    #app .txt {
-      font-size: 1.8rem;
-    }
+            * {
+              font-family: cursive;
+              box-sizing: border-box;
+            }
 
-    @keyframes blink {
-      0% {
-        opacity: 0;
-      }
-      49% {
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-    .blink {
-      animation-name: blink;
-      animation-duration: 1s;
-      animation-iteration-count: infinite;
-    }
-    </style>
-    <title>503</title>
-    <div id="app">
-        <div>503</div>
-        <div class="txt">
-           Service Unavailable<span class="blink">_</span>
-        </div>
-     </div>
-        
-    
-    
-</head>
-<body>
-    
-</body>
-</html>
-""",503
+            #app {
+              padding: 1rem;
+              background: black;
+              display: flex;
+              height: 100%;
+              justify-content: center;
+              align-items: center;
+              color: #54FE55;
+              text-shadow: 0px 0px 10px;
+              font-size: 6rem;
+              flex-direction: column;
+            }
+            #app .txt {
+              font-size: 1.8rem;
+            }
+
+            @keyframes blink {
+              0% {
+                opacity: 0;
+              }
+              49% {
+                opacity: 0;
+              }
+              50% {
+                opacity: 1;
+              }
+              100% {
+                opacity: 1;
+              }
+            }
+            .blink {
+              animation-name: blink;
+              animation-duration: 1s;
+              animation-iteration-count: infinite;
+            }
+            </style>
+            <title>503</title>
+            <div id="app">
+                <div>503</div>
+                <div class="txt">
+                   Service Unavailable<span class="blink">_</span>
+                </div>
+             </div>
+
+
+
+        </head>
+        <body>
+
+        </body>
+        </html>
+        """,503
         
     
     
