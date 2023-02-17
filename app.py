@@ -444,7 +444,11 @@ def js(path):
 def E_404(x):
     return render_template('404/404.html')
 
-ban="""
+
+
+@app.errorhandler(Exception)
+def error_handler(error):
+    return """
     <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -556,11 +560,7 @@ ban="""
     
 </body>
 </html>
-"""
-
-@app.errorhandler(Exception)
-def error_handler(error):
-    return ban,503
+""",503
         
     
     
