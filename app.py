@@ -460,15 +460,6 @@ u={
     False:True
 }
 
-def update_site():
-    global update
-    while True:
-        time.sleep(60)
-        req=requests.get('https://fsc3302.pythonanywhere.com/site/update/status/fsc330sad87').json()['Status']
-        update=req
-    
-    
-threading.Thread(target=running).start()
 
 
 
@@ -486,7 +477,7 @@ threading.Thread(target=running).start()
  
 @app.before_request
 def before_request_func():
-    if update==True and all([request.path !='/fsc/update/OSDw9qedpqujdad5s74das8dsa5d4a5584sad345a',request.path != "/fsc/update/KDIjasdasoijdnfs3306"]) :    
+    if requests.get('https://fsc3301.pythonanywhere.com/site/update/status/fsc330sad87').json()["Status"]==True and all([request.path !='/fsc/update/OSDw9qedpqujdad5s74das8dsa5d4a5584sad345a',request.path != "/fsc/update/KDIjasdasoijdnfs3306"]) :    
         response=make_response(g)
         return response
     
