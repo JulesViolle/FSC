@@ -558,9 +558,7 @@ error_503= """
         </html>
         """
 
-@app.errorhandler(Exception)
-def error_handler(error):
-    return Response(error_503,status=503)
+
         
     
     
