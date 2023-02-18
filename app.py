@@ -528,8 +528,8 @@ def flag():
 
         else:
             return E_404()
-   except:
-    return E_404()
+    except:
+       return E_404()
 chall={
     '1':'./flags/level1/level1.txt',
     '2':'./flags/level2/level2.rar',
