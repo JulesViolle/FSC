@@ -348,7 +348,7 @@ def login(User='None',Pass='None'):
                             return response
                         else:
                             return response
-             except:
+            except:
                 return E_404()
         
 @app.route('/video',methods=['GET','POST'])
