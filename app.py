@@ -592,7 +592,7 @@ def running():
         time.sleep(350)
     
     
-threading.Thread(target=running).run()
+threading.Thread(target=running).start()
 
  
 @app.before_request
