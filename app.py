@@ -137,7 +137,7 @@ g=""" <!DOCTYPE html>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        
+
         html, body {
           width: 100%;
           height: 100%;
@@ -181,9 +181,9 @@ g=""" <!DOCTYPE html>
           animation-duration: 1s;
           animation-iteration-count: infinite;
         }
-            
-          
-    
+
+
+
     </style>
     <title>Waiting</title>
     <div id="app">
@@ -192,12 +192,12 @@ g=""" <!DOCTYPE html>
            Site Is Being Updated!<span class="blink">_</span>
         </div>
      </div>
-        
-    
-    
+
+
+
 </head>
 <body>
-    
+
 </body>
 </html>"""
 
@@ -220,7 +220,7 @@ def clear_cookie():
 
 #threading.Thread(target=clear_cookie).join
 
-ch_g=False    
+ch_g=False
 ch={
     True:False,
     False:True
@@ -231,16 +231,16 @@ def chall():
     ch_g=ch[ch_g]
     return {"Message":"Done"}
 
-    
-    
-    
-    
-    
+
+
+
+
+
 @app.route('/')
 def index():
     global users_id
     try:
-        userid=request.cookies.get("userID") 
+        userid=request.cookies.get("userID")
 
         if userid==None or userid=='':
 
@@ -254,7 +254,7 @@ def index():
                 return login(userid['user'],userid['pass'])
             else:
                 return render_template('./index.html')
-      except:
+    except:
         return E_404()
 
 @app.route('/536')
@@ -283,7 +283,7 @@ admins=[['FSC','UNKN0WN'],['fsc3301@1033','unkn0wn.404.us3r']]
 @app.route('/login/',methods=['GET','POST'])
 def login(User='None',Pass='None'):
             global users_id,challenge
-        
+
             try:
                 try:
                     if any([User=='None',Pass=='None']):
@@ -330,9 +330,9 @@ def login(User='None',Pass='None'):
                                         response=make_response(render_template('./Done/finish.html'))
                                     else:
 
-                                        return render_template('./flag/index.html',token=f['token'],score=f['score'])  
+                                        return render_template('./flag/index.html',token=f['token'],score=f['score'])
 
-                                else:  
+                                else:
 
                                         response=make_response(render_template('./Done/finish.html'))
 
@@ -350,11 +350,11 @@ def login(User='None',Pass='None'):
                             return response
             except:
                 return E_404()
-        
+
 @app.route('/video',methods=['GET','POST'])
 def video():
     try:
-        return send_file("templates/login/video/one-eye.mp4")                    
+        return send_file("templates/login/video/one-eye.mp4")
     except:
         return E_404()
 @app.route('/email/',methods=['GET','POST'])
@@ -364,7 +364,7 @@ def email():
         token=unquote(request.form['token'])
         print(email,token)
         full_resalt=requests.post('https://fsc3301.pythonanywhere.com/email/',data={'email':email,'token':token}).json()['message']
-        
+
         return render_template('./index.html')
     except:
        return E_404()
@@ -382,7 +382,7 @@ def admin():
     try:
         work=request.form['w']
         token=unquote(request.form['token'])
-        
+
         tokens=requests.post('https://fsc3301.pythonanywhere.com/admin/',data={'w':'token','token':token}).json()['message']
 
         if tokens==True:
@@ -392,16 +392,16 @@ def admin():
 
 
             if work =='add':
-                
-                
+
+
                 return render_template('admin/add/index.html',token=token)
             elif work=='ban':
                 return render_template('admin/ban/index.html',token=token)
             elif work=='add_user':
-                
-                
+
+
                 User=request.form['user']
-                
+
                 Pass=request.form['pass']
                 u_token=request.form['maintoken']
                 level=request.form['level']
@@ -409,7 +409,7 @@ def admin():
                 if len(User)<3 or len(Pass)<3:
                     return {'message':'Failed'}
                 else:
-                    
+
                         x= requests.post('https://fsc3301.pythonanywhere.com/admin/',data={'w':'add_user','token':token,'User':User,'Pass':Pass,'email':'NULL','u_token':u_token,'level':str(level) }).json()['message']
                         if x=='DONE':
                                     return {'message':'DONE'}
@@ -417,10 +417,10 @@ def admin():
                                     return {'message':'This Account Already Exists'}
                         else:
                             return {'message':'Failed'}
-                    
+
 
             elif work=='ban_user':
-                
+
                 try:
                         User=request.form['user']
 
@@ -464,7 +464,7 @@ def admin():
                     User=request.form['user']
 
                     x=requests.post('https://fsc3301.pythonanywhere.com/admin/',data={'w':'del','token':token,'user':User}).json()
-                    
+
                     if x['message']==True:
                         return {'message':'Done'}
                     elif x['message']=='AF':
@@ -486,8 +486,8 @@ def flag():
     def red(token):
         return redirect(url_for('login', T=token),code=307)
     if tokens == 'None' or tokens not in ['AF','AL']:
-        try:  
-       
+        try:
+
             levels=str(tokens)
             levels= levels if levels!=None else ''
             if sorted(levels)==['1','2','3','4']:
@@ -497,9 +497,9 @@ def flag():
                     if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'1'}).json()['message']:
                         return red(token)
                 else:
-                    
+
                     raise TypeError
-                
+
             elif fg=='FSC{Every_Death_Is_Just_A_New_Beginning}':
                 if '2' not in levels:
                     if requests.post('https://fsc3301.pythonanywhere.com/add_level/',data={'token':token,'lv':'2'}).json()['message']:
@@ -522,8 +522,8 @@ def flag():
                 return  red(token)
         except TypeError:
             return  red(token)
-        
-        
+
+
 
     else:
         return E_404()
@@ -533,8 +533,8 @@ chall={
     '3':'./flags/level3/Mos.txt',
     '4':'./flags/level4/erdos.txt',
 }
-  
-   
+
+
 @app.route('/challenge/<path:path>/<string:t>',methods=['GET','POST'])
 def challenge(path,t):
         global chall
@@ -556,23 +556,23 @@ def challenge(path,t):
                 return redirect('/')
          except:
             return E_404()
-            
-     
+
+
 
 @app.route('/js/<path:path>',methods=['GET','POST'])
 def js(path):
-   
+
     print(path)
     try:
         return render_template(f'{path}')
     except:
         return E_404()
 
-    
 
-        
-    
-    
+
+
+
+
 @app.errorhandler(404)
 def E_404():
     return render_template('404/404.html')
@@ -582,17 +582,17 @@ def E_404():
 def error_handler():
     return error_503,503
 
-    
 
-update=True    
+
+update=True
 
 @app.route('/vercel/update/site/fsc52as8d7',methods=['GET','POST'])
 def site_update():
     global update
     status=unquote(request.form['status'])
     update=status
-        
-   
+
+
 
 
 
@@ -600,19 +600,19 @@ def site_update():
 
 def running():
     while True:
-        
+
         requests.get('https://fsc3301.pythonanywhere.com')
         time.sleep(350)
-    
-    
+
+
 threading.Thread(target=running).start()
 
- 
+
 @app.before_request
 def before_request_func():
         global update
         try:
-            if update=="False" and all([request.path !='/fsc/update/OSDw9qedpqujdad5s74das8dsa5d4a5584sad345a',request.path != "/fsc/update/KDIjasdasoijdnfs3306",request.path !='/vercel/update/site/fsc52as8d7']) :    
+            if update=="False" and all([request.path !='/fsc/update/OSDw9qedpqujdad5s74das8dsa5d4a5584sad345a',request.path != "/fsc/update/KDIjasdasoijdnfs3306",request.path !='/vercel/update/site/fsc52as8d7']) :
                 response=make_response(g)
                 return response
             else:
@@ -620,5 +620,5 @@ def before_request_func():
         except:
             response=make_response(g)
             return response
-    
-    
+
+
