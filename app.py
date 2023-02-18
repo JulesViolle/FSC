@@ -566,7 +566,7 @@ def E_404(x):
 
 
 @app.errorhandler(Exception)
-def errorhandler():
+def error_handler():
     return error_503,503
 
     
