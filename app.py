@@ -239,36 +239,42 @@ def chall():
 @app.route('/')
 def index():
     global users_id
-    
-    userid=request.cookies.get("userID") 
-   
-    if userid==None or userid=='':
-            
-            return render_template('./index.html')
-    else:
-        req=requests.post("https://fsc3302.pythonanywhere.com/sadkaidaojd536/token",data={'Token':userid,"Data":"chk"}).json()['message']
-        print(req)
-        if req==True:
-            userid=json.loads(str(pybase64.b64decode(request.cookies.get("userID")).decode()))
-        
-            return login(userid['user'],userid['pass'])
+    try:
+        userid=request.cookies.get("userID") 
+
+        if userid==None or userid=='':
+
+                return render_template('./index.html')
         else:
-            return render_template('./index.html')
-        
+            req=requests.post("https://fsc3302.pythonanywhere.com/sadkaidaojd536/token",data={'Token':userid,"Data":"chk"}).json()['message']
+            print(req)
+            if req==True:
+                userid=json.loads(str(pybase64.b64decode(request.cookies.get("userID")).decode()))
+
+                return login(userid['user'],userid['pass'])
+            else:
+                return render_template('./index.html')
+      except:
+        return E_404()
+
 @app.route('/536')
 def P_536():
-    return render_template('./536.html')
-
+    try:
+        return render_template('./536.html')
+    except:
+        return E_404()
 @app.route('/css/<path:path>')
 def css(path):
-    
-    return send_file(f'templates/{path}')
-
+    try:
+        return send_file(f'templates/{path}')
+    except:
+        return E_404()
 @app.route('/images/<path:path>')
 def image(path):
-    
-    return send_file(f'templates/images/{path}')
-
+    try:
+        return send_file(f'templates/images/{path}')
+    except:
+        return E_404()
 
 
 
@@ -278,75 +284,79 @@ admins=[['FSC','UNKN0WN'],['fsc3301@1033','unkn0wn.404.us3r']]
 def login(User='None',Pass='None'):
             global users_id,challenge
         
-            
             try:
-                if any([User=='None',Pass=='None']):
-                    Username=''.join(request.form['User'].split()).upper()
-                    Password=''.join(request.form['Pass'].split())
-                    
-                    f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':Username,'Pass':Password}).json()
-                    print(f)
-                else:
-                    f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':User,'Pass':Pass}).json()
-                    
-                    
-            except:
-                
                 try:
-                    token=request.args.get('T')
-                
-                    f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
+                    if any([User=='None',Pass=='None']):
+                        Username=''.join(request.form['User'].split()).upper()
+                        Password=''.join(request.form['Pass'].split())
+
+                        f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':Username,'Pass':Password}).json()
+                        print(f)
+                    else:
+                        f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':User,'Pass':Pass}).json()
+
+
                 except:
-                    
-                       return render_template('./index.html')
-                    
-           
-            if f['message']=='NF' :
-                
-                response=make_response(redirect('/'))
-                return response
 
-            else :
-                
-                    if f['message']=='ban':
-                            return render_template('./ban/ban.html')
-                    elif f['message']=='admin':
-                                
-                            
-                            response=make_response(render_template('./admin/index.html',token=f['token']))
-                            
-                                
+                    try:
+                        token=request.args.get('T')
 
-                    elif  f['message']=='flag' :
-                            if f['status']=="True":
-                                if sorted(str(f['level']))==['1','2','3','4','5']:
-                                    
-                                    response=make_response(render_template('./Done/finish.html'))
-                                else:
-                                                                      
-                                    return render_template('./flag/index.html',token=f['token'],score=f['score'])  
-                            
-                            else:  
-                                    
-                                    response=make_response(render_template('./Done/finish.html'))
-                                
-                                
-                    else:
-                        response=make_response(render_template("./login/login.html",data=f['token']))
-                    if all([User=='None',Pass=='None']):
-                        id=pybase64.b64encode(('{'+f'"user":"{Username}","pass":"{Password}"'+'}').encode())
+                        f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
+                    except:
 
-                        response.set_cookie("userID",id)
-                        
-                        req=requests.post("https://fsc3302.pythonanywhere.com/sadkaidaojd536/token",data={'Token':id.decode(),"Data":"add"})
-                        return response
-                    else:
-                        return response
+                           return render_template('./index.html')
+
+
+                if f['message']=='NF' :
+
+                    response=make_response(redirect('/'))
+                    return response
+
+                else :
+
+                        if f['message']=='ban':
+                                return render_template('./ban/ban.html')
+                        elif f['message']=='admin':
+
+
+                                response=make_response(render_template('./admin/index.html',token=f['token']))
+
+
+
+                        elif  f['message']=='flag' :
+                                if f['status']=="True":
+                                    if sorted(str(f['level']))==['1','2','3','4','5']:
+
+                                        response=make_response(render_template('./Done/finish.html'))
+                                    else:
+
+                                        return render_template('./flag/index.html',token=f['token'],score=f['score'])  
+
+                                else:  
+
+                                        response=make_response(render_template('./Done/finish.html'))
+
+
+                        else:
+                            response=make_response(render_template("./login/login.html",data=f['token']))
+                        if all([User=='None',Pass=='None']):
+                            id=pybase64.b64encode(('{'+f'"user":"{Username}","pass":"{Password}"'+'}').encode())
+
+                            response.set_cookie("userID",id)
+
+                            req=requests.post("https://fsc3302.pythonanywhere.com/sadkaidaojd536/token",data={'Token':id.decode(),"Data":"add"})
+                            return response
+                        else:
+                            return response
+             except:
+                return E_404()
         
 @app.route('/video',methods=['GET','POST'])
 def video():
-    return send_file("templates/login/video/one-eye.mp4")                    
-
+    try:
+        return send_file("templates/login/video/one-eye.mp4")                    
+    except:
+        return E_404()
 @app.route('/email/',methods=['GET','POST'])
 def email():
     try:
@@ -528,22 +538,25 @@ chall={
 @app.route('/challenge/<path:path>/<string:t>',methods=['GET','POST'])
 def challenge(path,t):
         global chall
-    
-        path=unquote(path)
-        token=unquote(t)
+        try:
+            path=unquote(path)
+            token=unquote(t)
 
-        tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()
+            tokens=requests.post('https://fsc3301.pythonanywhere.com/flag/',data={'token':token}).json()
 
-        level=str(path)
-        
-        if tokens['status']=="True" and tokens['message'] != '' and tokens['message'] not in ['AF','AL'] :
+            level=str(path)
 
-            try:
-                return send_file(chall[level], as_attachment=True)
-            except KeyError:
-                return {'message':"Challenge Not Found"}
-        else:
-            return redirect('/')
+            if tokens['status']=="True" and tokens['message'] != '' and tokens['message'] not in ['AF','AL'] :
+
+                try:
+                    return send_file(chall[level], as_attachment=True)
+                except KeyError:
+                    return {'message':"Challenge Not Found"}
+            else:
+                return redirect('/')
+         except:
+            return E_404()
+            
      
 
 @app.route('/js/<path:path>',methods=['GET','POST'])
