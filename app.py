@@ -567,8 +567,7 @@ def E_404(x):
 
 @app.errorhandler(Exception)
 def all_error():
-    return Response(error_503,status=503)
-
+    return error_503,503
 
     
 
@@ -598,7 +597,7 @@ def running():
         
     
     
-threading.Thread(target=running).start()
+threading.Thread(target=running).run()
 
  
 @app.before_request
