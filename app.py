@@ -573,16 +573,13 @@ def all_error():
 
 update=True    
 
+@app.route('/vercel/update/site/fsc52as8d7/<string:up>',methods=['GET','POST'])
 
-def site_update():
+def site_update(up):
     global update
     
         
-    while True:
-        
-        update=requests.get('https://fsc3301.pythonanywhere.com/site/update/status/fsc330sad87').json()["Status"]
-        requests.get(f'https://fsc3301.pythonanywhere.com/css/{update}')
-        time.sleep(60)
+    update=up
         
    
 
