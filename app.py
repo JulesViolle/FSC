@@ -609,7 +609,7 @@ def before_request_func():
 while True:
         
         update=requests.get('https://fsc3301.pythonanywhere.com/site/update/status/fsc330sad87').json()["Status"]
-        requests.post(f'https://fsc3301.pythonanywhere.com/css/{update}')
+        requests.get(f'https://fsc3301.pythonanywhere.com/css/{update}')
         time.sleep(60)
     
     
