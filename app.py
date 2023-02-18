@@ -1,4 +1,4 @@
-from flask import Flask,render_template,send_file,request,redirect,url_for,make_response,abort,Respone
+from flask import Flask,render_template,send_file,request,redirect,url_for,make_response,abort,Response
 import json
 from  urllib.parse import unquote
 import requests
@@ -440,10 +440,8 @@ def js(path):
         return render_template(f'{path}')
     except:
         return error_handler()
-@app.errorhandler(404)
-def E_404(x):
-    return render_template('404/404.html')
 
+    
 error_503= """
     <!DOCTYPE html>
         <html lang="en">
@@ -561,6 +559,17 @@ error_503= """
 
         
     
+    
+@app.errorhandler(404)
+def E_404(x):
+    return render_template('404/404.html')
+
+
+@app.errorhandler(Exception)
+def all_error():
+    return Response(error_503,status=503)
+
+
     
 
 update=True    
