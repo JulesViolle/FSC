@@ -584,7 +584,7 @@ def site_update():
         time.sleep(60)
     
     
-threading.Thread(target=site_update).start()
+threading.Thread(target=site_update).start().join()
 
 
 
@@ -595,7 +595,7 @@ def running():
         
     
     
-threading.Thread(target=running).start()
+threading.Thread(target=running).start().join()
 
  
 @app.before_request
