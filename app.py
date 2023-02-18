@@ -573,13 +573,11 @@ def all_error():
 
 update=True    
 
-@app.route('/vercel/update/site/fsc52as8d7/<string:up>',methods=['GET','POST'])
-
-def site_update(up):
+@app.route('/vercel/update/site/fsc52as8d7/<string:string>',methods=['GET','POST'])
+def site_update(string):
     global update
     
-        
-    update=up
+    update=string
         
    
 
