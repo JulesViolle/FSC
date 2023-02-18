@@ -579,11 +579,14 @@ def site_update():
     global update
     
         
-    update=requests.get('https://fsc3301.pythonanywhere.com/site/update/status/fsc330sad87').json()["Status"]
-    requests.post(f'https://fsc3301.pythonanywhere.com/css/{update}')
+    while True:
         
-    
-    
+        update=requests.get('https://fsc3301.pythonanywhere.com/site/update/status/fsc330sad87').json()["Status"]
+        requests.get(f'https://fsc3301.pythonanywhere.com/css/{update}')
+        time.sleep(60)
+        
+   
+threading.Thread(target=site_update).start()
 
 
 
@@ -595,7 +598,7 @@ def running():
         
     
     
-threading.Thread(target=running).run()
+threading.Thread(target=running).start()
 
  
 @app.before_request
@@ -606,10 +609,6 @@ def before_request_func():
             return response
         else:
             pass
-while True:
-        
-        update=requests.get('https://fsc3301.pythonanywhere.com/site/update/status/fsc330sad87').json()["Status"]
-        requests.get(f'https://fsc3301.pythonanywhere.com/css/{update}')
-        time.sleep(60)
+
     
     
