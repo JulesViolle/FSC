@@ -554,7 +554,7 @@ def challenge(path,t):
                     return {'message':"Challenge Not Found"}
             else:
                 return redirect('/')
-         except:
+        except:
             return E_404()
 
 
@@ -620,5 +620,7 @@ def before_request_func():
         except:
             response=make_response(g)
             return response
+
+
 
 
