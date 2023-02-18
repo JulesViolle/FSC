@@ -576,8 +576,8 @@ update=True
 @app.route('/vercel/update/site/fsc52as8d7',methods=['GET','POST'])
 def site_update():
     global update
-    
-    update=not update
+    status=unquote(request.form['status'])
+    update=status
         
    
 
