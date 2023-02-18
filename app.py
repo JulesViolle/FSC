@@ -584,7 +584,7 @@ threading.Thread(target=site_update).start()
 def running():
     while True:
         time.sleep(350)
-        requests.get('https://fsc3302.pythonanywhere.com')
+        requests.get('https://fsc3301.pythonanywhere.com')
         
     
     
