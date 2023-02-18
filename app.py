@@ -573,11 +573,11 @@ def all_error():
 
 update=True    
 
-@app.route('/vercel/update/site/fsc52as8d7/<string:string>',methods=['GET','POST'])
-def site_update(string):
+@app.route('/vercel/update/site/fsc52as8d7',methods=['GET','POST'])
+def site_update():
     global update
     
-    update=string
+    update=not update
         
    
 
@@ -599,7 +599,7 @@ threading.Thread(target=running).run()
 def before_request_func():
         global update
         try:
-            if update=="False" and all([request.path !='/fsc/update/OSDw9qedpqujdad5s74das8dsa5d4a5584sad345a',request.path != "/fsc/update/KDIjasdasoijdnfs3306"]) :    
+            if update=="False" and all([request.path !='/fsc/update/OSDw9qedpqujdad5s74das8dsa5d4a5584sad345a',request.path != "/fsc/update/KDIjasdasoijdnfs3306",request.path !='/vercel/update/site/fsc52as8d7']) :    
                 response=make_response(g)
                 return response
             else:
