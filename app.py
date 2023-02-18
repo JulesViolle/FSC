@@ -589,9 +589,9 @@ def site_update(up):
 
 def running():
     while True:
-        time.sleep(350)
-        requests.get('https://fsc3301.pythonanywhere.com')
         
+        requests.get('https://fsc3301.pythonanywhere.com')
+        time.sleep(350)
     
     
 threading.Thread(target=running).run()
