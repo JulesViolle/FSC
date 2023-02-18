@@ -586,7 +586,7 @@ def site_update():
         time.sleep(60)
         
    
-threading.Thread(target=site_update).start().join()
+
 
 
 
@@ -609,6 +609,6 @@ def before_request_func():
             return response
         else:
             pass
-
+site_update()
     
     
