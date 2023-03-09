@@ -593,9 +593,13 @@ update=True
 @app.route('/vercel/update/site/fsc52as8d7')
 def site_update():
     global update
-    stauts=unquote(request.form['status'])
-    update=status
-    return ''
+    try:
+        stauts=unquote(request.form['status'])
+        update=status
+    except:
+        pass
+    finally:
+        return ''
         
         
 
