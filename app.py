@@ -611,7 +611,7 @@ def running():
         requests.get('https://fsc3301.pythonanywhere.com')
         time.sleep(350)
 
-
+threading.Thread(target=site_update).start()
 threading.Thread(target=running).start()
 
 
