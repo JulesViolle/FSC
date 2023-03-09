@@ -590,16 +590,13 @@ def error_handler():
 update=True
 
 
-
+app.route('/vercel/update/site/fsc52as8d7')
 def site_update():
     global update
-    while True:
-
-        req=requests.get('https://fsc3301.pythonanywhere.com/site/update/status/fsc330sad87')
+    stauts=unquote(request.form['status'])
+    update=status
         
-        status=req.json()['status']
-        update=status
-        time.sleep(60)
+        
 
 
 
