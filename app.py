@@ -351,7 +351,7 @@ def login(User='None',Pass='None'):
 
                         else:
                             response=make_response(render_template("./login/login.html",data=f['token']))
-                        if all([User=='None',Pass=='None']):
+                        if User=='None' and Pass=='None' :
                             id=pybase64.b64encode(('{'+f'"user":"{Username}","pass":"{Password}"'+'}').encode())
                             response=make_response(redirect('/'))
                             response.set_cookie("userID",id)
