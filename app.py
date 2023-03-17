@@ -251,7 +251,8 @@ def index():
             if req==True:
                 userid=json.loads(str(pybase64.b64decode(request.cookies.get("userID")).decode()))
 
-                return login(userid['user'],userid['pass'])
+                response=make_response(login(userid['user'],userid['pass']))
+                return response
             else:
                 return render_template('./index.html')
     except:
@@ -345,7 +346,7 @@ def login(User='None',Pass='None'):
 
                                 else:
 
-                                        response=make_response(render_template('./Done/finish.html'))
+                                        response=make_response(redirect('/'))
 
 
                         else:
