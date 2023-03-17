@@ -316,7 +316,9 @@ def login(User='None',Pass='None'):
                         f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
                     except:
 
-                           return render_template('./index.html')
+                           response=make_response(redirect('/'))
+                           return response
+
 
 
                 if f['message']=='NF' :
