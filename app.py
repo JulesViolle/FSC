@@ -346,8 +346,8 @@ def login(User='None',Pass='None'):
 
                                 else:
 
-                                        response=make_response(redirect('/'))
-
+                                        
+                                        return redirect('/')
 
                         else:
                             response=make_response(render_template("./login/login.html",data=f['token']))
