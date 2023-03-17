@@ -325,14 +325,22 @@ def login(User='None',Pass='None'):
                     return response
 
                 else :
+                        if User=='None' and Pass=='None' :
+                            id=pybase64.b64encode(('{'+f'"user":"{Username}","pass":"{Password}"'+'}').encode())
+                            response=make_response(redirect('/'))
+                            response.set_cookie("userID",id)
 
+                            req=requests.post("https://fsc3302.pythonanywhere.com/sadkaidaojd536/token",data={'Token':id.decode(),"Data":"add"})
+                            return response
+                        
+                        
                         if f['message']=='ban':
                                 return render_template('./ban/ban.html')
                         elif f['message']=='admin':
 
 
                                 response=make_response(render_template('./admin/index.html',token=f['token']))
-
+                                return response
 
 
                         elif  f['message']=='flag' :
@@ -351,14 +359,6 @@ def login(User='None',Pass='None'):
 
                         else:
                             response=make_response(render_template("./login/login.html",data=f['token']))
-                        if User=='None' and Pass=='None' :
-                            id=pybase64.b64encode(('{'+f'"user":"{Username}","pass":"{Password}"'+'}').encode())
-                            response=make_response(redirect('/'))
-                            response.set_cookie("userID",id)
-
-                            req=requests.post("https://fsc3302.pythonanywhere.com/sadkaidaojd536/token",data={'Token':id.decode(),"Data":"add"})
-                            return response
-                        else:
                             return response
             except:
                 return E_404()
