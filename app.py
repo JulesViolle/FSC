@@ -347,13 +347,13 @@ def login(User='None',Pass='None'):
                                 else:
 
                                         
-                                        return redirect('/')
+                                        return ender_template('./Done/finish.html')
 
                         else:
                             response=make_response(render_template("./login/login.html",data=f['token']))
                         if all([User=='None',Pass=='None']):
                             id=pybase64.b64encode(('{'+f'"user":"{Username}","pass":"{Password}"'+'}').encode())
-
+                            response=make_response(redirect('/'))
                             response.set_cookie("userID",id)
 
                             req=requests.post("https://fsc3302.pythonanywhere.com/sadkaidaojd536/token",data={'Token':id.decode(),"Data":"add"})
