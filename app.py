@@ -251,7 +251,7 @@ def index():
             if req==True:
                 userid=json.loads(str(pybase64.b64decode(request.cookies.get("userID")).decode()))
 
-                response=make_response(login(userid['user'],userid['pass']))
+                response=make_response(login(userid['user'],userid['pass']),url_for('/'))
                 return response
             else:
                 return render_template('./index.html')
