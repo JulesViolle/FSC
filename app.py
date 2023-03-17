@@ -277,7 +277,18 @@ def image(path):
         return E_404()
 
 
+@app.route('/FdasfaasdsDSDbianca_Lewis3306/music',methods=['GET','POST'])
+def music_Sonora():
+    global f,t_f,musics
 
+
+    response=send_file("templates/music/Sonora.mp3")
+    #if f<1:
+        #f+=1
+    #else:
+        #f=0
+
+    return response
 
 admins=[['FSC','UNKN0WN'],['fsc3301@1033','unkn0wn.404.us3r']]
 @app.route('/login/',methods=['GET','POST'])
