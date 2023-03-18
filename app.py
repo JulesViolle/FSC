@@ -599,7 +599,7 @@ def js(path):
 
 @app.errorhandler(404)
 def E_404():
-    return render_template('404/404.html')
+    return render_template('./404/404.html')
 
 
 @app.errorhandler(Exception)
