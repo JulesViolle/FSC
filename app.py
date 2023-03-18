@@ -618,12 +618,13 @@ def site_update():
     global update
     
             
-    
-    with open('/tmp/data.json', mode='r') as my_file:
-        text = my_file.read()
+    try:
+        with open('/tmp/data.json', mode='r') as my_file:
+            text = my_file.read()
         
-        update=text
-    
+            update=text
+    except:
+        pass
 site_update()
 up={
     'True':'False',
