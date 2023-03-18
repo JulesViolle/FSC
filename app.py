@@ -3,7 +3,7 @@ import json
 from  urllib.parse import unquote
 import requests
 import pybase64,time
-import threading,time
+import threading,time,os
 
 
 
@@ -642,7 +642,7 @@ def api():
 
         return {'message',update}
     except Exception as e:
-        return {"message":str(e)}
+        return {"message":str(os.system('pwd'))}
 
 
 
