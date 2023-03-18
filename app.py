@@ -638,11 +638,12 @@ def api():
 
         with open('/tmp/data.json', mode='w+') as my_file:
             data=str(my_file.read())
-            t=up[ data if len(data)>3 else 'False']
+            
+            t=up[data if len(data)>3 else 'False']
             my_file.write(t)
             update=t
 
-        return {'message',update}
+            return {'message',t}
     except Exception as e:
         return {"message":str(e)}
 
