@@ -113,7 +113,7 @@ error_503= """
             <div id="app">
                 <div>503</div>
                 <div class="txt">
-                   Service Unavailable<span class="blink">_</span>
+                   Server Unavailable<span class="blink">_</span>
                 </div>
              </div>
 
@@ -602,13 +602,14 @@ def E_404():
     return render_template('./404/404.html')
 
 
-@app.errorhandler(Exception)
+
 def error_handler():
     
     response=make_response(error_503)
     return response
     
-
+app.config['TRAP_HTTP_EXCEPTIONS']=True
+app.register_error_handler(Exception, error_handler)
 
 
 update='True'
