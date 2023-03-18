@@ -632,14 +632,14 @@ up={
 
 @app.route('/vercel/update/site/fsc52as8d7')
 def api():
-    global site_update,up,update
+    global up,update
     
     with open('data.json', mode='w+') as my_file:
-        t=up[my_file.read()]
+        t=up[str(my_file.read())]
         my_file.write(t)
-        site_update()
+        update=t
         
-    return {'message',update},200
+    return {'message',update}
 
 
 
