@@ -246,15 +246,12 @@ def index():
 
                 return render_template('./index.html')
         else:
-            req=requests.post("https://fsc3302.pythonanywhere.com/sadkaidaojd536/token",data={'Token':userid,"Data":"chk"}).json()['message']
-            print(req)
-            if req==True:
+            
                 userid=json.loads(str(pybase64.b64decode(request.cookies.get("userID")).decode()))
 
                 response=make_response(login(userid['user'],userid['pass']))
                 return response
-            else:
-                return render_template('./index.html')
+            
     except:
         return E_404()
 
