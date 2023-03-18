@@ -619,7 +619,7 @@ def site_update():
     
             
     
-    with open('data.json', mode='r') as my_file:
+    with open('/tmp/data.json', mode='r') as my_file:
         text = my_file.read()
         
         update=text
@@ -635,7 +635,7 @@ def api():
     try:
         global up,update
 
-        with open('data.json', mode='w+') as my_file:
+        with open('/tmp/data.json', mode='w+') as my_file:
             t=up[str(my_file.read())]
             my_file.write(t)
             update=t
