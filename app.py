@@ -219,11 +219,12 @@ users_id=[]
 
 
 
-@app.route('/api')
+@app.route('/vercel/update/site/fsc52as8d7')
 def api():
-    with open('data.json', mode='r') as my_file:
-        text = my_file.read()
-        return text
+    status=request.form['status']
+    with open('data.json', mode='w') as my_file:
+        text = my_file.write(status)
+        return 200
 
 
 
@@ -233,13 +234,6 @@ def api():
 
 
 
-def clear_cookie():
-    global users_id
-    while True:
-        time.sleep(300)
-        users_id.clear()
-
-#threading.Thread(target=clear_cookie).join
 
 ch_g=False
 ch={
@@ -623,12 +617,16 @@ def error_handler():
 update=True
 
 
-@app.route('/vercel/update/site/fsc52as8d7')
+
 def site_update():
     global update
     try:
-        stauts=unquote(request.form['status'])
-        update=status
+            
+    
+    with open('data.json', mode='r') as my_file:
+        text = my_file.read()
+        
+        update=text
     except:
         pass
     finally:
@@ -648,7 +646,7 @@ def running():
 
 
 threading.Thread(target=running).start()
-
+threading.Thread(target=site_update).start()
 
 @app.before_request
 def before_request_func():
