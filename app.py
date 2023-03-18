@@ -625,15 +625,20 @@ def site_update():
         update=text
     
 site_update()
-
+up={
+    'True':'False',
+    'False':'True'
+}
 
 @app.route('/vercel/update/site/fsc52as8d7')
 def api():
-    global site_update
+    global site_update,up
     status=request.form['status']
-    with open('data.json', mode='w') as my_file:
-        my_file.write(status)
+    with open('data.json', mode='w+') as my_file:
+        t=up[my_file.read()]
+        my_file.write(t)
         site_update()
+        
         return 'Done',200
 
 
