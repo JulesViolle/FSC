@@ -608,7 +608,7 @@ def error_handler():
 
 
 
-update=True
+update='True'
 
 
 
@@ -632,14 +632,14 @@ up={
 
 @app.route('/vercel/update/site/fsc52as8d7')
 def api():
-    global site_update,up
+    global site_update,up,update
     status=request.form['status']
     with open('data.json', mode='w+') as my_file:
         t=up[my_file.read()]
         my_file.write(t)
         site_update()
         
-        return 'Done',200
+        return {'message',update},200
 
 
 
