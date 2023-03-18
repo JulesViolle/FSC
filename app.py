@@ -5,7 +5,18 @@ import requests
 import pybase64,time
 import threading,time
 
-site_online=open('./Site_update.txt','w').write('hello')
+
+
+
+@app.route('/api')
+def api():
+    with open('data.json', mode='r') as my_file:
+        text = my_file.read()
+        return text
+
+
+
+
 
 error_503= """
     <!DOCTYPE html>
