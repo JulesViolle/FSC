@@ -645,7 +645,7 @@ def api():
 
             return {'message',t}
     except Exception as e:
-        return {"message":str(e)}
+        return {"message":f'{e}')}
 
 
 
