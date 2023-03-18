@@ -604,8 +604,10 @@ def E_404():
 
 @app.errorhandler(Exception)
 def error_handler():
-    global error_503
-    return error_503,503
+    
+    response=make_response(error_503)
+    return response
+    
 
 
 
@@ -615,18 +617,7 @@ update='True'
 
 
 
-def site_update():
-    global update
-    
-            
-    try:
-        with open('/tmp/data.json', mode='r') as my_file:
-            text = my_file.read()
-        
-            update=text
-    except:
-        pass
-site_update()
+
 up={
     'True':'False',
     'False':'True'
