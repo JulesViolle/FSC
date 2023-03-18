@@ -631,23 +631,6 @@ up={
     'False':'True'
 }
 
-@app.route('/vercel/update/site/fsc52as8d7')
-def api():
-    try:
-        global up,update
-
-        with open('/tmp/data.json', mode='w+') as my_file:
-            data=str(my_file.read())
-            
-            t=up[data if len(data)>3 else 'False']
-            my_file.write(t)
-            update=t
-
-            return {'message',t}
-    except Exception as e:
-        return {"message":f'{e}')}
-
-
 
 
 
