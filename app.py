@@ -641,7 +641,7 @@ def api():
             update=t
 
         return {'message',update}
-    Exception as e:
+    except Exception as e:
         return {"message":str(e)}
 
 
