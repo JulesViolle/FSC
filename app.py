@@ -8,12 +8,6 @@ import threading,time
 
 
 
-@app.route('/api')
-def api():
-    with open('data.json', mode='r') as my_file:
-        text = my_file.read()
-        return text
-
 
 
 
@@ -221,6 +215,22 @@ g=""" <!DOCTYPE html>
 
 app=Flask(__name__)
 users_id=[]
+
+
+
+
+@app.route('/api')
+def api():
+    with open('data.json', mode='r') as my_file:
+        text = my_file.read()
+        return text
+
+
+
+
+
+
+
 
 
 def clear_cookie():
