@@ -5,7 +5,7 @@ import requests
 import pybase64,time
 import threading,time
 
-site_online=open('./site_online.txt','w').write('hello')
+site_online=open('./Site_update.txt','w').write('hello')
 
 error_503= """
     <!DOCTYPE html>
