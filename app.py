@@ -219,12 +219,6 @@ users_id=[]
 
 
 
-@app.route('/vercel/update/site/fsc52as8d7')
-def api():
-    status=request.form['status']
-    with open('data.json', mode='w') as my_file:
-        text = my_file.write(status)
-        return 200
 
 
 
@@ -618,6 +612,8 @@ update=True
 
 
 
+
+
 def site_update():
     global update
     
@@ -628,6 +624,22 @@ def site_update():
         
         update=text
     
+site_update()
+
+
+@app.route('/vercel/update/site/fsc52as8d7')
+def api():
+    global site_update
+    status=request.form['status']
+    with open('data.json', mode='w') as my_file:
+        my_file.write(status)
+        site_update()
+        return 'Done',200
+
+
+
+
+
         
         
 
@@ -643,7 +655,7 @@ def running():
 
 
 threading.Thread(target=running).start()
-threading.Thread(target=site_update).join().start()
+
 
 @app.before_request
 def before_request_func():
