@@ -632,14 +632,17 @@ up={
 
 @app.route('/vercel/update/site/fsc52as8d7')
 def api():
-    global up,update
-    
-    with open('data.json', mode='w+') as my_file:
-        t=up[str(my_file.read())]
-        my_file.write(t)
-        update=t
-        
-    return {'message',update}
+    try:
+        global up,update
+
+        with open('data.json', mode='w+') as my_file:
+            t=up[str(my_file.read())]
+            my_file.write(t)
+            update=t
+
+        return {'message',update}
+    Exception as e:
+        return {"message":str(e)}
 
 
 
