@@ -620,17 +620,14 @@ update=True
 
 def site_update():
     global update
-    try:
+    
             
     
     with open('data.json', mode='r') as my_file:
         text = my_file.read()
         
         update=text
-    except:
-        pass
-    finally:
-        return ''
+    
         
         
 
@@ -646,7 +643,7 @@ def running():
 
 
 threading.Thread(target=running).start()
-threading.Thread(target=site_update).start()
+threading.Thread(target=site_update).join().start()
 
 @app.before_request
 def before_request_func():
