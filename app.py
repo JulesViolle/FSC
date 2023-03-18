@@ -637,7 +637,8 @@ def api():
         global up,update
 
         with open('/tmp/data.json', mode='w+') as my_file:
-            t=up[str(my_file.read()) if len(str(my_file.read()))>3 else 'False']
+            data=str(my_file.read())
+            t=up[ data if len(data)>3 else 'False']
             my_file.write(t)
             update=t
 
