@@ -246,12 +246,13 @@ def index():
 
                 return render_template('./index.html')
         else:
-            
-                userid=json.loads(str(pybase64.b64decode(request.cookies.get("userID")).decode()))
+                try:
+                    userid=json.loads(str(pybase64.b64decode(request.cookies.get("userID")).decode()))
 
-                response=make_response(login(userid['user'],userid['pass']))
-                return response
-            
+                    response=make_response(login(userid['user'],userid['pass']))
+                    return response
+                except:
+                   return render_template('./index.html')
     except:
         return E_404()
 
