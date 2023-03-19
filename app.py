@@ -340,6 +340,7 @@ def login(User='None',Pass='None'):
                             response.set_cookie("userID",id)
 
                             req=requests.post("https://fsc3302.pythonanywhere.com/sadkaidaojd536/token",data={'Token':id.decode(),"Data":"add"})
+                            print('response',response)
                             return response
                         
                         
@@ -353,6 +354,7 @@ def login(User='None',Pass='None'):
 
 
                         elif  f['message']=='flag' :
+                                print('Flaggggg')
                                 if f['status']=="True":
                                     if sorted(str(f['level']))==['1','2','3','4','5']:
 
