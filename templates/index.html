@@ -5,7 +5,7 @@
     <meta name="keywords" content="FSC">
     <meta name="description" content="">
     <title>FSC</title>
-    
+    <link rel="stylesheet" href="/css/style.css" media="screen">
   <link rel="stylesheet" href="/css/FSC.css" media="screen">
 
 
@@ -16,49 +16,47 @@
 
   </head>
   <body data-home-page="FSC.html" data-home-page-title="FSC" class="u-body u-overlap u-xl-mode" data-lang="en"><header class="u-align-center u-border-2 u-border-black u-border-no-bottom u-border-no-left u-border-no-right u-clearfix u-header" id="sec-cc00" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction=""><div class="u-clearfix u-sheet u-sheet-1">
-    <h2 id='h1' class="u-custom-font u-font-arial u-text u-text-custom-color-1 "></h2>
-    <div class="login-box">
-      
-      <h2>Login</h2>
-      <form id="Login" action="return false" method='POST' name="form" redirect="true">
-        <div class="user-box">
-          <input id="usernaame" type="text" name="User" required="">
-          <label>Username</label>
+        <h2 id='h1' class="u-custom-font u-font-arial u-text u-text-custom-color-1 "></h2>
+      </div></header>
+    <section  class="u-align-center u-clearfix u-image u-section-1" id="sec-5957" data-image-width="1024" data-image-height="819">
+      <div id="form-div" class="u-align-left u-clearfix u-sheet u-sheet-1">
+        <div id="main" class="u-form u-form-1">
+          <form id='form'  method='POST' action="return false" class="u-clearfix u-form-custom-backend u-form-spacing-15 u-form-vertical u-inner-form" style="padding: 15px;" source="custom" name="form" redirect="true">
+            <div class="u-form-group u-label-none u-form-group-1">
+              <label for="text-5bd3" class="u-label">Input</label>
+              <input type="text" placeholder="Username:" id="text-5bd3" name="User" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-10 u-white u-input-1" maxlength="18">
+            </div>
+            <div class="u-form-group u-label-none u-form-group-2">
+              <label for="text-eea8" class="u-label">Input</label>
+              <input type="text" placeholder="Password:" id="text-eea8" name="Pass" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-10 u-white u-input-2" maxlength="18">
+            </div>
+            <div class="u-align-left u-form-group u-form-submit u-label-none u-form-group-3">
+
+              <input type="submit" onclick="javascript: form.action='/login/';" value="Login" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-font-arial u-radius-11 u-btn-1">
+            </div>
+
+          </form>
         </div>
-        <div class="user-box">
-          <input id='password' type="password" name="Pass" required="">
-          <label>Password</label>
-        </div>
-        <a id="Submit" href="">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          Submit
-        </a>
-      </form>
-    </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      </div>
+    </section>
     <script>
-      $('#Submit').on('click', function(e){
-        e.preventDefault();
-        var f=document.getElementById('Login')
-        f.action='/login/';
-        f.submit()
-       
-      });
-      var text ='The Beginning Is The End, And The End Is The Beginning. ';
-      function x(index){
+    var text ='The Beginning Is The End, And The End Is The Beginning. ';
+    function x(index){
 
 
-        if (index < text.length) {
-            document.getElementById('h1').innerHTML +=text[index++] ;
-            setTimeout(function () {
-                  x(index)
-            }, 50);
+      if (index < text.length) {
+          document.getElementById('h1').innerHTML +=text[index++] ;
+          setTimeout(function () {
+                x(index)
+          }, 50);
 
-        }
       }
-      x(0)
-      </script>
+    }
+    x(0)
+
+    </script>
+
+
+
+
 </body></html>
