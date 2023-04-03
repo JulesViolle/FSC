@@ -38,8 +38,8 @@
                   <input type="text" placeholder="Password" id="email-6796" name="Pass" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-custom-font u-font-source-sans-pro u-input u-input-rectangle u-input-2" required="required" wfd-id="id186" maxlength="30">
                 </div>
                 <div class="u-align-left u-form-group u-form-submit u-label-none">
-                  <a href="#" class="u-active-grey-75 u-black u-btn u-btn-round u-btn-submit u-button-style u-hover-grey-90 u-radius-10 u-btn-1">Submit</a>
-                  <input type="submit" onclick="javascript: form.action='/login/';" value="submit" class="u-form-control-hidden" wfd-id="id187" style="border-radius: 10px;">
+                  <a href="#" id="submit"class="u-active-grey-75 u-black u-btn u-btn-round u-btn-submit u-button-style u-hover-grey-90 u-radius-10 u-btn-1">Submit</a>
+                  <input  type="submit"  value="submit" class="u-form-control-hidden" wfd-id="id187" style="border-radius: 10px;">
                 </div>
                 
               </form>
@@ -48,8 +48,19 @@
         </div>
       </div>
     </section>
-    
-    
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+   
+    <script>
+      $('#submit').on('click', function(e){
+        e.preventDefault();
+        var f=document.getElementById('Login')
+        f.action='/login/';
+        f.submit()
+       
+      });
+
+    </script>
    
   
 </body></html>
