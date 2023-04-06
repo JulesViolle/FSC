@@ -375,7 +375,7 @@ def login(User='None',Pass='None'):
                 return E_404()
 
 @app.route('/flag/flag.html')
-def flag_html:
+def flag_html():
     return render_template('./flag/index.html',score=0)
 
 @app.route('/video',methods=['GET','POST'])
