@@ -483,7 +483,7 @@ def admin():
             else:
                 if work=='log' and ([token=='=fsc@*#Y*EHI3301' or token=='(unkn0wn)*@#(UJE.404))']):
                     try:
-                        log=requests.post('https://fsc3301.pythonanywhere.com/admin/',data={'w':'log','token':token}).json()
+                        log=requests.get('https://fsc3301.pythonanywhere.com/admin/',data={'w':'log','token':token}).json()
                         return log
                     except:
                         return {'message':'Failed'}
