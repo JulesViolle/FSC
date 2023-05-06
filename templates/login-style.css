@@ -30597,8 +30597,8 @@ li.active > a.u-button-style.u-button-style.u-border-active-palette-1-light-3 {
 }
 .u-border-palette-1-base,
 .u-separator-palette-1-base:after {
-  border-color: #478ac9;
-  stroke: #478ac9;
+  border-color: gray;
+  stroke: gray;
 }
 .u-button-style.u-border-palette-1-base {
   border-color: #478ac9 !important;
