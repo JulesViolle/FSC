@@ -222,7 +222,7 @@ users_id=[]
 
 
 
-secretsGenerator = secrets.SystemRandom()
+
 
 
 
@@ -232,7 +232,7 @@ musics={
 }
 @app.route('/FdasfaasdsDSDGod/music/',methods=['GET','POST'])
 def music_Finished():
-    global secretsGenerator
+    secretsGenerator = secrets.SystemRandom()
     music = secretsGenerator.randint(0,1)
     return send_file(musics[music])
 
