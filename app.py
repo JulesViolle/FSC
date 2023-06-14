@@ -283,18 +283,22 @@ def image(path):
         return send_file(f'templates/images/{path}')
     except:
         return E_404()
-
-
-@app.route('/FdasfaasdsDSDbianca_Lewis3306/music',methods=['GET','POST'])
+f=False
+musics={
+    True:r"./templates/audio/Apokalypse.mp3",
+    False:r"./templates/audio/God.mp3"
+}
+@app.route('/FdasfaasdsDSDGod/music',methods=['GET','POST'])
 def music_Sonora():
-    global f,t_f,musics
+    global f,,musics
 
 
-    return send_file(r"./templates/audio/Apokalypse.mp3")
-    #if f<1:
-        #f+=1
-    #else:
-        #f=0
+    
+    if f:
+        f=False
+    else:
+        f=True
+    return send_file(music[f])
 
     
 
