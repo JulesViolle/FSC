@@ -6,10 +6,10 @@ import pybase64,time
 import threading,time
 import secrets
 
-from Cryptodome.PublicKey import RSA
-from Cryptodome.Cipher import PKCS1_OAEP,AES
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
 from base64 import b64decode,b64encode
-from Cryptodome.Random import get_random_bytes
+
 
 
 
