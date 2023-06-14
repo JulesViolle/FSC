@@ -4,6 +4,7 @@ from  urllib.parse import unquote
 import requests
 import pybase64,time
 import threading,time
+import secrets
 
 
 
@@ -221,19 +222,18 @@ users_id=[]
 
 
 
+secretsGenerator = secrets.SystemRandom()
 
-music=1
+
+
 musics={
     1:"./templates/audio/Apokalypse.mp3",
     0:"./templates/audio/God.mp3",
 }
 @app.route('/FdasfaasdsDSDGod/music/',methods=['GET','POST'])
 def music_Finished():
-    global music,musics
-    if music==1:
-        music=0
-    elif music==0:
-        music=1
+    global secretsGenerator
+    music = secretsGenerator.randint(0,1)
     return send_file(musics[music])
 
 
