@@ -237,13 +237,13 @@ users_id=[]
 
 musics={
     1:"./templates/audio/Apokalypse.mp3",
-    0:"./templates/audio/God.mp3",
+    0:"https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/1539759433?secret_token=s-WHUMbRtudJ0",
 }
 @app.route('/FdasfaasdsDSDGod/music/',methods=['GET','POST'])
 def music_Finished():
     secretsGenerator = secrets.SystemRandom()
     music = secretsGenerator.randint(0,1)
-    return send_file(musics[music])
+    return redirect(musics[music])
 
 
 
