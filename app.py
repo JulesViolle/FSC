@@ -236,8 +236,8 @@ users_id=[]
 
 
 musics={
-    1:make_response(send_file(r"./templates/audio/Apokalypse.mp3")),
-    0:make_response(send_file(r"./templates/audio/God.mp3"))
+    1:make_response(send_file("./templates/audio/Apokalypse.mp3")),
+    0:make_response(send_file("./templates/audio/God.mp3")),
 }
 @app.route('/FdasfaasdsDSDGod/music/',methods=['GET','POST'])
 def music_Finished():
