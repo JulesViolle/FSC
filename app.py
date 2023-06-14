@@ -283,19 +283,19 @@ def image(path):
         return send_file(f'templates/images/{path}')
     except:
         return E_404()
-f=False
+music=False
 musics={
     True:r"./templates/audio/Apokalypse.mp3",
     False:r"./templates/audio/God.mp3",
 }
 @app.route('/FdasfaasdsDSDGod/music/',methods=['GET','POST'])
 def music_Finished():
-    global f,musics
-    if f:
+    global music,musics
+    if music:
         f=False
     else:
-        f=True
-    return send_file(musics[f])
+        music=True
+    return send_file(musics[music])
 
     
 
@@ -587,7 +587,6 @@ def challenge(path,t):
                 return redirect('/')
         except:
             return E_404()
-
 
 
 @app.route('/js/<path:path>',methods=['GET','POST'])
