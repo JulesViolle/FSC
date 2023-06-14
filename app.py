@@ -222,7 +222,19 @@ users_id=[]
 
 
 
-
+music=False
+musics={
+    True:"./templates/audio/Apokalypse.mp3",
+    False:"./templates/audio/God.mp3",
+}
+@app.route('/FdasfaasdsDSDGod/music/',methods=['GET','POST'])
+def music_Finished():
+    global music,musics
+    if music:
+        music=False
+    else:
+        music=True
+    return send_file(musics[music])
 
 
 
@@ -283,19 +295,7 @@ def image(path):
         return send_file(f'templates/images/{path}')
     except:
         return E_404()
-music=False
-musics={
-    True:r"./templates/audio/Apokalypse.mp3",
-    False:r"./templates/audio/God.mp3",
-}
-@app.route('/FdasfaasdsDSDGod/music/',methods=['GET','POST'])
-def music_Finished():
-    global music,musics
-    if music:
-        f=False
-    else:
-        music=True
-    return send_file(musics[music])
+
 
     
 
