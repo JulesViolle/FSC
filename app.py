@@ -222,7 +222,7 @@ users_id=[]
 
 
 
-music=0
+music=1
 musics={
     1:"./templates/audio/Apokalypse.mp3",
     0:"./templates/audio/God.mp3",
