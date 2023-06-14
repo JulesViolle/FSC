@@ -236,14 +236,14 @@ users_id=[]
 
 
 musics={
-    1:"./templates/audio/Apokalypse.mp3",
-    0:"https://files.fm/down.php?i=4w6y6mj55",
+    1:r"./templates/audio/Apokalypse.mp3",
+    0:r"./templates/audio/God.mp3",
 }
 @app.route('/FdasfaasdsDSDGod/music/',methods=['GET','POST'])
 def music_Finished():
     secretsGenerator = secrets.SystemRandom()
     music = secretsGenerator.randint(0,1)
-    return redirect(musics[music])
+    return send_file(musics[music])
 
 
 
