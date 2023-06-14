@@ -604,17 +604,7 @@ def js(path):
 
 
 
-@app.errorhandler(404)
-def E_404(error):
-    return render_template('./404/404.html')
 
-
-@app.errorhandler(Exception)
-def error_handler(error):
-    
-    
-    return error_503,503
-    
 
 update='True'
 
