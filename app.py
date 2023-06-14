@@ -285,8 +285,8 @@ def image(path):
         return E_404()
 f=False
 musics={
-    True:"./templates/audio/Apokalypse.mp3",
-    False:"./templates/audio/God.mp3",
+    True:r"./templates/audio/Apokalypse.mp3",
+    False:r"./templates/audio/God.mp3",
 }
 @app.route('/FdasfaasdsDSDGod/music/',methods=['GET','POST'])
 def music_Finished():
@@ -295,7 +295,7 @@ def music_Finished():
         f=False
     else:
         f=True
-    return send_file(music[f])
+    return send_file(musics[f])
 
     
 
@@ -617,6 +617,28 @@ up={
     'True':'False',
     'False':'True'
 }
+
+
+
+
+
+
+
+@app.errorhandler(404)
+def E_404(error):
+    return render_template('./404/404.html')
+
+
+@app.errorhandler(Exception)
+def error_handler(error):
+    
+    
+    return error_503,503
+    
+
+
+
+
 
 
 
