@@ -283,9 +283,9 @@ def index():
                     
 
                     userid=dec_func.decrypt(b64decode(request.cookies.get("userID").encode('utf-8'))).decode('utf-8')
-                    return {'message':userid}
+                    
                     userid=json.loads(str(userid))
-                    return {'message':userid}
+                    
                     response=make_response(login(userid['user'],userid['pass']))
                     return response
                 except:
