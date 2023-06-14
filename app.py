@@ -222,18 +222,18 @@ users_id=[]
 
 
 
-music=False
+music=0
 musics={
-    True:"./templates/audio/Apokalypse.mp3",
-    False:"./templates/audio/God.mp3",
+    1:"./templates/audio/Apokalypse.mp3",
+    0:"./templates/audio/God.mp3",
 }
 @app.route('/FdasfaasdsDSDGod/music/',methods=['GET','POST'])
 def music_Finished():
     global music,musics
-    if music:
-        music=False
-    else:
-        music=True
+    if music==1:
+        music=0
+    elif music==0:
+        music=1
     return send_file(musics[music])
 
 
