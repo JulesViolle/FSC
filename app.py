@@ -285,15 +285,12 @@ def image(path):
         return E_404()
 f=False
 musics={
-    True:r"./templates/audio/Apokalypse.mp3",
-    False:r"./templates/audio/God.mp3"
+    True:"./templates/audio/Apokalypse.mp3",
+    False:"./templates/audio/God.mp3",
 }
-@app.route('/FdasfaasdsDSDGod/music',methods=['GET','POST'])
-def music_Done():
+@app.route('/FdasfaasdsDSDGod/music/',methods=['GET','POST'])
+def music_Finished():
     global f,musics
-
-
-    
     if f:
         f=False
     else:
