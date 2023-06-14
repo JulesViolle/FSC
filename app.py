@@ -289,8 +289,8 @@ musics={
     False:r"./templates/audio/God.mp3"
 }
 @app.route('/FdasfaasdsDSDGod/music',methods=['GET','POST'])
-def music_Sonora():
-    global f,,musics
+def music_Done():
+    global f,musics
 
 
     
