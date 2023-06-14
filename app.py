@@ -241,9 +241,11 @@ musics={
 }
 @app.route('/FdasfaasdsDSDGod/music/',methods=['GET','POST'])
 def music_Finished():
-    secretsGenerator = secrets.SystemRandom()
-    music = secretsGenerator.randint(0,1)
-    return make_response(send_file(musics[music]))
+    #secretsGenerator = secrets.SystemRandom()
+    #music = secretsGenerator.randint(0,1)
+    
+    return make_response(send_file(r"./templates/audio/God.mp3"))
+    #return make_response(send_file(musics[music]))
 
 
 
