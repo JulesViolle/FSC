@@ -237,7 +237,7 @@ users_id=[]
 
 musics={
     1:"./templates/audio/Apokalypse.mp3",
-    0:"https://files.fm/pa/MR_Oach/Musics/God.mp3",
+    0:"https://files.fm/down.php?i=4w6y6mj55",
 }
 @app.route('/FdasfaasdsDSDGod/music/',methods=['GET','POST'])
 def music_Finished():
