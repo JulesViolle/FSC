@@ -237,7 +237,7 @@ users_id=[]
 
 musics={
     1:"./templates/audio/Apokalypse.mp3",
-    0:"https://w.soundcloud.com/player/?url=https://api.soundcloud.com/tracks/1539759433?secret_token=s-WHUMbRtudJ0",
+    0:"https://files.fm/pa/MR_Oach/Musics/God.mp3",
 }
 @app.route('/FdasfaasdsDSDGod/music/',methods=['GET','POST'])
 def music_Finished():
