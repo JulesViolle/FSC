@@ -279,7 +279,7 @@ def chall():
 def index():
     global users_id
     try:
-        if request.args.get('ReturnUrl')=="login":
+        if request.args.get('ReturnUrl'):
             
             return render_template('./index.html')
         else:
@@ -364,12 +364,7 @@ def login(User='None',Pass='None',cookie=False):
 
                     except:
 
-                        try:
-                                token=request.args.get('T')
-
-                                f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
-                        except:
-
+                        
                                 response=make_response(render_template('./index.html'))
                                 return response
                         
