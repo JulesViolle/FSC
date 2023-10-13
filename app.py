@@ -714,7 +714,6 @@ threading.Thread(target=running).start()
 
 
 @app.route("/favicon.ico")
-
 def favicon_ico():
      return send_file("./icon/fsc.ico")
 
