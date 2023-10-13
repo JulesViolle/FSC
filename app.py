@@ -226,7 +226,12 @@ g=""" <!DOCTYPE html>
 
 
 app=Flask(__name__)
+TURNSTILE_ENABLED = True
+TURNSTILE_SITE_KEY = "0x4AAAAAAALlVPrBCGi_rKKF"
+TURNSTILE_SECRET_KEY = "0x4AAAAAAALlVH0EuAFTC3tN-W3dZzvNOGI"
+app.config.from_object(__name__)
 
+turnstile = Turnstile(app=app)
 
 users_id=[]
 
@@ -325,28 +330,30 @@ def login(User='None',Pass='None'):
             global users_id,challenge
 
             try:
-                try:
-                    if any([User=='None',Pass=='None']):
-                        Username=''.join(request.form['User'].split()).upper()
-                        Password=''.join(request.form['Pass'].split())
-
-                        f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':Username,'Pass':Password}).json()
-                        print(f)
-                    else:
-                        f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':User,'Pass':Pass}).json()
-
-
-                except:
-
+                if turnstile.verify():
                     try:
-                        token=request.args.get('T')
-
-                        f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
+                        if any([User=='None',Pass=='None']):
+                            Username=''.join(request.form['User'].split()).upper()
+                            Password=''.join(request.form['Pass'].split())
+    
+                            f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':Username,'Pass':Password}).json()
+                            print(f)
+                        else:
+                            f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':User,'Pass':Pass}).json()
+    
+    
                     except:
-
-                           response=make_response(render_template('./index.html'))
-                           return response
-
+    
+                        try:
+                            token=request.args.get('T')
+    
+                            f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
+                        except:
+    
+                               response=make_response(render_template('./index.html'))
+                               return response
+                else:
+                    return {"Error":"Captcha Faield"}
 
 
                 if f['message']=='NF' :
