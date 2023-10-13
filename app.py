@@ -231,7 +231,7 @@ turnstile = Turnstile(app=app)
 users_id=[]
 
 
-@route("/submit", methods=["POST"])
+@app.route("/submit", methods=["POST"])
 def submit():
 
     if turnstile.verify():
