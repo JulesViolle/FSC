@@ -347,7 +347,7 @@ def login(User='None',Pass='None',cookie=False):
                     
                     
                 else:
-                    if turnstile.verify():
+                    if turnstile.verify(response=request.args.get('cf-turnstile-response')):
                         captcha=True
                 
                 if captcha==True:
@@ -357,7 +357,7 @@ def login(User='None',Pass='None',cookie=False):
                                 Password=''.join(request.form['Pass'].split())
 
                                 f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':Username,'Pass':Password}).json()
-                                print(f)
+                                
                             else:
                                 f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':User,'Pass':Pass}).json()
 
