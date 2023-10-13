@@ -65,7 +65,7 @@
         
        
       };
-        document.getElementsByClassName("cf-turnstile")[0].getElementsByTagName("input")[0].addEventListener('change', function () {
+        document.getElementsByClassName("cf-turnstile")[0].getElementsByTagName("input")[0].addEventListener('input', function () {
             console.log(this.value);
             document.getElementsById("submit").disabled=false;
         });
