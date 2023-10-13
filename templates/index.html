@@ -55,6 +55,12 @@
     </section>
      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
    <script>
+       var captcha=document.getElementsByClassName("cf-turnstile")[0].getElementsByTagName("input")[0]
+    captcha.addEventListener("change", (event) => {
+        console.log(this.value)
+    });
+
+       
       function validateForm(){
         var login=document.getElementById('Login')
         login.action='/login/';
