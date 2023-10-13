@@ -71,11 +71,11 @@
        window.onloadTurnstileCallback = function () {
         turnstile.render('#example-container', {
             sitekey: '0x4AAAAAAALlVPrBCGi_rKKF',
-            size: 'compact',
+            
             callback: function(token) {
                 var captcha=document.getElementById("captcha")
                 captcha.value=`${token}`
-                captcha.setAttribute("disabled", false);
+                captcha.removeAttribute('disabled')
                 
             },
         });
