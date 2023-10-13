@@ -20,6 +20,7 @@
     <meta property="og:title" content="Home">
     <meta property="og:description" content="">
     <meta property="og:type" content="website">
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAAALlVPrBCGi_rKKF" data-callback="javascriptCallback"></div>
   </head>
   <body data-home-page="index.html" data-home-page-title="FSC" class="u-black u-body u-xl-mode" data-lang="en">
     <section class="u-align-center u-clearfix u-image u-shading u-section-1" id="sec-5fe9" data-image-width="3824" data-image-height="2105" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
@@ -57,8 +58,16 @@
         f.submit()
        
       });
+       window.onloadTurnstileCallback = function () {
+        turnstile.render('#example-container', {
+            sitekey: '<YOUR_SITE_KEY>',
+            callback: function(token) {
+                console.log(`Challenge Success ${token}`);
+            },
+        });
+    };
       
       </script>
-   
+   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
   
 </body></html>
