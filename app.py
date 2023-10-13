@@ -279,6 +279,10 @@ def chall():
 def index():
     global users_id
     try:
+        if request.args.get('ReturnUrl')=="login":
+            response=make_response(render_template('./index.html'))
+            return response
+        
         userid=request.cookies.get("userID")
 
         if userid==None or userid=='':
@@ -295,12 +299,13 @@ def index():
                     
                     userid=json.loads(b64decode(userid))
                     
-                    response=make_response(login(userid['user'],userid['pass'],cookie=True))
+                    response=make_response(login(userid['user'],userid['pass']))
                     return response
                 except:
                    return render_template('./index.html')
     except:
         return E_404()
+
 
 @app.route('/536')
 def P_536():
