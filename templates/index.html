@@ -73,7 +73,10 @@
             sitekey: '0x4AAAAAAALlVPrBCGi_rKKF',
             size: 'compact',
             callback: function(token) {
-                 console.log(`Challenge Success ${token}`);
+                var captcha=document.getElementById("captcha")
+                captcha.value=`${token}`
+                captcha.setAttribute("disabled", false);
+                
             },
         });
     };
