@@ -70,8 +70,10 @@
         turnstile.render('#example-container', {
             sitekey: '0x4AAAAAAALlVPrBCGi_rKKF',
             callback: function(token) {
+                console.log(`Challenge Success ${token}`);
                 document.getElementById('captcha').value= document.getElementsByClassName("cf-turnstile")[0].getElementsByTagName("input")[0].value
                 document.getElementById("submit").disabled = false
+                console.log(`Challenge Success ${token}`);
             },
         });
 };
