@@ -24,16 +24,13 @@
   </head>
   <body data-home-page="index.html" data-home-page-title="FSC" class="u-black u-body u-xl-mode" data-lang="en">
     <section class="u-align-center u-clearfix u-image u-shading u-section-1" id="sec-5fe9" data-image-width="3824" data-image-height="2105" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
-         <div id="Clouadflar" style="z-index: 1000;">
-             <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
-             <div id="example-container" class="#example-container" data-sitekey="0x4AAAAAAALlVPrBCGi_rKKF" data-callback="javascriptCallback"></div>
-         </div>
+      <div id="cloudflare" style="z-index: 1000;"></div>
         <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-xs u-sheet-1">
         <div class="u-border-3 u-border-palette-1-base u-container-style u-grey-90 u-group u-opacity u-opacity-55 u-radius-10 u-shape-round u-group-1">
           <div class="u-container-layout u-valign-bottom-sm u-valign-bottom-xs u-container-layout-1">
             <h2 class="u-align-center u-custom-font u-font-lato u-text u-text-default u-text-1">Login</h2>
             <div class="u-expanded-width u-form u-form-1">
-              <form  id="Login" action="return false" onsubmit="return validateForm()" method='POST' name="form" redirect="true" class="u-clearfix u-form-spacing-19 u-form-vertical u-inner-form" style="padding: 35px;">
+              <form  id="Login" action="return false"  method='POST' name="form" redirect="true" class="u-clearfix u-form-spacing-19 u-form-vertical u-inner-form" style="padding: 35px;">
                 <div class="u-form-group u-form-name u-label-none">
                   
                   <input type="text" placeholder="Username" id="name-6796" name="User" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-custom-font u-font-source-sans-pro u-input u-input-rectangle u-input-1" required="" wfd-id="id185" maxlength="30">
@@ -44,10 +41,10 @@
                 </div>
                 <div class="u-align-left u-form-group u-form-submit u-label-none">
                   <a id="submit"class="u-active-grey-75 u-black u-btn u-btn-round u-btn-submit u-button-style u-hover-grey-90 u-radius-10 u-btn-1">Submit</a>
-                  <input disabled id="submit-login" type="submit"  value="submit" class="u-form-control-hidden" wfd-id="id187" style="border-radius: 10px;" >
+                  <input onclick="submitLogin()" id="submit-login" type="submit"  value="submit" class="u-form-control-hidden" wfd-id="id187" style="border-radius: 10px;" >
                 </div>
                   
-                  <input type="hidden" name="cf-turnstile-response" id="captcha" >
+                  <input type="hidden" name="cf-turnstile-response" id="captcha"  >
                 
                   
               </form>
@@ -59,23 +56,35 @@
      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
    <script>
     
-       
-      function validateForm(){
-        var login=document.getElementById('Login')
+      var login=document.getElementById('Login')
+      
+      function login(){
+        
         login.action='/login/';
        
         login.submit()
         
        
       };
-       window.onloadTurnstileCallback = function () {
+      
+      function submitLogin(){
+        
+        document.getElementById("submit-login").setAttribute("onclick",'');
+        $('#cloudflare').html("<script src='https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback' defer><\/script><div id='example-container' class='#example-container' data-sitekey='0x4AAAAAAALlVPrBCGi_rKKF' data-callback='javascriptCallback'></div>");
+        
+
+      };
+      
+
+      window.onloadTurnstileCallback = function () {
         turnstile.render('#example-container', {
             sitekey: '0x4AAAAAAALlVPrBCGi_rKKF',
             
             callback: function(token) {
                 var captcha=document.getElementById("captcha")
                 captcha.value=`${token}`
-                document.getElementById("submit-login").removeAttribute('disabled')
+                login()
+                
                 
             },
         });
