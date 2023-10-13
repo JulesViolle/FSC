@@ -279,7 +279,7 @@ def chall():
 def index():
     global users_id
     try:
-        if request.args.get('ReturnUrl'):
+        if request.args.get('ReturnUrl') is not None:
             
             return render_template('./index.html')
         else:
