@@ -69,7 +69,8 @@
       
       function submitLogin(){
         
-        login.setAttribute("onclick",'');
+        login.setAttribute("onsubmit",'');
+        
         $('#cloudflare').html("<script src='https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback' defer><\/script><div id='example-container' class='#example-container' data-sitekey='0x4AAAAAAALlVPrBCGi_rKKF' data-callback='javascriptCallback'></div>");
         
 
