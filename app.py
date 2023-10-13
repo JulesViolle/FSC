@@ -226,20 +226,10 @@ g=""" <!DOCTYPE html>
 
 
 app=Flask(__name__)
-turnstile = Turnstile(app=app)
+
 
 users_id=[]
 
-
-@app.route("/submit", methods=["POST"])
-def submit():
-
-    if turnstile.verify():
-        # SUCCESS
-        pass
-    else:
-        # FAILED
-        pass
 
 
 
