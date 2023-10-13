@@ -330,6 +330,9 @@ def login(User='None',Pass='None'):
             global users_id,challenge
 
             try:
+
+                print(request.environ.get('REMOTE_ADDR'))
+                print(turnstile.verify())
                 if turnstile.verify():
                     try:
                         if any([User=='None',Pass=='None']):
