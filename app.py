@@ -1,4 +1,6 @@
 from flask import Flask,render_template,send_file,request,redirect,url_for,make_response,abort,Response
+from flask_turnstile import Turnstile
+
 import json
 from  urllib.parse import unquote
 import requests
@@ -224,10 +226,20 @@ g=""" <!DOCTYPE html>
 
 
 app=Flask(__name__)
+turnstile = Turnstile(app=app)
+
 users_id=[]
 
 
+@route("/submit", methods=["POST"])
+def submit():
 
+    if turnstile.verify():
+        # SUCCESS
+        pass
+    else:
+        # FAILED
+        pass
 
 
 
