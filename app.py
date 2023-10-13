@@ -331,11 +331,22 @@ def login(User='None',Pass='None',cookie=False):
 
             try:
                 if cookie==True:
-                     
-                    if turnstile.verify():
+                    captcha=True
+                    
                     
                 
-                        try:
+                        
+
+
+                    
+                    
+                else:
+                    if turnstile.verify():
+                        captcha=True
+                    else:
+                         return {"Error":"Captcha Faield"}
+                if captcha==True:
+                    try:
                             if any([User=='None',Pass=='None']):
                                 Username=''.join(request.form['User'].split()).upper()
                                 Password=''.join(request.form['Pass'].split())
@@ -346,16 +357,17 @@ def login(User='None',Pass='None',cookie=False):
                                 f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':User,'Pass':Pass}).json()
 
 
-                        except:
+                    except:
 
-                            try:
+                        try:
                                 token=request.args.get('T')
 
                                 f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
-                            except:
+                        except:
 
                                 response=make_response(render_template('./index.html'))
                                 return response
+                        
                         if f['message']=='NF' :
 
                             response=make_response(redirect('/'))
@@ -399,17 +411,13 @@ def login(User='None',Pass='None',cookie=False):
 
                                 else:
                                     response=make_response(render_template("./login/login.html",data=f['token']))
-                                    return response
+                                    return response    
 
 
-                    else:return {"Error":"Captcha Faield"}
-                    
-                else:return {"Error":"Captcha Faield"}
 
                 
             except:
                 return E_404()
-
 
 
 @app.route('/flag/flag.html')
