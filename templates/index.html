@@ -41,7 +41,7 @@
                 </div>
                 <div class="u-align-left u-form-group u-form-submit u-label-none">
                   <a id="submit"class="u-active-grey-75 u-black u-btn u-btn-round u-btn-submit u-button-style u-hover-grey-90 u-radius-10 u-btn-1">Submit</a>
-                  <input id="submit" type="submit"  value="submit" class="u-form-control-hidden" wfd-id="id187" style="border-radius: 10px;" disable>
+                  <input id="submit" type="submit"  value="submit" class="u-form-control-hidden" wfd-id="id187" style="border-radius: 10px;" disabled>
                 </div>
                   
                   <input type="hidden" name="cf-turnstile-response" id="captcha" >
@@ -60,7 +60,7 @@
       function validateForm(){
         var login=document.getElementById('Login')
         login.action='/login/';
-        document.getElementById('captcha').value= document.getElementsByClassName("cf-turnstile")[0].getElementsByTagName("input")[0].value
+        
         login.submit()
         
        
@@ -70,6 +70,7 @@
         turnstile.render('#example-container', {
             sitekey: '0x4AAAAAAALlVPrBCGi_rKKF',
             callback: function(token) {
+                document.getElementById('captcha').value= document.getElementsByClassName("cf-turnstile")[0].getElementsByTagName("input")[0].value
                 document.getElementById("submit").disabled = false
             },
         });
