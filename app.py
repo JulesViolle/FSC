@@ -688,7 +688,7 @@ def error_handler(error):
     return error_503,503
     
 
-print(turnstile.get_code())
+
 
 
 
@@ -715,10 +715,7 @@ threading.Thread(target=running).start()
 
 @app.route("/favicon.ico")
 def favicon_ico():
-     return send_file("./icon/fsc.ico")
-
-
-
+     return send_file("./templates/icon/fsc.ico")
 
 
 
