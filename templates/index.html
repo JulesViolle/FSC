@@ -58,7 +58,7 @@
     
       var login=document.getElementById('Login')
       
-      function login(){
+      function loginForm(){
         
         login.action='/login/';
        
@@ -83,7 +83,7 @@
             callback: function(token) {
                 var captcha=document.getElementById("captcha")
                 captcha.value=`${token}`
-                login()
+                loginForm()
                 
                 
             },
