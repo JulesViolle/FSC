@@ -299,7 +299,7 @@ def index():
                     
                     userid=json.loads(b64decode(userid))
                     
-                    response=make_response(login(userid['user'],userid['pass']))
+                    response=make_response(login(userid['user'],userid['pass'],cookie=True))
                     return response
                 except:
                    return render_template('./index.html')
