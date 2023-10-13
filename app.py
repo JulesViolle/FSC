@@ -242,6 +242,8 @@ users_id=[]
 
 
 
+
+
 musics={
     1:r"./templates/audio/Apokalypse.mp3",
     0:r"./templates/audio/God.mp3",
@@ -279,33 +281,32 @@ def chall():
 def index():
     global users_id
     try:
-        if request.args.get('ReturnUrl') is not None:
-            
-            return render_template('./index.html')
+        if request.args.get('ReturnUrl')=="login":
+            response=make_response(render_template('./index.html'))
+            return response
+        
+        userid=request.cookies.get("userID")
+
+        if userid==None or userid=='':
+
+                return render_template('./index.html')
         else:
-            userid=request.cookies.get("userID")
-    
-            if userid==None or userid=='':
-    
-                    return render_template('./index.html')
-            else:
-                    try:
-                        
-    
-                        
-                        
-    
-                        userid=dec_func.decrypt(b64decode(request.cookies.get("userID").encode('utf-8')))
-                        
-                        userid=json.loads(b64decode(userid))
-                        
-                        response=make_response(login(userid['user'],userid['pass'],cookie=True))
-                        return response
-                    except:
-                       return render_template('./index.html')
+                try:
+                    
+
+                    
+                    
+
+                    userid=dec_func.decrypt(b64decode(request.cookies.get("userID").encode('utf-8')))
+                    
+                    userid=json.loads(b64decode(userid))
+                    
+                    response=make_response(login(userid['user'],userid['pass'],cookie=True))
+                    return response
+                except:
+                   return render_template('./index.html')
     except:
         return E_404()
-
 
 @app.route('/536')
 def P_536():
@@ -336,6 +337,8 @@ def login(User='None',Pass='None',cookie=False):
             captcha=False
 
             try:
+                
+                
                 if cookie==True:
                     captcha=True
                     
@@ -347,9 +350,9 @@ def login(User='None',Pass='None',cookie=False):
                     
                     
                 else:
-                    if turnstile.verify(response=request.args.get('cf-turnstile-response')):
+                    if turnstile.verify():
                         captcha=True
-                
+                    
                 if captcha==True:
                     try:
                             if any([User=='None',Pass=='None']):
@@ -364,7 +367,12 @@ def login(User='None',Pass='None',cookie=False):
 
                     except:
 
-                        
+                        try:
+                                token=request.args.get('T')
+
+                                f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
+                        except:
+
                                 response=make_response(render_template('./index.html'))
                                 return response
                         
@@ -413,13 +421,12 @@ def login(User='None',Pass='None',cookie=False):
                                 response=make_response(render_template("./login/login.html",data=f['token']))
                                 return response    
                 else:
-                        return {"Error":"Incorrect Captcha!"}
+                        return {"Error":"Captcha Faield"}
 
 
                 
             except:
                 return E_404()
-
 
 @app.route('/flag/flag.html')
 def flag_html():
@@ -681,7 +688,7 @@ def error_handler(error):
     return error_503,503
     
 
-
+print(turnstile.get_code())
 
 
 
@@ -703,6 +710,17 @@ def running():
 
 
 threading.Thread(target=running).start()
+
+
+
+@app.route("/favicon.ico")
+
+def favicon_ico():
+     return send_file("./icon/fsc.ico")
+
+
+
+
 
 
 #@app.before_request
