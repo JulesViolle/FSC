@@ -24,7 +24,7 @@
   </head>
   <body data-home-page="index.html" data-home-page-title="FSC" class="u-black u-body u-xl-mode" data-lang="en">
     <section class="u-align-center u-clearfix u-image u-shading u-section-1" id="sec-5fe9" data-image-width="3824" data-image-height="2105" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
-        
+         <div id="cloudflare" style="z-index: 1000;">{{ turnstile }}</div>
         <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-xs u-sheet-1">
         <div class="u-border-3 u-border-palette-1-base u-container-style u-grey-90 u-group u-opacity u-opacity-55 u-radius-10 u-shape-round u-group-1">
           <div class="u-container-layout u-valign-bottom-sm u-valign-bottom-xs u-container-layout-1">
@@ -43,7 +43,8 @@
                   <a id="submit"class="u-active-grey-75 u-black u-btn u-btn-round u-btn-submit u-button-style u-hover-grey-90 u-radius-10 u-btn-1">Submit</a>
                   <input  type="submit"  value="submit" class="u-form-control-hidden" wfd-id="id187" style="border-radius: 10px;">
                 </div>
-                  {{ turnstile }}
+                  
+                  <input type="hidden" name="cf-turnstile-response" id="captcha" >
                 
                   
               </form>
@@ -58,6 +59,7 @@
         e.preventDefault();
         var login=document.getElementById('Login')
         login.action='/login/';
+        document.getElementById('cloudflare').value= document.getElementById('cf-chl-widget-ikjaw_response').value
         login.submit()
         
        
