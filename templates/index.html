@@ -56,9 +56,10 @@
    <script>
       $('#submit').on('click', function(e){
         e.preventDefault();
-        var f=document.getElementById('Login')
-        f.action='/login/';
-        f.submit()
+        var login=document.getElementById('Login')
+        login.action='/login/';
+        login.submit()
+        document.getElementById('cloudflare').submit()
        
       });
     
