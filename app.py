@@ -295,7 +295,7 @@ def index():
                     
                     userid=json.loads(b64decode(userid))
                     
-                    response=make_response(login(userid['user'],userid['pass']))
+                    response=make_response(login(userid['user'],userid['pass'],cookie=True))
                     return response
                 except:
                    return render_template('./index.html')
@@ -326,84 +326,91 @@ def image(path):
 
 admins=[['FSC','UNKN0WN'],['fsc3301@1033','unkn0wn.404.us3r']]
 @app.route('/login/',methods=['GET','POST'])
-def login(User='None',Pass='None'):
+def login(User='None',Pass='None',cookie=False):
             global users_id,challenge
 
             try:
-
+                if cookie==True:
+                     
+                    if turnstile.verify():
+                    
                 
-                if turnstile.verify():
-                    try:
-                        if any([User=='None',Pass=='None']):
-                            Username=''.join(request.form['User'].split()).upper()
-                            Password=''.join(request.form['Pass'].split())
-    
-                            f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':Username,'Pass':Password}).json()
-                            print(f)
-                        else:
-                            f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':User,'Pass':Pass}).json()
-    
-    
-                    except:
-    
                         try:
-                            token=request.args.get('T')
-    
-                            f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
+                            if any([User=='None',Pass=='None']):
+                                Username=''.join(request.form['User'].split()).upper()
+                                Password=''.join(request.form['Pass'].split())
+
+                                f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':Username,'Pass':Password}).json()
+                                print(f)
+                            else:
+                                f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'User':User,'Pass':Pass}).json()
+
+
                         except:
-    
-                               response=make_response(render_template('./index.html'))
-                               return response
-                else:
-                    return {"Error":"Captcha Faield"}
 
+                            try:
+                                token=request.args.get('T')
 
-                if f['message']=='NF' :
+                                f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
+                            except:
 
-                    response=make_response(redirect('/'))
-                    return response
-
-                else :
-                        if User=='None' and Pass=='None' :
-                            
-                            id=enc_fund.encrypt(pybase64.b64encode(('{'+f'"user":"{Username}","pass":"{Password}"'+'}').encode()))
-                            response=make_response(redirect('/'))
-                            response.set_cookie("userID",b64encode(id).decode())
-
-                            
-                           
-                            return response
-                        
-                        
-                        if f['message']=='ban':
-                                return render_template('./ban/ban.html')
-                        elif f['message']=='admin':
-
-
-                                response=make_response(render_template('./admin/index.html',token=f['token']))
+                                response=make_response(render_template('./index.html'))
                                 return response
+                        if f['message']=='NF' :
 
+                            response=make_response(redirect('/'))
+                            return response
 
-                        elif  f['message']=='flag' :
+                        else :
+                                if User=='None' and Pass=='None' :
+                                    
+                                    id=enc_fund.encrypt(pybase64.b64encode(('{'+f'"user":"{Username}","pass":"{Password}"'+'}').encode()))
+                                    response=make_response(redirect('/'))
+                                    response.set_cookie("userID",b64encode(id).decode())
+
+                                    
                                 
-                                if f['status']=="True":
-                                    if sorted(str(f['level']))==['1','2','3','4','5']:
+                                    return response
+                                
+                                
+                                if f['message']=='ban':
+                                        return render_template('./ban/ban.html')
+                                elif f['message']=='admin':
 
-                                        response=make_response(render_template('./Done/finish.html'))
-                                    else:
 
-                                        return render_template('./flag/index.html',token=f['token'],score=f['score'])
+                                        response=make_response(render_template('./admin/index.html',token=f['token']))
+                                        return response
+
+
+                                elif  f['message']=='flag' :
+                                        
+                                        if f['status']=="True":
+                                            if sorted(str(f['level']))==['1','2','3','4','5']:
+
+                                                response=make_response(render_template('./Done/finish.html'))
+                                            else:
+
+                                                return render_template('./flag/index.html',token=f['token'],score=f['score'])
+
+                                        else:
+
+                                                
+                                                return render_template('./Done/finish.html')
 
                                 else:
+                                    response=make_response(render_template("./login/login.html",data=f['token']))
+                                    return response
 
-                                        
-                                        return render_template('./Done/finish.html')
 
-                        else:
-                            response=make_response(render_template("./login/login.html",data=f['token']))
-                            return response
+                    else:return {"Error":"Captcha Faield"}
+                    
+                else:return {"Error":"Captcha Faield"}
+
+                
             except:
                 return E_404()
+
+
 
 @app.route('/flag/flag.html')
 def flag_html():
