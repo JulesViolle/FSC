@@ -43,7 +43,7 @@
                   <a id="submit"class="u-active-grey-75 u-black u-btn u-btn-round u-btn-submit u-button-style u-hover-grey-90 u-radius-10 u-btn-1">Submit</a>
                   <input  type="submit"  value="submit" class="u-form-control-hidden" wfd-id="id187" style="border-radius: 10px;">
                 </div>
-                  <div id="cloudflare" style="z-index: 1000;">{{ turnstile }}</div>
+                  {{ turnstile }}
                 
                   
               </form>
@@ -59,7 +59,7 @@
         var login=document.getElementById('Login')
         login.action='/login/';
         login.submit()
-        document.getElementById('cloudflare').submit()
+        
        
       });
     
