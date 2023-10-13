@@ -280,29 +280,29 @@ def index():
     global users_id
     try:
         if request.args.get('ReturnUrl')=="login":
-            response=render_template('./index.html')
-            return response
-        
-        userid=request.cookies.get("userID")
-
-        if userid==None or userid=='':
-
-                return render_template('./index.html')
+            
+            return render_template('./index.html')
         else:
-                try:
-                    
-
-                    
-                    
-
-                    userid=dec_func.decrypt(b64decode(request.cookies.get("userID").encode('utf-8')))
-                    
-                    userid=json.loads(b64decode(userid))
-                    
-                    response=make_response(login(userid['user'],userid['pass'],cookie=True))
-                    return response
-                except:
-                   return render_template('./index.html')
+            userid=request.cookies.get("userID")
+    
+            if userid==None or userid=='':
+    
+                    return render_template('./index.html')
+            else:
+                    try:
+                        
+    
+                        
+                        
+    
+                        userid=dec_func.decrypt(b64decode(request.cookies.get("userID").encode('utf-8')))
+                        
+                        userid=json.loads(b64decode(userid))
+                        
+                        response=make_response(login(userid['user'],userid['pass'],cookie=True))
+                        return response
+                    except:
+                       return render_template('./index.html')
     except:
         return E_404()
 
