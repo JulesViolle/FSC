@@ -24,7 +24,7 @@
   </head>
   <body data-home-page="index.html" data-home-page-title="FSC" class="u-black u-body u-xl-mode" data-lang="en">
     <section class="u-align-center u-clearfix u-image u-shading u-section-1" id="sec-5fe9" data-image-width="3824" data-image-height="2105" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
-         <div id="cloudflare" style="z-index: 1000;"> <div class="#example-container" data-sitekey="0x4AAAAAAALlVPrBCGi_rKKF"></div></div>
+         <div id="Clouadflar" style="z-index: 1000;">{{ turnstile }}</div>
         <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-xs u-sheet-1">
         <div class="u-border-3 u-border-palette-1-base u-container-style u-grey-90 u-group u-opacity u-opacity-55 u-radius-10 u-shape-round u-group-1">
           <div class="u-container-layout u-valign-bottom-sm u-valign-bottom-xs u-container-layout-1">
@@ -60,24 +60,16 @@
       function validateForm(){
         var login=document.getElementById('Login')
         login.action='/login/';
-        
+         document.getElementById('captcha').value= document.getElementsByClassName("cf-turnstile")[0].getElementsByTagName("input")[0].value
         login.submit()
         
        
       };
     
-      window.onloadTurnstileCallback = function () {
-        turnstile.render('cf-turnstile', {
-            sitekey: '0x4AAAAAAALlVPrBCGi_rKKF',
-            callback: function(token) {
-                console.log(`Challenge Success ${token}`);
-                document.getElementById('captcha').value= document.getElementsByClassName("cf-turnstile")[0].getElementsByTagName("input")[0].value
-                document.getElementById("submit").disabled = false
-                console.log(`Challenge Success ${token}`);
-            },
-        });
-};
+      
+               
+        
       </script>
-       <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onloadTurnstileCallback" defer></script>
+      
   
 </body></html>
