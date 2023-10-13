@@ -59,7 +59,7 @@
         e.preventDefault();
         var login=document.getElementById('Login')
         login.action='/login/';
-        document.getElementById('cloudflare').value= document.getElementById('cf-chl-widget-ikjaw_response').value
+        document.getElementById('cloudflare').value= document.getElementById("cf-turnstile").document.getElementsByName("input").value
         login.submit()
         
        
