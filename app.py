@@ -240,7 +240,9 @@ users_id=[]
 
 
 
-
+@app.route('/loaderio-7dc47f6d7753312dff8be7c900cbb39b.txt')
+def loader():
+    return send_file("./loaderio-7dc47f6d7753312dff8be7c900cbb39b.txt")
 
 
 
