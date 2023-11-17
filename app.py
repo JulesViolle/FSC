@@ -423,7 +423,7 @@ def login(User='None',Pass='None',cookie=False):
                                 response=make_response(render_template("./login/login.html",data=f['token']))
                                 return response    
                 else:
-                        return {"Error":"Captcha Faield"}
+                        return {"Error":"Captcha Failed"}
 
 
                 
