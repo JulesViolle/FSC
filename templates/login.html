@@ -8,15 +8,57 @@
 </head>
 <body>
     <div class="container">
-        <form action="#" class="login-form">
+        <form id="Login" action="return false" onsubmit="submitLogin()" method='POST' name="form" redirect="true"  class="login-form">
             <h1>Login</h1>
             <label for="username">Username:</label>
             <input type="text" id="username" name="User" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="Pass" required>
             <button type="submit">Login</button>
+            <input type="hidden" name="cf-turnstile-response" id="captcha"  >
         </form>
     </div>
+    <script>
+    
+      var login=document.getElementById('Login')
+      
+      function loginForm(){
+        
+        login.action='/login/';
+       
+        login.submit()
+        
+       
+      };
+      
+      function submitLogin(){
+        
+        login.setAttribute("onsubmit",'');
+        
+        $('#cloudflare').html("<script src='https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback' defer><\/script><div id='example-container' class='#example-container' data-sitekey='0x4AAAAAAALlVPrBCGi_rKKF' data-callback='javascriptCallback'></div>");
+        
+
+      };
+      
+
+      window.onloadTurnstileCallback = function () {
+        turnstile.render('#example-container', {
+            sitekey: '0x4AAAAAAALlVPrBCGi_rKKF',
+            
+            callback: function(token) {
+                var captcha=document.getElementById("captcha")
+                captcha.value=`${token}`
+                loginForm()
+                
+                
+            },
+        });
+    };
+      
+               
+        
+      </script>
+    
 </body>
 </html>
 
