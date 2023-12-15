@@ -277,21 +277,21 @@ def chall():
 
 
 
-
+mainpage="login.html"
 
 @app.route('/')
 def index():
     global users_id
     try:
         if request.args.get('ReturnUrl')=="login":
-            response=make_response(render_template('./login.html'))
+            response=make_response(render_template(f'./{mainpage}'))
             return response
         
         userid=request.cookies.get("userID")
 
         if userid==None or userid=='':
 
-                return render_template('./login.html')
+                return render_template(f'./{mainpage}')
         else:
                 try:
                     
@@ -306,7 +306,7 @@ def index():
                     response=make_response(login(userid['user'],userid['pass'],cookie=True))
                     return response
                 except:
-                   return render_template('./login.html')
+                   return render_template(f'./{mainpage}')
     except:
         return E_404()
 
@@ -375,7 +375,7 @@ def login(User='None',Pass='None',cookie=False):
                                 f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
                         except:
 
-                                response=make_response(render_template('./index.html'))
+                                response=make_response(render_template(f'./{mainpage}'))
                                 return response
                         
                     if f['message']=='NF' :
@@ -448,7 +448,7 @@ def email():
         print(email,token)
         full_resalt=requests.post('https://fsc3301.pythonanywhere.com/email/',data={'email':email,'token':token}).json()['message']
 
-        return render_template('./index.html')
+        return render_template(f'./{mainpage}')
     except:
        return E_404()
 
