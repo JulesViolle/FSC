@@ -306,7 +306,7 @@ def index():
                     response=make_response(login(userid['user'],userid['pass'],cookie=True))
                     return response
                 except:
-                   return render_template('./index.html')
+                   return render_template('./login.html')
     except:
         return E_404()
 
