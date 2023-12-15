@@ -48,7 +48,7 @@ input {
     color: #fff;
 }
 
-button {
+#submit-login {
     background: #008F11;
     color: black;
     padding: 10px 20px;
@@ -59,7 +59,7 @@ button {
     transition: background 0.3s;
 }
 
-button:hover {
+#submit-login:hover {
     background: #003B00;
 }
 
