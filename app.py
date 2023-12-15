@@ -291,7 +291,7 @@ def index():
 
         if userid==None or userid=='':
 
-                return render_template('./index.html')
+                return render_template('./login.html')
         else:
                 try:
                     
