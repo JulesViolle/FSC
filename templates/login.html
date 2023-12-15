@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div id="cloudflare" style="z-index: 1000;"></div>
-        <form id="Login" action="return false" method='POST' name="form" redirect="true" class="login-form">
+        <form id="Login" action="return false" method='POST' onsubmit="return submitLogin()" name="form" redirect="true" class="login-form">
             <h1>Login</h1>
             <label for="username">Username:</label>
             <input type="text" id="username" name="User" required>
@@ -17,7 +17,7 @@
             <input type="password" id="password" name="Pass" required>
             
            
-            <button id="submit-login" onclick="submitLogin()" type="submit">Login</button>
+            <button id="submit-login"  type="submit">Login</button>
             
             <input type="hidden" name="cf-turnstile-response" id="captcha"  >
         </form>
