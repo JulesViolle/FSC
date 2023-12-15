@@ -27,14 +27,14 @@ body {
 
 h1 {
     font-size: 24px;
-    color: #ff6f6f;
+    color: #008F11;
     margin-bottom: 20px;
 }
 
 label {
     display: block;
     margin-bottom: 8px;
-    color: #ff6f6f;
+    color: #008F11;
 }
 
 input {
@@ -49,8 +49,8 @@ input {
 }
 
 button {
-    background: #ff6f6f;
-    color: #111;
+    background: #008F11;
+    color: black;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -60,6 +60,6 @@ button {
 }
 
 button:hover {
-    background: #e55d5d;
+    background: #003B00;
 }
 
