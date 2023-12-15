@@ -277,7 +277,7 @@ def chall():
 
 
 
-mainpage="login.html"
+mainpage="index.html"
 
 @app.route('/')
 def index():
