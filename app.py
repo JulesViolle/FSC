@@ -284,7 +284,7 @@ def index():
     global users_id
     try:
         if request.args.get('ReturnUrl')=="login":
-            response=make_response(render_template('./index.html'))
+            response=make_response(render_template('./login.html'))
             return response
         
         userid=request.cookies.get("userID")
