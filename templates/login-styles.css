@@ -51,7 +51,7 @@ label {
     color: #008F11;
 }
 
-input {
+.userpass-style {
     width: 100%;
     padding: 8px;
     margin-bottom: 16px;
