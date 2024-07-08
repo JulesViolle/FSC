@@ -721,18 +721,14 @@ def favicon_ico():
 
 
 
-#@app.before_request
-#def before_request_func():
-        #global update
-        #try:
-            #if update=="False" and all([request.path !='/fsc/update/OSDw9qedpqujdad5s74das8dsa5d4a5584sad345a',request.path != "/fsc/update/KDIjasdasoijdnfs3306",request.path !='/vercel/update/site/fsc52as8d7']) :
-                #response=make_response(g)
-                #return response
-            #else:
-                #pass
-        #except:
-            #response=make_response(g)
-            #return response
+@app.before_request
+def before_request_func():
+        global update
+        try:
+            print(request.remote_addr)
+        except:
+            response=make_response(g)
+            return response
 
 
 
