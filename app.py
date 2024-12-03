@@ -380,7 +380,7 @@ def login(User='None',Pass='None',cookie=False):
                         
                     if f['message']=='NF' :
 
-                        response=make_response(redirect('/'))
+                        response=make_response(redirect('/sdfdsff'))
                         return response
 
                     else :
