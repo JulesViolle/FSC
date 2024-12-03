@@ -375,12 +375,15 @@ def login(User='None',Pass='None',cookie=False):
                                 f=requests.post('https://fsc3301.pythonanywhere.com/login/',data={'T':token}).json()
                         except:
 
-                                response=make_response(render_template(f'./{mainpage}'))
+                                #response=make_response(render_template(f'./{mainpage}'))
+                                #return response
+                            
+                                response=make_response(redirect('/'))
                                 return response
                         
                     if f['message']=='NF' :
 
-                        response=make_response(redirect('/sdfdsff'))
+                        response=make_response(redirect('/'))
                         return response
 
                     else :
