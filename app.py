@@ -240,6 +240,28 @@ users_id=[]
 
 
 
+#zeno project
+@app.route('/zeno/<path:path>')
+def zeno(path):
+    try:
+        print(path)
+        return send_file(f"./templates/action-zeno/{path}",as_attachment=True)
+    except Exeptions as e:
+        print(e)
+        return E_404()
+
+
+
+
+
+
+
+
+
+
+
+
+
 @app.route('/loaderio-7dc47f6d7753312dff8be7c900cbb39b.txt')
 def loader():
     return send_file("./loaderio-7dc47f6d7753312dff8be7c900cbb39b.txt")
