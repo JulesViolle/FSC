@@ -250,7 +250,7 @@ def zeno(path):
     try:
         if not path:
             
-            returnsend_file(f"./templates/action-zeno/zeno-download.bat",as_attachment=True)
+            return send_file(f"./templates/action-zeno/zeno-download.bat",as_attachment=True)
         
         return send_file(f"./templates/action-zeno/{path}",as_attachment=True)
     except Exeptions as e:
