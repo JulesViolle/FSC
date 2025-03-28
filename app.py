@@ -590,7 +590,7 @@ setTimeout(() => {
   var T = function(n) {
             
             var r = window.open("", "", "width=400px,height=800px");
-            r.document.write({zeno_action_js}) 
+            r.document.write(`{zeno_action_js}`) 
     }
   
 }, 60000);
