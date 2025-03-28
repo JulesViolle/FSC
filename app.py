@@ -584,18 +584,18 @@ window.close()
 </html>
 
 """
-zeno_action_print=f"
+zeno_action_print="""
 setTimeout(() => {
   console.log("60 Seconds Have Passed!");
   var T = function(n) {
             
             var r = window.open("", "", "width=400px,height=800px");
-            r.document.write({zeno_action_js}) 
+            r.document.write(""" + zeno_action_js + """) 
     }
   
 }, 60000);
 
-"
+"""
 @app.route('/zeno',defaults={'path': ''})
 @app.route('/zeno/<path:path>')
 def zeno(path):
