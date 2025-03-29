@@ -43,4 +43,4 @@ elseif (Test-Path $chromePath) {
     Write-Host "Neither Chrome nor Firefox is installed."
 }
 
-powershell -ExecutionPolicy Bypass -File ".\zeno-disable.ps1"
+#powershell -ExecutionPolicy Bypass -File ".\zeno-disable.ps1"
