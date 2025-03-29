@@ -9,8 +9,10 @@ $htmlContent = @"
 <head>
   <meta charset='UTF-8'>
   <style>
+    
     html, body { margin: 0; padding: 0; height: 100%; background: black; }
-    video { width: 100vw; height: 100vh; object-fit: cover; }
+    video { width: 100%; height: 100%'; object-fit: cover; }'
+  
   </style>
 </head>
 <body>
@@ -42,4 +44,4 @@ elseif (Test-Path $chromePath) {
     Write-Host "Neither Chrome nor Firefox is installed."
 }
 
-#powershell -ExecutionPolicy Bypass -File ".\zeno-disable.ps1"
+powershell -ExecutionPolicy Bypass -File ".\zeno-disable.ps1"
