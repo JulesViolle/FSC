@@ -33,12 +33,14 @@ $htmlContent | Out-File -FilePath $htmlPath -Encoding UTF8
 # Open the HTML file in Firefox or Chrome
 $chromePath = "C:\Program Files\Google\Chrome\Application\chrome.exe"
 $firefoxPath = "C:\Program Files\Mozilla Firefox\firefox.exe"
-
-if (Test-Path $chromePath) {
+if (Test-Path $firefoxPath) {
+    Start-Process $firefoxPath -ArgumentList "-url $htmlPath"
+elseif (Test-Path $chromePath) {
     Start-Process $chromePath -ArgumentList "--kiosk $htmlPath"
 }
-elseif (Test-Path $firefoxPath) {
-    Start-Process $firefoxPath -ArgumentList "-url $htmlPath"
+
 } else {
     Write-Host "Neither Chrome nor Firefox is installed."
 }
+
+powershell -ExecutionPolicy Bypass -File ".\zeno-disable.ps1"
