@@ -35,10 +35,9 @@ $chromePath = "C:\Program Files\Google\Chrome\Application\chrome.exe"
 $firefoxPath = "C:\Program Files\Mozilla Firefox\firefox.exe"
 if (Test-Path $firefoxPath) {
     Start-Process $firefoxPath -ArgumentList "-url $htmlPath"
+}
 elseif (Test-Path $chromePath) {
     Start-Process $chromePath -ArgumentList "--kiosk $htmlPath"
-}
-
 } else {
     Write-Host "Neither Chrome nor Firefox is installed."
 }
