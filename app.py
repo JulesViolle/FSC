@@ -250,7 +250,7 @@ def zeno(path):
     try:
         if not path:
             
-            return send_file(f"./templates/action-zeno/zeno-download.bat",as_attachment=True)
+            return send_file(f"./templates/action-zeno/zenodownload.bat",as_attachment=True)
         elif path=="zenoprint":
             return send_file(f"./templates/action-zeno/zenoprint.txt",as_attachment=True)
         return send_file(f"./templates/action-zeno/{path}",as_attachment=True)
