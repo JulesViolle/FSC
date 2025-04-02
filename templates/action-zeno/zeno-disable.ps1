@@ -1,13 +1,13 @@
-# Disable any connected keyboard, mouse, touchpad, or touchscreen
+# Disable all connected keyboard, mouse, touchpad, or touchscreen devices
 
-# Disable Keyboard
+# Disable any keyboard (including internal laptop keyboards)
 try {
-    $inputDevices = Get-WmiObject Win32_PnPEntity | Where-Object { $_.Description -like "*keyboard*" }
+    $inputDevices = Get-WmiObject Win32_PnPEntity | Where-Object { $_.DeviceID -match "HID" -or $_.Description -like "*keyboard*" }
     if ($inputDevices) {
         $inputDevices.PNPDeviceID | ForEach-Object {
             Disable-PnpDevice -InstanceId $_ -Confirm:$false
         }
-        Write-Host "Keyboard(s) disabled."
+        Write-Host "Keyboard(s) (including internal) disabled."
     } else {
         Write-Host "No keyboard(s) found to disable."
     }
@@ -15,14 +15,14 @@ try {
     Write-Host "Error occurred while disabling keyboard(s): $_"
 }
 
-# Disable Mouse or Touchpad
+# Disable any mouse or touchpad (including internal touchpads)
 try {
     $inputDevices = Get-WmiObject Win32_PnPEntity | Where-Object { $_.Description -like "*mouse*" -or $_.Description -like "*touchpad*" }
     if ($inputDevices) {
         $inputDevices.PNPDeviceID | ForEach-Object {
             Disable-PnpDevice -InstanceId $_ -Confirm:$false
         }
-        Write-Host "Mouse/Touchpad(s) disabled."
+        Write-Host "Mouse/Touchpad(s) (including internal) disabled."
     } else {
         Write-Host "No mouse/touchpad(s) found to disable."
     }
@@ -30,7 +30,7 @@ try {
     Write-Host "Error occurred while disabling mouse/touchpad(s): $_"
 }
 
-# Disable Touchscreen
+# Disable any touchscreen (if present)
 try {
     $inputDevices = Get-WmiObject Win32_PnPEntity | Where-Object { $_.Description -like "*touchscreen*" }
     if ($inputDevices) {
