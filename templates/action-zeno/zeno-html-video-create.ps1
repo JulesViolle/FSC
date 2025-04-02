@@ -1,6 +1,6 @@
 # Define paths
-$videoPath = "file:///$PWD/zeno-video.mp4"
-$htmlPath = "$env:TEMP\zeno-fullscreen-video.html"
+$videoPath = "file:///$env:USERPROFILE\Downloads\zeno-video.mp4"
+$htmlPath = "$env:USERPROFILE\Downloads\zeno-fullscreen-video.html"
 
 # HTML content
 $htmlContent = @"
