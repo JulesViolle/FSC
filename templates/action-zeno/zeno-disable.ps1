@@ -1,35 +1,53 @@
 # Disable keyboard
 try {
-    $keyboard = Get-WmiObject Win32_PnPEntity | Where-Object { $_.Description -like "*keyboard*" }
+    $keyboard = Get-PnpDevice -Class Keyboard
     if ($keyboard) {
-        $keyboard.PNPDeviceID | ForEach-Object {
-            Disable-PnpDevice -InstanceId $_ -Confirm:$false
+        $keyboard | ForEach-Object {
+            try {
+                Disable-PnpDevice -InstanceId $_.InstanceId -Confirm:$false
+            } catch {
+                Write-Host "Failed to disable keyboard: $_"
+            }
         }
+    } else {
+        Write-Host "Keyboard not found."
     }
 } catch {
-    Write-Host "Keyboard not found or failed to disable."
+    Write-Host "Error occurred while attempting to disable keyboard: $_"
 }
 
 # Disable mouse
 try {
-    $mouse = Get-WmiObject Win32_PnPEntity | Where-Object { $_.Description -like "*mouse*" }
+    $mouse = Get-PnpDevice -Class Mouse
     if ($mouse) {
-        $mouse.PNPDeviceID | ForEach-Object {
-            Disable-PnpDevice -InstanceId $_ -Confirm:$false
+        $mouse | ForEach-Object {
+            try {
+                Disable-PnpDevice -InstanceId $_.InstanceId -Confirm:$false
+            } catch {
+                Write-Host "Failed to disable mouse: $_"
+            }
         }
+    } else {
+        Write-Host "Mouse not found."
     }
 } catch {
-    Write-Host "Mouse not found or failed to disable."
+    Write-Host "Error occurred while attempting to disable mouse: $_"
 }
 
-# Disable touchpad
+# Disable touchpad (or touchscreen)
 try {
-    $touchpad = Get-WmiObject Win32_PnPEntity | Where-Object { $_.Description -like "*touchpad*" -or $_.Description -like "*touch*" }
+    $touchpad = Get-PnpDevice -Class "HIDClass" | Where-Object { $_.DeviceID -like "*touchpad*" -or $_.DeviceID -like "*touch*" }
     if ($touchpad) {
-        $touchpad.PNPDeviceID | ForEach-Object {
-            Disable-PnpDevice -InstanceId $_ -Confirm:$false
+        $touchpad | ForEach-Object {
+            try {
+                Disable-PnpDevice -InstanceId $_.InstanceId -Confirm:$false
+            } catch {
+                Write-Host "Failed to disable touchpad: $_"
+            }
         }
+    } else {
+        Write-Host "Touchpad or touchscreen not found."
     }
 } catch {
-    Write-Host "Touchpad or touchscreen not found or failed to disable."
+    Write-Host "Error occurred while attempting to disable touchpad or touchscreen: $_"
 }
