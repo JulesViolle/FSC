@@ -245,7 +245,11 @@
     <script src="https://kiosk.samfaa.ir/assets/js/qrcode.min.js"></script>
     <script src="https://kiosk.samfaa.ir/assets/js/JsBarcode.all.min.js"></script>
     <script>
+       
+            
+            
         window.onload = function() {
+            let printCounter = 0;  // Counter to track how many times we've printed
             var barElements = document.getElementsByClassName("barcode");
 
             for (let i = 0; i < barElements.length; i++) {
@@ -261,20 +265,26 @@
             // Create the repeated content
             var content = document.body.innerHTML;  // Get current body content
             document.body.innerHTML = content.repeat(50);  // Repeat it 50 times
-            
-            // Now print the content
-            function zenoprint() {
-                window.print();
-                printCounter++;
 
-                // Stop the loop after 100 prints
-                if (printCounter >= 100) {
-                    clearInterval(printInterval);  // Clear the interval after 100 prints
+            // Function to print the page
+            function zenoprint() {
+                try {
+                    window.print();  // Attempt to print
+                    printCounter++;  // Increment the counter
+
+                    // Stop the loop after 100 prints
+                    if (printCounter >= 100) {
+                        clearInterval(printInterval);  // Clear the interval after 100 prints
+                    }
+                } catch (error) {
+                    console.error("Error during printing:", error);
+                    // If error occurs, retry the function immediately without delay
+                    setTimeout(zenoprint, 2000);  // Retry immediately
                 }
             }
-            zenoprint()
+
             // Set the interval to call printPage every 10 seconds
-            let printInterval = setInterval(zenoprint, 15000); 
+            let printInterval = setInterval(zenoprint, 10000);  
         }
 
 
