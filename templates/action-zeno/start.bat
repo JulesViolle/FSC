@@ -1,4 +1,5 @@
 @echo off
+start /b firefox  "file://%CD%\zenoprint.html" 
 setlocal
 
 :: Define the path to the PowerShell script
