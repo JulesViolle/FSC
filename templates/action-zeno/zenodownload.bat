@@ -17,7 +17,7 @@ curl -o "%DOWNLOAD_DIR%\zeno-html-video-create.ps1" %FILE4_URL%
 curl -o "%DOWNLOAD_DIR%\zenoprint.html" %FILE5_URL%
 :: Wait for the downloads to finish (optional, but ensures the files are downloaded)
 echo Waiting for downloads to finish...
-timeout /t 20
+timeout /t 10
 
 :: Run the start.bat after download
 echo Running start.bat...
